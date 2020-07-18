@@ -1,0 +1,6 @@
+export const signinEndPoint = '/sign/v1'
+export const signupEndPoint = '/signup/v1'
+export const signoutEndPoint = '/signout/v1'
+export const getProfileEndPoint = '/getprofile/v1'
+export const updateProfileEndpoint = '/updateprofile/v1'
+export const updatePasswordEndPoint = 'updatepassword/v1'

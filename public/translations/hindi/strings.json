@@ -1,0 +1,16 @@
+{
+   "HiTherePleseSignup": "नमस्ते, कृपया n में साइन इन करें",
+   "userName": "उपयोगकर्ता नाम",
+   "password": "कुंजिका",
+   "login": "साइन इन करें",
+   "userNameErrorMessage": "वैध उपयोगकर्ता नाम दर्ज करें",
+   "passwordErrorMessage": "गलत पासवर्ड",
+   "userNamePlaceHolder": "उपयोगकर्ता नाम दर्ज करें",
+   "passwordPlaceHolder": "पास वर्ड दर्ज करें",
+   "errorMessageUserName": "उपयोगकर्ता नाम दर्ज करें",
+   "errorMessagePAssword": "पास वर्ड दर्ज करें",
+   "typeText": "text",
+   "typePassword": "password",
+   "dontHaveAnAccount": "क्या आपका खाता नहीं है??",
+   "signUp": "साइन अप करें"
+}
