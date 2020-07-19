@@ -8,7 +8,7 @@ import {
    getAccessToken
 } from '../../../Common/utils/StorageUtils'
 class AuthStore {
-   accessToken!: string
+   @observable accessToken!: string
    authService: AuthServiceImplements
    @observable getSigninAPIStatus!: APIStatus
    @observable getSigninAPIError!: Error | null
