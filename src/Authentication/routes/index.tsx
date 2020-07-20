@@ -6,7 +6,7 @@ import SignupPageRoute from './SignupPageRoute/SignupPageRoute'
 import { Route } from 'react-router-dom'
 
 const authenticationRoutes = [
-   <ProtectedRoute exact path={USER_SIGNIN} component={SigninPageRoute} />,
+   <Route exact path={USER_SIGNIN} component={SigninPageRoute} />,
    <Route exact path={USER_SIGNUP} component={SignupPageRoute} />
 ]
 

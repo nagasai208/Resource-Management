@@ -4,6 +4,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom'
 import AuthStore from '../../store/AuthenticationStore'
 import { gotoSigninPage } from '../../utils/Navigation'
 import SignupPage from '../../components/SignupPage'
+import { action } from 'mobx'
 
 interface SignupPageProps extends RouteComponentProps {}
 
@@ -13,15 +14,19 @@ interface InjectedProps extends SignupPageProps {
 @inject('authStore')
 @observer
 class SignupPageRoute extends Component<SignupPageProps> {
-   onSubmit() {
-      // this.getInjectedProps().authStore.getSignup({})
-      if (this.getInjectedProps().authStore.getSignupAPIStatus === 200) {
-         gotoSigninPage(this.getInjectedProps().history)
-      }
-   }
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
+   @action.bound
+   onSubmit() {
+      gotoSigninPage(this.getInjectedProps().history)
+   }
+
    render() {
-      return <SignupPage />
+      return (
+         <SignupPage
+            authStore={this.getInjectedProps().authStore}
+            onSubmit={this.onSubmit}
+         />
+      )
    }
 }
 

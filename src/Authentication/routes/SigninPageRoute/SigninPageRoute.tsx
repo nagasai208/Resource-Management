@@ -4,6 +4,7 @@ import { observer, inject } from 'mobx-react'
 import AuthStore from '../../store/AuthenticationStore'
 import { action } from 'mobx'
 import { gotoAdminDashBoard } from '../../utils/Navigation'
+import SigninPage from '../../components/SigninPage'
 
 interface SigninPageProps extends RouteComponentProps {}
 
@@ -23,7 +24,7 @@ class SigninPageRoute extends Component<SigninPageProps> {
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
 
    render() {
-      return <div>hello</div>
+      return <SigninPage />
    }
 }
 

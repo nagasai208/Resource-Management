@@ -20,8 +20,13 @@ import {
 } from './styledComponents'
 import { imgUrl } from '../../../Common/Images/ibhubsLogo'
 import Button from '../../../Common/components/Button/Button'
+import AuthStore from '../../store/AuthenticationStore'
+interface SignupProps {
+   authStore: AuthStore
+   onSubmit: Function
+}
 @observer
-class SignupPage extends Component {
+class SignupPage extends Component<SignupProps> {
    @observable userName!: string
    @observable password!: string
    @observable confirmPassword!: string
@@ -54,7 +59,13 @@ class SignupPage extends Component {
          this.confirmPassword
       )
    }
+
+   login = () => {
+      const { onSubmit } = this.props
+      onSubmit()
+   }
    onSubmit = () => {
+      const { authStore, onSubmit } = this.props
       if (this.userName === '') {
          this.userNameErrorMessage = UserNameValidate(this.userName)
       }
@@ -68,6 +79,15 @@ class SignupPage extends Component {
       }
       if (this.password !== this.confirmPassword) {
          this.confirmPasswordErrorMessage = strings.incorrectPassword
+      } else {
+         this.props.authStore.getSignup({
+            username: this.userName,
+            password: this.password,
+            confirm_password: this.confirmPassword
+         })
+         if (this.props.authStore.getSignupAPIStatus === 200) {
+            this.props.onSubmit()
+         }
       }
    }
    render() {
@@ -110,7 +130,7 @@ class SignupPage extends Component {
                />
                <HaveAccont>
                   <HaveAnAccount>{strings.dontHaveAnAccount}</HaveAnAccount>
-                  <Login onClick={this.onSubmit}>Login</Login>
+                  <Login onClick={this.login}>Login</Login>
                </HaveAccont>
             </SignupMainDiv>
          </Maindiv>

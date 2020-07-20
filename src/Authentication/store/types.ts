@@ -6,6 +6,7 @@ export interface SignInObject {
 export interface SignupObject {
    username: string
    password: string
+   confirm_password: string
 }
 
 export interface SigninResponse {
