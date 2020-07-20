@@ -23,9 +23,11 @@ class SignupPageRoute extends Component<SignupPageProps> {
    render() {
       return (
          <SignupPage
-         getSignup={this.getInjectedProps().authStore.getSignup}
+            getSignup={this.getInjectedProps().authStore.getSignup}
             onSubmit={this.onSubmit}
-            getSignupAPIStatus = {this.getInjectedProps().authStore.getSignupAPIStatus}
+            getSignupAPIStatus={
+               this.getInjectedProps().authStore.getSignupAPIStatus
+            }
          />
       )
    }
