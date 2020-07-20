@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import Input from '../../../Common/components/Input'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
+import Input from '../../../Common/components/Input'
+import { imgUrl } from '../../../Common/Images/ibhubsLogo'
+import Button from '../../../Common/components/Button/Button'
 import strings from '../../i18n/string.json'
 import {
    UserNameValidate,
@@ -16,14 +18,17 @@ import {
    Image,
    HaveAnAccount,
    HaveAccont,
-   Login
+   Login,
+   UserName,
+   Password,
+   ConfirmPassword
 } from './styledComponents'
-import { imgUrl } from '../../../Common/Images/ibhubsLogo'
-import Button from '../../../Common/components/Button/Button'
-import AuthStore from '../../store/AuthenticationStore'
+import { APIStatus } from '@ib/api-constants'
+
 interface SignupProps {
-   authStore: AuthStore
+   getSignup: Function
    onSubmit: Function
+   getSignupAPIStatus: APIStatus
 }
 @observer
 class SignupPage extends Component<SignupProps> {
@@ -64,8 +69,8 @@ class SignupPage extends Component<SignupProps> {
       const { onSubmit } = this.props
       onSubmit()
    }
-   onSubmit = () => {
-      const { authStore, onSubmit } = this.props
+   onSubmit = async () => {
+      const { getSignup, onSubmit } = this.props
       if (this.userName === '') {
          this.userNameErrorMessage = UserNameValidate(this.userName)
       }
@@ -80,22 +85,23 @@ class SignupPage extends Component<SignupProps> {
       if (this.password !== this.confirmPassword) {
          this.confirmPasswordErrorMessage = strings.incorrectPassword
       } else {
-         this.props.authStore.getSignup({
+         await this.props.getSignup({
             username: this.userName,
-            password: this.password,
-            confirm_password: this.confirmPassword
+            password: this.password
          })
-         if (this.props.authStore.getSignupAPIStatus === 200) {
+         if (this.props.getSignupAPIStatus === 200) {
             this.props.onSubmit()
          }
       }
    }
    render() {
+      const { getSignupAPIStatus } = this.props
       return (
          <Maindiv>
             <SignupMainDiv>
                <Heading>{strings.HiTherePleseSignup}</Heading>
                <Image src={imgUrl} />
+               <UserName>{strings.userName}</UserName>
                <Input
                   type='text'
                   onChange={this.onChangeUserName}
@@ -104,6 +110,7 @@ class SignupPage extends Component<SignupProps> {
                   value={this.userName}
                   width='200'
                />
+               <Password>{strings.password}</Password>
                <Input
                   type='password'
                   onChange={this.onChangePassword}
@@ -112,12 +119,12 @@ class SignupPage extends Component<SignupProps> {
                   value={this.password}
                   width='200'
                />
-
+               <ConfirmPassword>{strings.confirmPassword}</ConfirmPassword>
                <Input
                   type='password'
                   onChange={this.onChangeConfirmPassword}
                   errorMessage={this.confirmPasswordErrorMessage}
-                  placeHolder={strings.confirmPassword}
+                  placeHolder={strings.confirmPasswordPlaceholdes}
                   value={this.confirmPassword}
                   width='200'
                />
@@ -125,7 +132,7 @@ class SignupPage extends Component<SignupProps> {
                   name={strings.signUp}
                   onClick={this.onSubmit}
                   type={Button.buttonType.filled}
-                  apiStatus={200}
+                  apiStatus={getSignupAPIStatus}
                   buttonStyles={ButtonStyles}
                />
                <HaveAccont>

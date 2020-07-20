@@ -42,6 +42,18 @@ class AuthStore {
       this.getUpdarePasswordAPIStatus = API_INITIAL
       this.getUpdatePasswordApiError = null
    }
+
+   @action.bound
+   setgetSignupAPIStatus(status) {
+      this.getSignupAPIStatus = status
+   }
+   @action.bound
+   setGetSignUpAPIError(error) {
+      this.getSignupAPIError = error
+   }
+   @action.bound
+   setGetSignupAPIResponse(response) {}
+
    @action.bound
    setGetSigninAPIStatus(status) {
       this.getSigninAPIStatus = status
@@ -55,17 +67,6 @@ class AuthStore {
       setAccessToken(response.access_token)
       this.accessToken = getAccessToken()
    }
-
-   @action.bound
-   setgetSignupAPIStatus(status) {
-      this.getSignupAPIStatus = status
-   }
-   @action.bound
-   setGetSignUpAPIError(error) {
-      this.getSignupAPIError = error
-   }
-   @action.bound
-   setGetSignupAPIResponse(response) {}
 
    @action.bound
    setGetSignoutAPIStatus(status) {

@@ -16,7 +16,7 @@ ${tw` h-10 `}
 `
 
 const InputTagDiv = styled.div`
-   ${tw`flex border border-gray-700`};
+   ${tw`flex border border-gray-500`};
    width: 320px;
 `
 

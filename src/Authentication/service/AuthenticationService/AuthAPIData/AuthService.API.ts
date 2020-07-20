@@ -15,14 +15,6 @@ class AuthService implements AuthServiceImplements {
    constructor() {
       this.api = create({ baseURL: 'https' })
    }
-   getSignInAPI(requestObject) {
-      return networkCallWithApisauce(
-         this.api,
-         signinEndPoint,
-         requestObject,
-         apiMethods.post
-      )
-   }
 
    getSignupAPI(requestObject) {
       return networkCallWithApisauce(
@@ -32,7 +24,14 @@ class AuthService implements AuthServiceImplements {
          apiMethods.post
       )
    }
-
+   getSignInAPI(requestObject) {
+      return networkCallWithApisauce(
+         this.api,
+         signinEndPoint,
+         requestObject,
+         apiMethods.post
+      )
+   }
    getSignoutAPI() {
       return networkCallWithApisauce(
          this.api,

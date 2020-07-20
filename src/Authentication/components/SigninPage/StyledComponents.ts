@@ -39,11 +39,11 @@ const ButtonStyles = css`
 `
 
 const HaveAnAccount = styled.p`
-   ${tw`text-sm mt-2`}
+   ${tw`text-sm mt-2 `}
 `
 
 const HaveAccont = styled.div`
-   ${tw`flex mt-6 ml-12`}
+   ${tw`flex mt-6 ml-12 `}
 `
 
 const Login = styled.p`
@@ -56,9 +56,6 @@ const UserName = styled.p`
 const Password = styled.p`
    ${tw`text-sm text-gray-500   `}
 `
-const ConfirmPassword = styled.p`
-   ${tw`text-sm text-gray-500   `}
-`
 export {
    SignupMainDiv,
    Maindiv,
@@ -69,6 +66,5 @@ export {
    HaveAccont,
    Login,
    UserName,
-   Password,
-   ConfirmPassword
+   Password
 }

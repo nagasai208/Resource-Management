@@ -4,12 +4,11 @@ import signInResponse from '../../../fixtures/getSignin.json'
 import getProfileDetails from '../../../fixtures/getProfileDetails.json'
 
 class AuthService implements AuthServiceImplements {
-   getSignInAPI(requestObject) {
-      return resolveWithTimeout(signInResponse)
-   }
-
    getSignupAPI(requestObject) {
       return resolveWithTimeout({})
+   }
+   getSignInAPI(requestObject) {
+      return resolveWithTimeout(signInResponse)
    }
 
    getSignoutAPI() {
