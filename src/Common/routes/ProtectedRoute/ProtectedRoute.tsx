@@ -1,9 +1,9 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
 import { Redirect, Route } from 'react-router-dom'
-const ProtectedRoute = inject('AuthStore')(
-   observer(({ component: Component, path, AuthStore, ...rest }) => {
-      const { accessToken } = AuthStore
+const ProtectedRoute = inject('authStore')(
+   observer(({ component: Component, path, authStore, ...rest }) => {
+      const { accessToken } = authStore
       return (
          <Route
             {...rest}
@@ -13,7 +13,7 @@ const ProtectedRoute = inject('AuthStore')(
                ) : (
                   <Redirect
                      to={{
-                        pathname: '/'
+                        pathname: '/signup'
                      }}
                   />
                )

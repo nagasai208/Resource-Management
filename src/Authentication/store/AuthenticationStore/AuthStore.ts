@@ -173,6 +173,10 @@ class AuthStore {
          )
          .catch(this.setGetUpdatePasswordAPIError)
    }
+   @action.bound
+   clearStore() {
+      this.init()
+   }
 }
 
 export { AuthStore }

@@ -42,7 +42,7 @@ export function isNetworkError(error) {
       : false
 }
 
-export const getFormattedError = (apiError: string | null | undefined) => {
+export const getFormattedError = apiError => {
    //TODO: Need to use strings from i18n
    const errorViewTitle = 'Oops! Something Went Wrong'
    const errorViewDescription =

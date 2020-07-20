@@ -1,0 +1,20 @@
+{
+   "HiTherePleseSignup": "Hi there, please sign up",
+   "userName": "USERNAME",
+   "password": "PASSWORD",
+   "login": "Sign In",
+   "userNameErrorMessage": "plese enter valid username",
+   "passwordErrorMessage": "Incorrect password",
+   "userNamePlaceHolder": "Enter username",
+   "passwordPlaceHolder": "Enter password",
+   "errorMessageUserName": "enter username",
+   "errorMessagePAssword": "enter password",
+   "typeText": "text",
+   "typePassword": "password",
+   "dontHaveAnAccount": "Don’t have an account?",
+   "signUp": "signup",
+   "required": "Required",
+   "alreadyAccount": "Already have an account?",
+   "confirmPassword": "enter confirm password",
+   "incorrectPassword": "incorrect password"
+}
