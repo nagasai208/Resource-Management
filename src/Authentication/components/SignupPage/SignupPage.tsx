@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
+import { withTranslation, WithTranslation } from 'react-i18next'
 import Input from '../../../Common/components/Input'
 import { imgUrl } from '../../../Common/Images/ibhubsLogo'
 import Button from '../../../Common/components/Button/Button'
-import strings from '../../i18n/string.json'
+//import strings from '../../i18n/string.json'
 import {
    UserNameValidate,
    PasswordValidate,
@@ -23,9 +24,11 @@ import {
    Password,
    ConfirmPassword
 } from './styledComponents'
-import { APIStatus } from '@ib/api-constants'
+import { APIStatus, API_SUCCESS } from '@ib/api-constants'
+import Select from '../../../Common/components/Select/Select'
+import i18n from '../../../Common/i18n'
 
-interface SignupProps {
+interface SignupProps extends WithTranslation {
    getSignup: Function
    onSubmit: Function
    getSignupAPIStatus: APIStatus
@@ -38,6 +41,9 @@ class SignupPage extends Component<SignupProps> {
    @observable userNameErrorMessage!: string
    @observable passwordErrorMessage!: string
    @observable confirmPasswordErrorMessage!: string
+   userNameRef: React.RefObject<HTMLInputElement> = React.createRef()
+   passwordRef: React.RefObject<HTMLInputElement> = React.createRef()
+   confirmPasswordRef: React.RefObject<HTMLInputElement> = React.createRef()
 
    constructor(props) {
       super(props)
@@ -48,7 +54,11 @@ class SignupPage extends Component<SignupProps> {
       this.passwordErrorMessage = ''
       this.confirmPasswordErrorMessage = ''
    }
-
+   componentDidMount() {
+      if (this.userNameRef.current) {
+         this.userNameRef.current.focus()
+      }
+   }
    onChangeUserName = event => {
       this.userName = event.target.value
       this.userNameErrorMessage = UserNameValidate(this.userName)
@@ -69,8 +79,11 @@ class SignupPage extends Component<SignupProps> {
       const { onSubmit } = this.props
       onSubmit()
    }
-   onSubmit = async () => {
-      const { getSignup, onSubmit } = this.props
+   onChangeLanguage = value => {
+      i18n.changeLanguage(value)
+   }
+   onSubmit = async event => {
+      const { getSignup, onSubmit, t } = this.props
       if (this.userName === '') {
          this.userNameErrorMessage = UserNameValidate(this.userName)
       }
@@ -83,66 +96,73 @@ class SignupPage extends Component<SignupProps> {
          )
       }
       if (this.password !== this.confirmPassword) {
-         this.confirmPasswordErrorMessage = strings.incorrectPassword
+         this.confirmPasswordErrorMessage = `${t('strings:incorrectPassword')}`
       } else {
-         await this.props.getSignup({
+         await getSignup({
             username: this.userName,
             password: this.password
          })
-         if (this.props.getSignupAPIStatus === 200) {
-            this.props.onSubmit()
+         if (this.props.getSignupAPIStatus === API_SUCCESS) {
+            alert(4)
+            onSubmit()
          }
       }
    }
    render() {
-      const { getSignupAPIStatus } = this.props
+      const { getSignupAPIStatus, t } = this.props
       return (
          <Maindiv>
             <SignupMainDiv>
-               <Heading>{strings.HiTherePleseSignup}</Heading>
+               <Heading>{t('strings:HiTherePleseSignup')}</Heading>
                <Image src={imgUrl} />
-               <UserName>{strings.userName}</UserName>
+               <UserName>{t('strings:userName')}</UserName>
                <Input
                   type='text'
                   onChange={this.onChangeUserName}
                   errorMessage={this.userNameErrorMessage}
-                  placeHolder={strings.userNamePlaceHolder}
+                  placeHolder={t('strings:userNamePlaceHolder')}
                   value={this.userName}
                   width='200'
+                  inputRef={this.userNameRef}
                />
-               <Password>{strings.password}</Password>
+               <Password>{t('strings:password')}</Password>
                <Input
                   type='password'
                   onChange={this.onChangePassword}
                   errorMessage={this.passwordErrorMessage}
-                  placeHolder={strings.passwordPlaceHolder}
+                  placeHolder={t('strings:passwordPlaceHolder')}
                   value={this.password}
                   width='200'
+                  inputRef={this.passwordRef}
                />
-               <ConfirmPassword>{strings.confirmPassword}</ConfirmPassword>
+               <ConfirmPassword>{t('strings:confirmPassword')}</ConfirmPassword>
                <Input
                   type='password'
                   onChange={this.onChangeConfirmPassword}
                   errorMessage={this.confirmPasswordErrorMessage}
-                  placeHolder={strings.confirmPasswordPlaceholdes}
+                  placeHolder={t('strings:confirmPasswordPlaceholdes')}
                   value={this.confirmPassword}
                   width='200'
+                  inputRef={this.confirmPasswordRef}
                />
                <Button
-                  name={strings.signUp}
+                  name={t('strings:signUp')}
                   onClick={this.onSubmit}
                   type={Button.buttonType.filled}
                   apiStatus={getSignupAPIStatus}
                   buttonStyles={ButtonStyles}
                />
                <HaveAccont>
-                  <HaveAnAccount>{strings.dontHaveAnAccount}</HaveAnAccount>
+                  <HaveAnAccount>
+                     {t('strings:dontHaveAnAccount')}
+                  </HaveAnAccount>
                   <Login onClick={this.login}>Login</Login>
                </HaveAccont>
+               <Select onChangeLanguage={this.onChangeLanguage} />
             </SignupMainDiv>
          </Maindiv>
       )
    }
 }
 
-export { SignupPage }
+export default withTranslation('translation')(SignupPage)

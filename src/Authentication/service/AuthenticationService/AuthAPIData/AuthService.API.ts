@@ -10,10 +10,13 @@ import {
    updatePasswordEndPoint
 } from '../endPoints'
 import AuthServiceImplements from '..'
+import Config from '../../../../Common/constants/EnvironmentConstants'
 class AuthService implements AuthServiceImplements {
    api
    constructor() {
-      this.api = create({ baseURL: 'https' })
+      this.api = create({
+         baseURL: Config.BASE_URL
+      })
    }
 
    getSignupAPI(requestObject) {
@@ -25,6 +28,7 @@ class AuthService implements AuthServiceImplements {
       )
    }
    getSignInAPI(requestObject) {
+      console.log(requestObject, 'object')
       return networkCallWithApisauce(
          this.api,
          signinEndPoint,

@@ -20,10 +20,10 @@ class SigninPageRoute extends Component<SigninPageProps> {
    }
    @action.bound
    onSubmit() {
-      this.getInjectedProps().authStore.getSignin({})
       if (this.getInjectedProps().authStore.accessToken !== undefined) {
-         gotoAdminDashBoard(this.getInjectedProps().history)
+         return gotoAdminDashBoard(this.getInjectedProps().history)
       }
+      return null
    }
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
 

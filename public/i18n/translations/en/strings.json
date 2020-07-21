@@ -1,8 +1,10 @@
 {
-   "HiTherePleseSignup": "Hi there, please sign In",
+   "HiTherePleseSignup": "Hi there, please sign up",
+   "HiTherePleseSignin": "Hi there, please login",
    "userName": "USERNAME",
    "password": "PASSWORD",
-   "login": "Sign In",
+   "sigin": "log in",
+   "confirmPassword": "CONFIRM PASSWORD",
    "userNameErrorMessage": "plese enter valid username",
    "passwordErrorMessage": "Incorrect password",
    "userNamePlaceHolder": "Enter username",
@@ -12,5 +14,9 @@
    "typeText": "text",
    "typePassword": "password",
    "dontHaveAnAccount": "Don’t have an account?",
-   "signUp": "Signup"
+   "signUp": "signup",
+   "required": "Required",
+   "alreadyAccount": "Already have an account?",
+   "confirmPasswordPlaceholdes": "enter confirm password",
+   "incorrectPassword": "incorrect password"
 }

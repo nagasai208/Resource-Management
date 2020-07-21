@@ -13,7 +13,7 @@ const ProtectedRoute = inject('authStore')(
                ) : (
                   <Redirect
                      to={{
-                        pathname: '/signup'
+                        pathname: '/signin'
                      }}
                   />
                )

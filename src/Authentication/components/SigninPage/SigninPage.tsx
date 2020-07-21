@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { APIStatus } from '@ib/api-constants'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
+import { withTranslation, WithTranslation } from 'react-i18next'
 import Input from '../../../Common/components/Input'
 import { imgUrl } from '../../../Common/Images/ibhubsLogo'
 import Button from '../../../Common/components/Button/Button'
-import strings from '../../i18n/string.json'
 import { UserNameValidate, PasswordValidate } from '../../utils/ValidationUtils'
 import {
    SignupMainDiv,
@@ -20,8 +20,12 @@ import {
    Password
 } from './StyledComponents'
 import { getAccessToken } from '../../../Common/utils/StorageUtils'
+import Select from '../../../Common/components/Select/Select'
+import i18n from '../../../Common/i18n'
+import { Redirect } from 'react-router-dom'
+import { RESOURCE_MANAGEMENT_RESOURCES } from '../../../ResourceManagementAdminPage/constants/NavigationConstants'
 
-interface SigninProps {
+interface SigninProps extends WithTranslation {
    getSignin: Function
    onSubmit: Function
    signup: Function
@@ -33,6 +37,8 @@ class SigninPage extends Component<SigninProps> {
    @observable password!: string
    @observable userNameErrorMessage!: string
    @observable passwordErrorMessage!: string
+   userNameRef: React.RefObject<HTMLInputElement> = React.createRef()
+   passwordRef: React.RefObject<HTMLInputElement> = React.createRef()
 
    constructor(props) {
       super(props)
@@ -40,6 +46,12 @@ class SigninPage extends Component<SigninProps> {
       this.password = ''
       this.userNameErrorMessage = ''
       this.passwordErrorMessage = ''
+   }
+
+   componentDidMount() {
+      if (this.userNameRef.current) {
+         this.userNameRef.current.focus()
+      }
    }
 
    onChangeUserName = event => {
@@ -55,6 +67,10 @@ class SigninPage extends Component<SigninProps> {
    signUp = () => {
       const { signup } = this.props
       signup()
+   }
+
+   onChangeLanguage = value => {
+      i18n.changeLanguage(value)
    }
    onSubmit = async () => {
       const { getSignin, onSubmit, getSigninAPIStatus } = this.props
@@ -74,46 +90,55 @@ class SigninPage extends Component<SigninProps> {
       }
    }
    render() {
-      const { getSigninAPIStatus } = this.props
+      const { getSigninAPIStatus, t, onSubmit } = this.props
+      if (getAccessToken() !== undefined) {
+         return <Redirect to={RESOURCE_MANAGEMENT_RESOURCES} />
+      }
+
       return (
          <Maindiv>
             <SignupMainDiv>
-               <Heading>{strings.HiTherePleseSignin}</Heading>
+               <Heading>{t('strings:HiTherePleseSignin')}</Heading>
                <Image src={imgUrl} />
-               <UserName>{strings.userName}</UserName>
+               <UserName>{t('strings:userName')}</UserName>
                <Input
                   type='text'
                   onChange={this.onChangeUserName}
                   errorMessage={this.userNameErrorMessage}
-                  placeHolder={strings.userNamePlaceHolder}
+                  placeHolder={t('strings:userNamePlaceHolder')}
                   value={this.userName}
                   width='200'
+                  inputRef={this.userNameRef}
                />
-               <Password>{strings.password}</Password>
+               <Password>{t('strings:password')}</Password>
                <Input
                   type='password'
                   onChange={this.onChangePassword}
                   errorMessage={this.passwordErrorMessage}
-                  placeHolder={strings.passwordPlaceHolder}
+                  placeHolder={t('strings:passwordPlaceHolder')}
                   value={this.password}
                   width='200'
+                  inputRef={this.passwordRef}
                />
 
                <Button
-                  name={strings.sigin}
+                  name={t('strings:sigin')}
                   onClick={this.onSubmit}
                   type={Button.buttonType.filled}
                   apiStatus={getSigninAPIStatus}
                   buttonStyles={ButtonStyles}
                />
                <HaveAccont>
-                  <HaveAnAccount>{strings.dontHaveAnAccount}</HaveAnAccount>
-                  <Login onClick={this.signUp}>{strings.signUp}</Login>
+                  <HaveAnAccount>
+                     {t('strings:dontHaveAnAccount')}
+                  </HaveAnAccount>
+                  <Login onClick={this.signUp}>{t('strings:signUp')}</Login>
                </HaveAccont>
+               <Select onChangeLanguage={this.onChangeLanguage} />
             </SignupMainDiv>
          </Maindiv>
       )
    }
 }
 
-export { SigninPage }
+export default withTranslation('translation')(SigninPage)

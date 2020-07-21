@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import tw from 'tailwind.macro'
-//import { colors } from '../../../../Authentication/themes/Colors'
 
 type PrimarySignInButtonProps = {
    apiStatus: number

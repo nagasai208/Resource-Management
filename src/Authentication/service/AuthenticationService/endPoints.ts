@@ -1,4 +1,5 @@
-export const signinEndPoint = '/sign/v1'
+export const signinEndPoint = '/signin/v1/'
+// export const signinEndPoint = '/login/v1'
 export const signupEndPoint = '/signup/v1'
 export const signoutEndPoint = '/signout/v1'
 export const getProfileEndPoint = '/getprofile/v1'

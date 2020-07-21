@@ -5,8 +5,10 @@ import { observable, action } from 'mobx'
 import { APIStatus, API_INITIAL } from '@ib/api-constants'
 import {
    setAccessToken,
-   getAccessToken
+   getAccessToken,
+   clearUserSession
 } from '../../../Common/utils/StorageUtils'
+import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 class AuthStore {
    @observable accessToken!: string
    authService: AuthServiceImplements
@@ -41,29 +43,38 @@ class AuthStore {
       this.getProfileUpdateAPIError = null
       this.getUpdarePasswordAPIStatus = API_INITIAL
       this.getUpdatePasswordApiError = null
+      this.accessToken = getAccessToken()
    }
 
    @action.bound
    setgetSignupAPIStatus(status) {
+      console.log('status', status)
       this.getSignupAPIStatus = status
    }
    @action.bound
    setGetSignUpAPIError(error) {
+      console.log('error', getUserDisplayableErrorMessage(error))
+
       this.getSignupAPIError = error
    }
    @action.bound
-   setGetSignupAPIResponse(response) {}
+   setGetSignupAPIResponse(response) {
+      alert('response')
+   }
 
    @action.bound
    setGetSigninAPIStatus(status) {
+      console.log('status', status)
       this.getSigninAPIStatus = status
    }
    @action.bound
    setGetSigninAPIError(error) {
+      console.log('error', getUserDisplayableErrorMessage(error))
       this.getSigninAPIError = error
    }
    @action.bound
    setGetSigninResponse(response) {
+      console.log(response)
       setAccessToken(response.access_token)
       this.accessToken = getAccessToken()
    }
@@ -78,7 +89,9 @@ class AuthStore {
    }
 
    @action.bound
-   setGetSignoutResponse(response) {}
+   setGetSignoutResponse(response) {
+      clearUserSession()
+   }
 
    @action.bound
    setGetProfileDetailsAPIStatus(status) {
@@ -121,6 +134,7 @@ class AuthStore {
 
    @action.bound
    getSignup(requestObject) {
+      alert('store')
       const promise = this.authService.getSignupAPI(requestObject)
       return bindPromiseWithOnSuccess(promise)
          .to(this.setgetSignupAPIStatus, this.setGetSignupAPIResponse)

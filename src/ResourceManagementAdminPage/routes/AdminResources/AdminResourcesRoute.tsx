@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
-import { clearUserSession } from '../../../Common/utils/StorageUtils'
+import withHeader from '../../../Common/hoc/HeaderHoc/HeaderHoc'
 
 class AdminResourcesRoute extends Component {
    render() {
-      return (
-         <div>
-            <p>khgjhdg</p>
-         </div>
-      )
+      return <div>hello</div>
    }
 }
 
-export default AdminResourcesRoute
+export default withHeader(AdminResourcesRoute)

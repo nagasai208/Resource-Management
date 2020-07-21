@@ -15,6 +15,7 @@ interface InputProps {
    placeHolder: string
    value: string
    width: string
+   inputRef: React.RefObject<HTMLInputElement>
 }
 @observer
 class Input extends Component<InputProps> {
@@ -25,17 +26,20 @@ class Input extends Component<InputProps> {
          type,
          placeHolder,
          value,
-         width
+         width,
+         inputRef
       } = this.props
       return (
          <InputMainDiv>
-            <InputTagDiv>
+            <InputTagDiv error={errorMessage}>
                <InputTag
                   onChange={onChange}
                   type={type}
                   placeholder={placeHolder}
                   value={value}
                   width={width}
+                  error={errorMessage}
+                  ref={inputRef}
                />
                {errorMessage === '' ? '' : <ErrorMessageLogo src={errorImg} />}
             </InputTagDiv>

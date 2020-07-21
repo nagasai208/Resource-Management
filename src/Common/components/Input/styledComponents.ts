@@ -1,6 +1,8 @@
 import styled from '@emotion/styled'
 import tw from 'tailwind.macro'
-
+type errorProps = {
+   error: string
+}
 const InputMainDiv = styled.div`
    ${tw` justify-center `}
 `
@@ -9,17 +11,20 @@ const ErrorMessage = styled.p`
 `
 
 const InputTag = styled.input`
-${tw` h-10 `}
-   width: ${props => (props.width ? '' : '#fed7d7')};
+   ${tw` h-10 `}
    border-radius:2px;
-   outline:none
+   background-color: ${(props: errorProps) =>
+      props.error === '' ? '' : '#fed7d7'};
+   outline: none;
 `
-
 const InputTagDiv = styled.div`
-   ${tw`flex border border-gray-500`};
+   ${tw`flex`};
+   border: ${(props: errorProps) =>
+      props.error === '' ? '1px solid #718096' : '1px solid red'};
    width: 320px;
+   background-color: ${(props: errorProps) =>
+      props.error === '' ? '' : '#fed7d7'};
 `
-
 const ErrorMessageLogo = styled.img`
    ${tw`ml-2`}
 `

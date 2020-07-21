@@ -9,8 +9,7 @@
    "passwordPlaceHolder": "पास वर्ड दर्ज करें",
    "errorMessageUserName": "उपयोगकर्ता नाम दर्ज करें",
    "errorMessagePAssword": "पास वर्ड दर्ज करें",
-   "typeText": "text",
-   "typePassword": "password",
-   "dontHaveAnAccount": "क्या आपका खाता नहीं है??",
+   "dontHaveAnAccount": "क्या आपका खाता नहीं है?",
+   "confirmPassword": "CONFIRM PASSWORD",
    "signUp": "साइन अप करें"
 }
