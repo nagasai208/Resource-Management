@@ -36,4 +36,11 @@ const AdminButtonStyles = css`
    height: 40px;
    font-size: 18px;
 `
-export { HeaderMainDiv, Image, ButtonStyles, ImageDiv,ButtonMainDiv ,AdminButtonStyles}
+export {
+   HeaderMainDiv,
+   Image,
+   ButtonStyles,
+   ImageDiv,
+   ButtonMainDiv,
+   AdminButtonStyles
+}
