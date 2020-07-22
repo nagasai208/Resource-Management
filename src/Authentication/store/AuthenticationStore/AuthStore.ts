@@ -24,6 +24,7 @@ class AuthStore {
    @observable getProfileUpdateAPIError!: Error | null
    @observable getUpdarePasswordAPIStatus!: APIStatus
    @observable getUpdatePasswordApiError!: Error | null
+   @observable errorMessage!: string
    constructor(authService) {
       this.authService = authService
       this.init()
@@ -43,38 +44,47 @@ class AuthStore {
       this.getProfileUpdateAPIError = null
       this.getUpdarePasswordAPIStatus = API_INITIAL
       this.getUpdatePasswordApiError = null
+      this.errorMessage = ''
       this.accessToken = getAccessToken()
    }
 
    @action.bound
+   validateErrormessage(response) {
+      if (response.http_res_code === 400 || response.http_res_code === 404) {
+         this.errorMessage = response.response
+      } else {
+      }
+   }
+
+   @action.bound
    setgetSignupAPIStatus(status) {
-      console.log('status', status)
       this.getSignupAPIStatus = status
    }
    @action.bound
    setGetSignUpAPIError(error) {
-      console.log('error', getUserDisplayableErrorMessage(error))
-
+      this.errorMessage = getUserDisplayableErrorMessage(error)
+      console.log(this.errorMessage, 'signup')
       this.getSignupAPIError = error
    }
    @action.bound
    setGetSignupAPIResponse(response) {
-      alert('response')
+      console.log(response, 'response')
+      //  this.validateErrormessage(response)
    }
 
    @action.bound
    setGetSigninAPIStatus(status) {
-      console.log('status', status)
       this.getSigninAPIStatus = status
    }
    @action.bound
    setGetSigninAPIError(error) {
-      console.log('error', getUserDisplayableErrorMessage(error))
+      this.errorMessage = getUserDisplayableErrorMessage(error)
+      console.log(this.errorMessage[1], 'signin')
       this.getSigninAPIError = error
    }
    @action.bound
    setGetSigninResponse(response) {
-      console.log(response)
+      console.log(response, 'response')
       setAccessToken(response.access_token)
       this.accessToken = getAccessToken()
    }

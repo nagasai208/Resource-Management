@@ -4,14 +4,14 @@ type errorProps = {
    error: string
 }
 const InputMainDiv = styled.div`
-   ${tw` justify-center `}
+   ${tw` justify-center w-full  `}
 `
 const ErrorMessage = styled.p`
    ${tw`text-red-600 h-10  mt-1 text-sm`};
 `
 
 const InputTag = styled.input`
-   ${tw` h-10 `}
+   ${tw` h-10 text-lg`}
    border-radius:2px;
    background-color: ${(props: errorProps) =>
       props.error === '' ? '' : '#fed7d7'};
@@ -21,7 +21,7 @@ const InputTagDiv = styled.div`
    ${tw`flex`};
    border: ${(props: errorProps) =>
       props.error === '' ? '1px solid #718096' : '1px solid red'};
-   width: 320px;
+   width: 100%;
    background-color: ${(props: errorProps) =>
       props.error === '' ? '' : '#fed7d7'};
 `

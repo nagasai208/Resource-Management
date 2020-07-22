@@ -3,7 +3,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 import AuthStore from '../../store/AuthenticationStore'
 import { action } from 'mobx'
-import { gotoAdminDashBoard, gotoSignUpPage } from '../../utils/Navigation'
+import { gotoAdminDashBoard, gotoSignUpPage } from '../../utils/NavigationUtils'
 import SigninPage from '../../components/SigninPage'
 
 interface SigninPageProps extends RouteComponentProps {}
@@ -36,6 +36,7 @@ class SigninPageRoute extends Component<SigninPageProps> {
             }
             onSubmit={this.onSubmit}
             signup={this.signup}
+            
          />
       )
    }

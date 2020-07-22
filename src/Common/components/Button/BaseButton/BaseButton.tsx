@@ -9,6 +9,7 @@ interface BaseButtonProps {
    name: any
    apiStatus?: any
    buttonStyles?: object
+   id?: string
 }
 class BaseButton extends Component<BaseButtonProps> {
    render() {
@@ -16,6 +17,7 @@ class BaseButton extends Component<BaseButtonProps> {
          name,
          apiStatus,
          buttonStyles,
+         id,
          typo: TextTypo,
          ...otherProps
       } = this.props
@@ -23,6 +25,8 @@ class BaseButton extends Component<BaseButtonProps> {
          <React.Fragment>
             {apiStatus === 100 ? (
                <BaseBtn
+                  id={id}
+                  color={id}
                   buttonStyles={buttonStyles}
                   apiStatus={apiStatus}
                   {...otherProps}
@@ -31,6 +35,8 @@ class BaseButton extends Component<BaseButtonProps> {
                </BaseBtn>
             ) : (
                <BaseBtn
+                  id={id}
+                  color={id}
                   buttonStyles={buttonStyles}
                   apiStatus={apiStatus}
                   {...otherProps}

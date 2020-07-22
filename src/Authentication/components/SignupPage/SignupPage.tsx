@@ -5,7 +5,6 @@ import { withTranslation, WithTranslation } from 'react-i18next'
 import Input from '../../../Common/components/Input'
 import { imgUrl } from '../../../Common/Images/ibhubsLogo'
 import Button from '../../../Common/components/Button/Button'
-//import strings from '../../i18n/string.json'
 import {
    UserNameValidate,
    PasswordValidate,

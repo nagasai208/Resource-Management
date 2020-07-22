@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { buttonType, variationType } from './constants'
 import BaseButton from './BaseButton/BaseButton'
-import { css, jsx } from '@emotion/core'
 import OutlineButton from './OutlineButton/OutlineButton'
 interface ButtonProps {
    type: string
@@ -10,6 +9,7 @@ interface ButtonProps {
    name: any
    apiStatus?: any
    buttonStyles?: object
+   id?:string
 }
 class Button extends Component<ButtonProps> {
    static buttonType = buttonType

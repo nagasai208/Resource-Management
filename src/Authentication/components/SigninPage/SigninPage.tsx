@@ -73,7 +73,7 @@ class SigninPage extends Component<SigninProps> {
       i18n.changeLanguage(value)
    }
    onSubmit = async () => {
-      const { getSignin, onSubmit, getSigninAPIStatus } = this.props
+      const { getSignin, onSubmit } = this.props
       if (this.userName === '') {
          this.userNameErrorMessage = UserNameValidate(this.userName)
       }

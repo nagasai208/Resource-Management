@@ -39,7 +39,7 @@ const ButtonStyles = css`
 `
 
 const HaveAnAccount = styled.p`
-   ${tw`text-sm mt-2`}
+   ${tw`text-xl mt-2`}
 `
 
 const HaveAccont = styled.div`
@@ -47,7 +47,7 @@ const HaveAccont = styled.div`
 `
 
 const Login = styled.p`
-   ${tw`text-sm text-blue-500 ml-1 mt-2`}
+   ${tw`text-xl text-blue-500 ml-1 `}
 `
 
 const UserName = styled.p`

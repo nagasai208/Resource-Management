@@ -1,3 +1,5 @@
-export const RESOURCE_MANAGEMENT_REQUEST = '/resourcemanagement/requests'
-export const RESOURCE_MANAGEMENT_USERS = '/resourcemanagemt/users'
-export const RESOURCE_MANAGEMENT_RESOURCES = '/resourcemanagement/resources'
+export const RESOURCE_MANAGEMENT_REQUEST = '/resource-management/requests'
+export const RESOURCE_MANAGEMENT_USERS = '/resource-managemt/users'
+export const RESOURCE_MANAGEMENT_RESOURCES = '/resource-management/resources'
+export const RESOURCE_MANAGEMENT_ADDRESOURCES = '/resource-management/add-resources'
+export const RESOURCE_MANAGEMENT_ADD_ITEM = '/resource-management/add-item'

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import AuthStore from '../../store/AuthenticationStore'
-import { gotoSigninPage } from '../../utils/Navigation'
+import { gotoSigninPage } from '../../utils/NavigationUtils'
 import SignupPage from '../../components/SignupPage'
 import { action } from 'mobx'
 

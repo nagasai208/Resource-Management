@@ -22,25 +22,16 @@ const ButtonStyles = css`
 `
 
 const ImageDiv = styled.div`
-   ${tw`flex  items-center justify-between  mr-2`}
+   ${tw`flex  items-center justify-between  mr-24`}
 `
 
-const ButtonMainDiv = styled.div`
-   ${tw`flex  flex justify-center m-5`}
-`
 
-const AdminButtonStyles = css`
-   background-color: blue;
-   width: 200px;
-   margin-left: 5px;
-   height: 40px;
-   font-size: 18px;
-`
+
+
 export {
    HeaderMainDiv,
    Image,
    ButtonStyles,
    ImageDiv,
-   ButtonMainDiv,
-   AdminButtonStyles
+
 }

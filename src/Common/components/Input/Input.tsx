@@ -13,9 +13,9 @@ interface InputProps {
    errorMessage: string
    type: string
    placeHolder: string
-   value: string
+   value: string | undefined
    width: string
-   inputRef: React.RefObject<HTMLInputElement>
+   inputRef?: React.RefObject<HTMLInputElement>
 }
 @observer
 class Input extends Component<InputProps> {
@@ -31,7 +31,7 @@ class Input extends Component<InputProps> {
       } = this.props
       return (
          <InputMainDiv>
-            <InputTagDiv error={errorMessage}>
+            <InputTagDiv error={errorMessage}   >
                <InputTag
                   onChange={onChange}
                   type={type}

@@ -4,6 +4,7 @@ import tw from 'tailwind.macro'
 type PrimarySignInButtonProps = {
    apiStatus: number
    buttonStyles?: any
+   color: string | undefined
 }
 
 export const BaseBtn = styled.button`

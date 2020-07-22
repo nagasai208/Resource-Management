@@ -15,7 +15,7 @@ class AuthService implements AuthServiceImplements {
    api
    constructor() {
       this.api = create({
-         baseURL: Config.BASE_URL
+         baseURL: 'https://bc33d145a5bd.ngrok.io/api/resource_management_auth'
       })
    }
 

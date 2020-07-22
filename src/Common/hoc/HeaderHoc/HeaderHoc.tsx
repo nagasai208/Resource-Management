@@ -9,7 +9,7 @@ function withHeader<T>(WrappedComponent: React.ComponentType<T>) {
             const props = this.props as T
             return (
                <div>
-                  <Header {...props} />
+                  {/* <Header {...props} /> */}
                   <WrappedComponent {...props} />
                </div>
             )
