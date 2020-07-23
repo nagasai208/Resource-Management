@@ -1,0 +1,27 @@
+{
+   "user-Details": {
+      "user_name": "",
+      "department": "",
+      "job_role": "",
+      "user_profile": ""
+   },
+   "items": [
+      {
+         "resource_name": "",
+         "item_name": "",
+         "access_level": "",
+         "item_description": "",
+         "item_link": "",
+         "item_id": 61514
+      },
+      {
+         "resource_name": "",
+         "item_name": "",
+         "access_level": "",
+         "item_description": "",
+         "item_link": "",
+         "item_id": 878
+      }
+   ],
+   "total_items": 199
+}

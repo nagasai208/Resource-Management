@@ -21,6 +21,7 @@ import {
    Login,
    UserName,
    Password,
+   InputDiv,
    ConfirmPassword
 } from './styledComponents'
 import { APIStatus, API_SUCCESS } from '@ib/api-constants'
@@ -114,6 +115,7 @@ class SignupPage extends Component<SignupProps> {
             <SignupMainDiv>
                <Heading>{t('strings:HiTherePleseSignup')}</Heading>
                <Image src={imgUrl} />
+               <InputDiv>
                <UserName>{t('strings:userName')}</UserName>
                <Input
                   type='text'
@@ -124,6 +126,8 @@ class SignupPage extends Component<SignupProps> {
                   width='200'
                   inputRef={this.userNameRef}
                />
+               </InputDiv>
+               <InputDiv>
                <Password>{t('strings:password')}</Password>
                <Input
                   type='password'
@@ -134,6 +138,8 @@ class SignupPage extends Component<SignupProps> {
                   width='200'
                   inputRef={this.passwordRef}
                />
+               </InputDiv>
+               <InputDiv>
                <ConfirmPassword>{t('strings:confirmPassword')}</ConfirmPassword>
                <Input
                   type='password'
@@ -144,6 +150,7 @@ class SignupPage extends Component<SignupProps> {
                   width='200'
                   inputRef={this.confirmPasswordRef}
                />
+               </InputDiv>
                <Button
                   name={t('strings:signUp')}
                   onClick={this.onSubmit}

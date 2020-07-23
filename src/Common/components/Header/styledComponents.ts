@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import tw from 'tailwind.macro'
 import { css } from '@emotion/core'
 const HeaderMainDiv = styled.div`
-   ${tw`flex justify-between p-5  shadow-md `}
+   ${tw`flex justify-between p-5  shadow-md h-24 `}
 `
 
 const Image = styled.img`
@@ -13,7 +13,7 @@ const Image = styled.img`
 `
 
 const ButtonStyles = css`
-   background-color: blue;
+   background-color: #0b69ff;
    width: 100px;
    margin-left: 5px;
    height: 40px;

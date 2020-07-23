@@ -1,0 +1,18 @@
+{
+    "users_details": [
+       {
+         "user_name":"",
+         "department":"",
+         "job_role":"",
+         "user_id":4567
+       },
+       {
+        "user_name":"",
+        "department":"",
+        "job_role":"",
+        "user_id":4567
+      }
+    ],
+    "total_users": 2
+ }
+ 

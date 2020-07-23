@@ -3,46 +3,59 @@ import { isActive, ButtonMainDiv, isInActive } from './styledComponents'
 import Button from '../Button/Button'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
+import {
+   gotoAddRequests,
+   gotoAddUsers,
+   gotoResources
+} from '../../../ResourceManagementAdminPage/utils/NavigationUtils'
+interface SelectBarButtonsProps extends RouteComponentProps {
+   isButton: string
+}
 @observer
-class SelectBarButton extends Component {
+class SelectBarButton extends Component<SelectBarButtonsProps> {
    @observable isButtonName = 'Resources'
-   onClick = event => {
+   onClickResources = event => {
       this.isButtonName = event.target.id
+      gotoResources(this.props.history)
    }
+   onClickRequests = event => {
+      this.isButtonName = event.target.id
+      gotoAddRequests(this.props.history)
+   }
+   onClickUsers = event => {
+      this.isButtonName = event.target.id
+      gotoAddUsers(this.props.history)
+   }
+
    render() {
+      const { isButton } = this.props
       return (
-        
-            <ButtonMainDiv>
-               <Button
-                  id='Resources'
-                  name='Resources'
-                  onClick={this.onClick}
-                  type={Button.buttonType.filled}
-                  buttonStyles={
-                     this.isButtonName === 'Resources' ? isActive : isInActive
-                  }
-               />
-               <Button
-                  name='Requests'
-                  onClick={this.onClick}
-                  type={Button.buttonType.filled}
-                  buttonStyles={
-                     this.isButtonName === 'Requests' ? isActive : isInActive
-                  }
-                  id='Requests'
-               />
-               <Button
-                  name='Users'
-                  onClick={this.onClick}
-                  type={Button.buttonType.filled}
-                  buttonStyles={
-                     this.isButtonName === 'users' ? isActive : isInActive
-                  }
-                  id='users'
-               />
-            </ButtonMainDiv>
+         <ButtonMainDiv>
+            <Button
+               id='Resources'
+               name='Resources'
+               onClick={this.onClickResources}
+               type={Button.buttonType.filled}
+               buttonStyles={isButton === 'Resources' ? isActive : isInActive}
+            />
+            <Button
+               name='Request'
+               onClick={this.onClickRequests}
+               type={Button.buttonType.filled}
+               buttonStyles={isButton === 'Requests' ? isActive : isInActive}
+               id='Requests'
+            />
+            <Button
+               name='User'
+               onClick={this.onClickUsers}
+               type={Button.buttonType.filled}
+               buttonStyles={isButton === 'users' ? isActive : isInActive}
+               id='users'
+            />
+         </ButtonMainDiv>
       )
    }
 }
 
-export default SelectBarButton
+export default withRouter(SelectBarButton)

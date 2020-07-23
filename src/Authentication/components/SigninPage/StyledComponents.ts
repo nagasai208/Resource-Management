@@ -3,39 +3,29 @@ import tw from 'tailwind.macro'
 import { css } from '@emotion/core'
 
 const Maindiv = styled.div`
-   ${tw`w-full flex justify-center  items-center min-h-screen`}
+   ${tw`w-full flex justify-center  items-center min-h-screen `}
    background-color: #f1f7ff;
 `
 const SignupMainDiv = styled.div`
-   ${tw``};
-   width: 536px;
-   height: 687px;
+   ${tw`  flex flex-col items-center  w-1/4 `};
    border-radius: 8px;
    background-color: #ffffff;
-   padding-top: 48px;
-   padding-left: 108px;
 `
 
 const Heading = styled.p`
-   ${tw`text-center`};
-   width: 214px;
-   margin-top: 24px;
-   margin-bottom: 10px;
-   margin-left: 75px;
+   ${tw`text-center mb-0`};
    height: 80px;
    font-family: Rubik;
    font-size: 32px;
 `
 
-const Image = styled.img`
-   margin-left: 120px;
-`
+const Image = styled.img``
 
 const ButtonStyles = css`
+   ${tw`w-1/2 text-xl`}
    background-color: blue;
-   width: 320px;
-   margin-left: 5px;
    height: 40px;
+   
 `
 
 const HaveAnAccount = styled.p`
@@ -54,7 +44,10 @@ const UserName = styled.p`
    ${tw`text-sm text-gray-500`}
 `
 const Password = styled.p`
-   ${tw`text-xl text-gray-500   `}
+   ${tw`text-sm text-gray-500   `}
+`
+const InputDiv = styled.div`
+   ${tw` w-1/2 `}
 `
 export {
    SignupMainDiv,
@@ -66,5 +59,6 @@ export {
    HaveAccont,
    Login,
    UserName,
-   Password
+   Password,
+   InputDiv
 }

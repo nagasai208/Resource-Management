@@ -144,7 +144,6 @@ class AuthStore {
 
    @action.bound
    getSignup(requestObject) {
-      alert('store')
       const promise = this.authService.getSignupAPI(requestObject)
       return bindPromiseWithOnSuccess(promise)
          .to(this.setgetSignupAPIStatus, this.setGetSignupAPIResponse)

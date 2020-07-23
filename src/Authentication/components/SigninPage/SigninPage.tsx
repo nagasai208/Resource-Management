@@ -17,7 +17,8 @@ import {
    HaveAccont,
    Login,
    UserName,
-   Password
+   Password,
+   InputDiv
 } from './StyledComponents'
 import { getAccessToken } from '../../../Common/utils/StorageUtils'
 import Select from '../../../Common/components/Select/Select'
@@ -100,27 +101,30 @@ class SigninPage extends Component<SigninProps> {
             <SignupMainDiv>
                <Heading>{t('strings:HiTherePleseSignin')}</Heading>
                <Image src={imgUrl} />
-               <UserName>{t('strings:userName')}</UserName>
-               <Input
-                  type='text'
-                  onChange={this.onChangeUserName}
-                  errorMessage={this.userNameErrorMessage}
-                  placeHolder={t('strings:userNamePlaceHolder')}
-                  value={this.userName}
-                  width='200'
-                  inputRef={this.userNameRef}
-               />
-               <Password>{t('strings:password')}</Password>
-               <Input
-                  type='password'
-                  onChange={this.onChangePassword}
-                  errorMessage={this.passwordErrorMessage}
-                  placeHolder={t('strings:passwordPlaceHolder')}
-                  value={this.password}
-                  width='200'
-                  inputRef={this.passwordRef}
-               />
-
+               <InputDiv>
+                  <UserName>{t('strings:userName')}</UserName>
+                  <Input
+                     type='text'
+                     onChange={this.onChangeUserName}
+                     errorMessage={this.userNameErrorMessage}
+                     placeHolder={t('strings:userNamePlaceHolder')}
+                     value={this.userName}
+                     width='200'
+                     inputRef={this.userNameRef}
+                  />
+               </InputDiv>
+               <InputDiv>
+                  <Password>{t('strings:password')}</Password>
+                  <Input
+                     type='password'
+                     onChange={this.onChangePassword}
+                     errorMessage={this.passwordErrorMessage}
+                     placeHolder={t('strings:passwordPlaceHolder')}
+                     value={this.password}
+                     width='200'
+                     inputRef={this.passwordRef}
+                  />
+               </InputDiv>
                <Button
                   name={t('strings:sigin')}
                   onClick={this.onSubmit}

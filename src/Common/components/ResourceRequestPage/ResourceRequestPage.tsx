@@ -78,6 +78,7 @@ class ResourceRequestPage extends Component {
                      />
                   </InputDiv>
                   <InputDiv>
+                  <p>DATE</p>
                       <DatePickerComponent />
                   </InputDiv>
                   <InputDiv>

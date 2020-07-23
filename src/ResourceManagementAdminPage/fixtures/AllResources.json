@@ -1,0 +1,77 @@
+{
+   "resources_details": [
+      {
+         "resource_name": "sai",
+         "resource_link": "sai.com",
+         "description": "i am a good boy",
+         "resource_logo": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/05f39af1-095d-41ff-b5bc-baac146f590d.svg",
+         "resource_id": 1,
+         "service_name": "cloud service"
+      },
+      {
+         "resource_name": "sai",
+         "resource_link": "sai.com",
+         "description": "i am a good boy",
+         "resource_logo": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/05f39af1-095d-41ff-b5bc-baac146f590d.svg",
+         "resource_id": 1,
+         "service_name": "cloud service"
+      },
+      {
+         "resource_name": "sai",
+         "resource_link": "sai.com",
+         "description": "i am a good boy",
+         "resource_logo": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/05f39af1-095d-41ff-b5bc-baac146f590d.svg",
+         "resource_id": 1,
+         "service_name": "cloud service"
+      },
+      {
+         "resource_name": "sai",
+         "resource_link": "sai.com",
+         "description": "i am a good boy",
+         "resource_logo": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/05f39af1-095d-41ff-b5bc-baac146f590d.svg",
+         "resource_id": 1,
+         "service_name": "cloud service"
+      },
+      {
+         "resource_name": "sai",
+         "resource_link": "sai.com",
+         "description": "i am a good boy",
+         "resource_logo": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/05f39af1-095d-41ff-b5bc-baac146f590d.svg",
+         "resource_id": 1,
+         "service_name": "cloud service"
+      },
+      {
+         "resource_name": "sai",
+         "resource_link": "sai",
+         "description": "i am a good boy",
+         "resource_logo": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/05f39af1-095d-41ff-b5bc-baac146f590d.svg",
+         "resource_id": 1,
+         "service_name": "cloud service"
+      },
+      {
+         "resource_name": "sai",
+         "resource_link": "sai.com",
+         "description": "i am a good boy",
+         "resource_logo": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/05f39af1-095d-41ff-b5bc-baac146f590d.svg",
+         "resource_id": 1,
+         "service_name": "cloud service"
+      },
+      {
+         "resource_name": "sai",
+         "resource_link": "sai.com",
+         "description": "i am a good boy",
+         "resource_logo": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/05f39af1-095d-41ff-b5bc-baac146f590d.svg",
+         "resource_id": 1,
+         "service_name": "cloud service"
+      },
+      {
+         "resource_name": "sai",
+         "resource_link": "sai.com",
+         "description": "i am a good boy",
+         "resource_logo": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/05f39af1-095d-41ff-b5bc-baac146f590d.svg",
+         "resource_id": 1,
+         "service_name": "cloud service"
+      }
+   ],
+   "total_resources": 2
+}

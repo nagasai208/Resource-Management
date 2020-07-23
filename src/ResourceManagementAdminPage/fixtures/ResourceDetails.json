@@ -1,0 +1,31 @@
+{
+   "resource_details": {
+      "resource_name": "",
+      "resource_link": "",
+      "description": "",
+      "resource_logo": "",
+      "resource_id": 1,
+      "service_name": ""
+   },
+   "items": [
+      {
+         "item_name": "",
+         "item_link": "",
+         "description": "",
+         "item_id": 1
+      },
+      {
+         "item_name": "",
+         "item_link": "",
+         "description": "",
+         "item_id": 1
+      },
+      {
+         "item_name": "",
+         "item_link": "",
+         "description": "",
+         "item_id": 1
+      }
+   ],
+   "items_count": 1
+}
