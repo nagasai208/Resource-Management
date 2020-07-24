@@ -31,7 +31,7 @@ class AdminRequestsRoute extends Component<AdminResourcesRouteProps> {
      }
      adminError={this.getAdminStore().adminAllRequests.paginationAPIError}
      doNetworkCalls={this.doNetworkCalls}
-     allRequests = {this.getAdminStore().adminAllRequests.results.get(1)} />
+     allRequests = {this.getAdminStore().adminAllRequests.results} />
    }
 }
 

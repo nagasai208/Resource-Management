@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AdminResources from '../../components/AdminResource/AdminResources'
 import { observer, inject } from 'mobx-react'
-import { gotoAddResources } from '../../utils/NavigationUtils'
+import { gotoAddResources, gotoEachResource } from '../../utils/NavigationUtils'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import AdminStore from '../../store/AdminStore'
 import { action } from 'mobx'
@@ -27,7 +27,11 @@ class AdminResourcesRoute extends Component<AdminResourcesRouteProps> {
    }
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
    onClickAdd = () => {
-      gotoAddResources(this.props.history)
+      gotoAddResources(this.getInjectedProps().history)
+   }
+
+   eachResourceRoute = id => {
+      gotoEachResource(this.getInjectedProps().history, id)
    }
 
    render() {
@@ -42,7 +46,8 @@ class AdminResourcesRoute extends Component<AdminResourcesRouteProps> {
                this.getAdminStore().adminAllResources.paginationAPIError
             }
             doNetworkCalls={this.doNetworkCalls}
-            allResources={this.getAdminStore().adminAllResources.results.get(1)}
+            allResources={this.getAdminStore().adminAllResources.results}
+            eachResourceRoute={this.eachResourceRoute}
          />
       )
    }

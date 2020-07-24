@@ -1,18 +1,61 @@
 {
-    "users_details": [
-       {
-         "user_name":"",
-         "department":"",
-         "job_role":"",
-         "user_id":4567
-       },
-       {
-        "user_name":"",
-        "department":"",
-        "job_role":"",
-        "user_id":4567
+   "users_details": [
+      {
+         "user_name": "Nagasai",
+         "user_image": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/24d5c450-cf53-4391-b1e5-804d9b315e44@3x.png",
+         "department": "Frontend",
+         "job_role": "fulltime",
+         "user_id": 1
+      },
+      {
+         "user_name": "Nagasai",
+         "user_image": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/24d5c450-cf53-4391-b1e5-804d9b315e44@3x.png",
+         "department": "Frontend",
+         "job_role": "fulltime",
+         "user_id": 2
+      },
+      {
+         "user_name": "Nagasai",
+         "user_image": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/24d5c450-cf53-4391-b1e5-804d9b315e44@3x.png",
+         "department": "Frontend",
+         "job_role": "fulltime",
+         "user_id": 3
+      },
+      {
+         "user_name": "Nagasai",
+         "user_image": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/24d5c450-cf53-4391-b1e5-804d9b315e44@3x.png",
+         "department": "Frontend",
+         "job_role": "fulltime",
+         "user_id": 4
+      },
+      {
+         "user_name": "Nagasai",
+         "user_image": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/24d5c450-cf53-4391-b1e5-804d9b315e44@3x.png",
+         "department": "Frontend",
+         "job_role": "fulltime",
+         "user_id": 5
+      },
+      {
+         "user_name": "Nagasai",
+         "user_image": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/24d5c450-cf53-4391-b1e5-804d9b315e44@3x.png",
+         "department": "Frontend",
+         "job_role": "fulltime",
+         "user_id": 6
+      },
+      {
+         "user_name": "Nagasai",
+         "user_image": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/24d5c450-cf53-4391-b1e5-804d9b315e44@3x.png",
+         "department": "Frontend",
+         "job_role": "fulltime",
+         "user_id": 7
+      },
+      {
+         "user_name": "Nagasai",
+         "user_image": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/24d5c450-cf53-4391-b1e5-804d9b315e44@3x.png",
+         "department": "Frontend",
+         "job_role": "fulltime",
+         "user_id": 8
       }
-    ],
-    "total_users": 2
- }
- 
+   ],
+   "total_users": 8
+}

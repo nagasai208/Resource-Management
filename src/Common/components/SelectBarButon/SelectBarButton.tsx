@@ -14,17 +14,13 @@ interface SelectBarButtonsProps extends RouteComponentProps {
 }
 @observer
 class SelectBarButton extends Component<SelectBarButtonsProps> {
-   @observable isButtonName = 'Resources'
    onClickResources = event => {
-      this.isButtonName = event.target.id
       gotoResources(this.props.history)
    }
    onClickRequests = event => {
-      this.isButtonName = event.target.id
       gotoAddRequests(this.props.history)
    }
    onClickUsers = event => {
-      this.isButtonName = event.target.id
       gotoAddUsers(this.props.history)
    }
 
@@ -33,7 +29,6 @@ class SelectBarButton extends Component<SelectBarButtonsProps> {
       return (
          <ButtonMainDiv>
             <Button
-               id='Resources'
                name='Resources'
                onClick={this.onClickResources}
                type={Button.buttonType.filled}
@@ -44,14 +39,12 @@ class SelectBarButton extends Component<SelectBarButtonsProps> {
                onClick={this.onClickRequests}
                type={Button.buttonType.filled}
                buttonStyles={isButton === 'Requests' ? isActive : isInActive}
-               id='Requests'
             />
             <Button
                name='User'
                onClick={this.onClickUsers}
                type={Button.buttonType.filled}
                buttonStyles={isButton === 'users' ? isActive : isInActive}
-               id='users'
             />
          </ButtonMainDiv>
       )

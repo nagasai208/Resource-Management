@@ -20,6 +20,9 @@ class AdminService implements AdminServiceImplements {
    getAllUsersAPI(requestobject) {
       return networkCallWithApisauce(this.api, '', {}, apiMethods.get)
    }
+   getEacResourcesAPI(requestobject) {
+      return networkCallWithApisauce(this.api, '', {}, apiMethods.get)
+   }
 }
 
 export default AdminService

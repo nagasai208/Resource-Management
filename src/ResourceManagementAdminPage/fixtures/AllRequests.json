@@ -2,20 +2,67 @@
    "requests_details": [
       {
          "user_name": "sai",
-         "resource": "",
-         "item": "",
-         "access_level": "",
-         "due_date_time": "",
+         "user_image":"https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/663af104-79df-45bf-8042-6ebb63e51caa@3x.png",
+         "resource": "github",
+         "item": "Channel",
+         "access_level": ["read", "write", "Admin"],
+         "due_date_time": "21/07/2020 12.30 AM ",
          "request_id": 1
       },
       {
          "user_name": "sai",
-         "resource": "",
-         "item": "",
-         "access_level": "",
-         "due_date_time": "",
+         "user_image":"https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/663af104-79df-45bf-8042-6ebb63e51caa@3x.png",
+         "resource": "github",
+         "item": "Channel",
+         "access_level": ["read", "write", "Admin"],
+         "due_date_time": "21/07/2020 12.30 AM ",
+         "request_id": 1
+      },
+      {
+         "user_name": "sai",
+         "user_image":"https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/663af104-79df-45bf-8042-6ebb63e51caa@3x.png",
+         "resource": "github",
+         "item": "Channel",
+         "access_level": ["read", "write", "Admin"],
+         "due_date_time": "21/07/2020 12.30 AM ",
+         "request_id": 1
+      },
+      {
+         "user_name": "sai",
+         "user_image":"https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/663af104-79df-45bf-8042-6ebb63e51caa@3x.png",
+         "resource": "github",
+         "item": "Channel",
+         "access_level": ["read", "write", "Admin"],
+         "due_date_time": "21/07/2020 12.30 AM ",
+         "request_id": 1
+      },
+      {
+         "user_name": "sai",
+         "user_image":"https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/663af104-79df-45bf-8042-6ebb63e51caa@3x.png",
+         "resource": "github",
+         "item": "Channel",
+         "access_level": ["read", "write", "Admin"],
+         "due_date_time": "21/07/2020 12.30 AM ",
+         "request_id": 1
+      },
+      {
+         "user_name": "sai",
+         "user_image":"https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/663af104-79df-45bf-8042-6ebb63e51caa@3x.png",
+         "resource": "github",
+         "item": "Channel",
+         "access_level": ["read", "write", "Admin"],
+         "due_date_time": "21/07/2020 12.30 AM ",
+         "request_id": 1
+      },
+      {
+         "user_name": "sai",
+         "user_image":"https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/663af104-79df-45bf-8042-6ebb63e51caa@3x.png",
+         "resource": "github",
+         "item": "Channel",
+         "access_level": ["read", "write", "Admin"],
+         "due_date_time": "21/07/2020 12.30 AM ",
          "request_id": 1
       }
    ],
-   "total_requests": 2
+   "total_requests": 7
 }

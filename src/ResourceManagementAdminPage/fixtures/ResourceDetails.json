@@ -1,31 +1,10 @@
 {
    "resource_details": {
-      "resource_name": "",
-      "resource_link": "",
-      "description": "",
-      "resource_logo": "",
+      "resource_name": "nagasai",
+      "resource_link": "www.google.com",
+      "description": "WorldStories is a growing collection of stories from around the world. The collection includes retold traditional tales and new short stories in the languages most spoken by UK children.",
+      "resource_logo": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/db227ed3-a048-478d-b49a-f8a29bf8b812@3x.png",
       "resource_id": 1,
-      "service_name": ""
-   },
-   "items": [
-      {
-         "item_name": "",
-         "item_link": "",
-         "description": "",
-         "item_id": 1
-      },
-      {
-         "item_name": "",
-         "item_link": "",
-         "description": "",
-         "item_id": 1
-      },
-      {
-         "item_name": "",
-         "item_link": "",
-         "description": "",
-         "item_id": 1
-      }
-   ],
-   "items_count": 1
+      "service_name": "cloud Service"
+   }
 }

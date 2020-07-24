@@ -3,6 +3,7 @@ import { resolveWithTimeout } from '../../../Common/utils/TestUtils'
 import allResources from '../../fixtures/AllResources.json'
 import allRequests from '../../fixtures/AllRequests.json'
 import allUsers from '../../fixtures/AllUsers.json'
+import resourceDetails from '../../fixtures/ResourceDetails.json'
 
 class AdminService implements AdminServiceImplements {
    getAllResourcesAPI(requestobject) {
@@ -14,6 +15,9 @@ class AdminService implements AdminServiceImplements {
 
    getAllUsersAPI(requestobject) {
       return resolveWithTimeout(allUsers)
+   }
+   getEacResourcesAPI(requestobject) {
+      return resolveWithTimeout(resourceDetails)
    }
 }
 

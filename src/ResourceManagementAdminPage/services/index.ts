@@ -4,7 +4,9 @@ import {
    AdminRequestsRequestObject,
    AdminRequestsResponse,
    AdminUsersRquestObject,
-   AdminUserResponses
+   AdminUserResponses,
+   EachResourceResponse,
+   EachResourceRequestObject
 } from '../store/types'
 
 interface AdminServiceImplements {
@@ -19,6 +21,10 @@ interface AdminServiceImplements {
    getAllUsersAPI: (
       requestObject: AdminUsersRquestObject
    ) => Promise<AdminUserResponses>
+
+   getEacResourcesAPI: (
+      requestObject: EachResourceRequestObject
+   ) => Promise<EachResourceResponse>
 }
 
 export default AdminServiceImplements

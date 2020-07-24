@@ -26,14 +26,10 @@ class AdminUsersRoute extends Component<AdminResourcesRouteProps> {
    render() {
       return (
          <AdminUsers
-            adminStatus={
-               this.getAdminStore().adminAllUsers.paginationAPIStatus
-            }
-            adminError={
-               this.getAdminStore().adminAllUsers.paginationAPIError
-            }
+            adminStatus={this.getAdminStore().adminAllUsers.paginationAPIStatus}
+            adminError={this.getAdminStore().adminAllUsers.paginationAPIError}
             doNetworkCalls={this.doNetworkCalls}
-            allUsers={this.getAdminStore().adminAllUsers.results.get(1)}
+            allUsers={this.getAdminStore().adminAllUsers.results}
          />
       )
    }
