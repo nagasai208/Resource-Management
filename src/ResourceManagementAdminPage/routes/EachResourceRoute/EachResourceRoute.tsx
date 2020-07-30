@@ -16,9 +16,6 @@ interface InjectedProps extends EachResourceRouteProps {
 @inject('adminStore')
 @observer
 class EachResourceRoute extends Component<EachResourceRouteProps> {
-   constructor(props) {
-      super(props)
-   }
    componentDidMount() {
       this.doNetworkCalls()
    }

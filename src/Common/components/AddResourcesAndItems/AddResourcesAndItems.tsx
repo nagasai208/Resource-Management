@@ -14,7 +14,6 @@ import {
    UploadImageIcon,
    UploadImageTag,
    FormSideDiv
-
 } from './styledComponents'
 import { addImage } from '../../Images/AddItemAndResourceImage'
 import Input from '../Input'
@@ -39,6 +38,7 @@ interface AddResourcesAndItemsProps {
    onChangeResourceName?: Function
    resourceNameValue?: string
    onChangeUpload?: (event: React.ChangeEvent<HTMLInputElement>) => void
+   imgUrl?: string
 }
 @observer
 class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {

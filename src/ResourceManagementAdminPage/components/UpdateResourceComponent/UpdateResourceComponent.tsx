@@ -1,32 +1,52 @@
 import React, { Component } from 'react'
 import Header from '../../../Common/components/Header/Header'
 import AddResourcesAndItems from '../../../Common/components/AddResourcesAndItems/AddResourcesAndItems'
+import { observer } from 'mobx-react'
+import { observable } from 'mobx'
+import { APIStatus } from '@ib/api-constants'
 
-class UpdateResourceComponent extends Component {
+interface UpdateResourceComponentProps {
+   goBackComponent: (event: React.MouseEvent<HTMLParagraphElement>) => void
+   eachResponseAPI: APIStatus
+   eachResposeAPIError: Error | null
+   eachResourceResponse: any
+   doNetworkCalls: () => void
+}
+@observer
+class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
+   @observable name
+   @observable link
+   @observable descriptionValue
+   @observable imgUrl
+
+   onChangeName = () => {}
+   onChangeLink = () => {}
+   onChangeDescription = () => {}
+   updateResourceButton = () => {}
+   onUploadImage = event => {}
    render() {
+      const { eachResponseAPI, eachResposeAPIError,doNetworkCalls } = this.props
       return (
          <div>
-            <Header />
-            {/* <AddResourcesAndItems /> */}
+            <AddResourcesAndItems
+               goBackName='resources'
+               goBack={this.onChangeName}
+               title='Upadate Resource Name'
+               resourceName={false}
+               uploadImage={true}
+               onChangeName={this.onChangeName}
+               onchangeLink={this.onChangeLink}
+               description={this.onChangeDescription}
+               onClickCreate={this.updateResourceButton}
+               name={this.name}
+               link={this.link}
+               descriptionValue={this.descriptionValue}
+               onChangeUpload={this.onUploadImage}
+               imgUrl={this.imgUrl}
+            />
          </div>
       )
    }
 }
 
 export default UpdateResourceComponent
-
-// goBackName: string
-//    goBack: (event: React.MouseEvent<HTMLParagraphElement>) => void
-//    title: string
-//    resourceName: boolean
-//    uploadImage: boolean
-//    onChangeName: Function
-//    onchangeLink: Function
-//    description: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
-//    onClickCreate: Function
-//    name: string
-//    link: string
-//    descriptionValue: string
-//    onChangeResourceName?: Function
-//    resourceNameValue?: string
-//    onChangeUpload?: (event: React.ChangeEvent<HTMLInputElement>) => void
