@@ -20,8 +20,11 @@ class AdminService implements AdminServiceImplements {
    getAllUsersAPI(requestobject) {
       return networkCallWithApisauce(this.api, '', {}, apiMethods.get)
    }
-   getEacResourcesAPI(requestobject) {
+   getEacResourcesAPI(id) {
       return networkCallWithApisauce(this.api, '', {}, apiMethods.get)
+   }
+   getUpdateResourceAPI(requestobject, id) {
+      return networkCallWithApisauce(this.api, '', {}, apiMethods.post)
    }
 }
 

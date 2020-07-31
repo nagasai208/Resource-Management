@@ -4,7 +4,7 @@ import { css } from '@emotion/core'
 import ArrayType from '@storybook/addon-knobs/dist/components/types/Array'
 
 const AddFormMainDiv = styled.div`
-   ${tw` flex w-full m-h-screen`}
+   ${tw` flex w-full m-h-screen bg-gray-100`}
 `
 
 const FormDiv = styled.div`
@@ -36,7 +36,7 @@ const ButtonStyle = css`
 `
 
 const TextArea = styled.textarea`
-   ${tw`border border-gray-600 h-24 mb-5 w-1/2`}
+   ${tw`border border-gray-600 h-24 mb-5 w-full`}
 `
 
 const UploadImageDiv = styled.div`
@@ -56,6 +56,9 @@ const UploadImageTag = styled.img`
 const FormSideDiv = styled.div`
    ${tw`w-1/2`}
 `
+const AddResourceMainDiv = styled.div`
+   ${tw``}
+`
 
 export {
    AddFormMainDiv,
@@ -69,5 +72,6 @@ export {
    UploadImageDiv,
    UploadImageIcon,
    UploadImageTag,
-   FormSideDiv
+   FormSideDiv,
+   AddResourceMainDiv
 }

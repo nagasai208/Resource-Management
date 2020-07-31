@@ -55,6 +55,7 @@ class AddItem extends Component<AddItemProps> {
                descriptionValue={this.descriptionValue}
                onChangeResourceName={this.onChangeResourceName}
                resourceNameValue={this.resourceName}
+               buttonName='CREATE'
             />
          </div>
       )

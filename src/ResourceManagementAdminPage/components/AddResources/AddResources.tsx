@@ -52,7 +52,8 @@ class AddResources extends Component<AddResourcesProps> {
                name={this.name}
                link={this.link}
                descriptionValue={this.descriptionValue}
-               onChangeUpload={this.onChangeUpload}
+               onChangeUploadImage={this.onChangeUpload}
+               buttonName='CREATE'
             />
          </div>
       )

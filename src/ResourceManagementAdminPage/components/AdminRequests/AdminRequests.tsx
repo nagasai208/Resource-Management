@@ -150,15 +150,18 @@ class AdminRequests extends Component<AdminRequestProps> {
                               data={[
                                  {
                                     name: 'Recently Added',
-                                    onclickFunction: dueDataTime
+                                    onclickFunction: dueDataTime,
+                                    id: 'recently_added'
                                  },
                                  {
                                     name: 'Ascending',
-                                    onclickFunction: accessLevel
+                                    onclickFunction: accessLevel,
+                                    id: 'ascending'
                                  },
                                  {
                                     name: 'Descending',
-                                    onclickFunction: resource
+                                    onclickFunction: resource,
+                                    id: 'descending'
                                  }
                               ]}
                               icon={SortIcon}
@@ -170,13 +173,19 @@ class AdminRequests extends Component<AdminRequestProps> {
                               data={[
                                  {
                                     name: 'Due Data Time',
-                                    onclickFunction: dueDataTime
+                                    onclickFunction: dueDataTime,
+                                    id: 'due_data_time'
                                  },
                                  {
                                     name: 'Access Level',
-                                    onclickFunction: accessLevel
+                                    onclickFunction: accessLevel,
+                                    id: 'access_level'
                                  },
-                                 { name: 'Resource', onclickFunction: resource }
+                                 {
+                                    name: 'Resource',
+                                    onclickFunction: resource,
+                                    id: 'resource'
+                                 }
                               ]}
                               icon={FilterIcon}
                            />

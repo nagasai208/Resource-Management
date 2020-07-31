@@ -18,7 +18,8 @@ import {
    Description,
    EachDivData,
    PaginationDiv,
-   ResourcesTotalDiv
+   ResourcesTotalDiv,
+   AdminResourcesDiv
 } from './styledComponents'
 import PaginationComponent from '../../../Common/components/Pagination/Pagination'
 import { observable } from 'mobx'
@@ -84,17 +85,19 @@ class AdminResources extends Component<AdminResourcesProps> {
       return (
          <AdminResourcesMainDiv>
             <Header isButton={true} onClickAdd={onClickAdd} />
-            <SelectBarButton isButton='Resources' />
-            <SreachDiv>
-               <SearchBar searchData={this.searchData} />
-            </SreachDiv>
+            <AdminResourcesDiv>
+               <SelectBarButton isButton='Resources' />
+               <SreachDiv>
+                  <SearchBar searchData={this.searchData} />
+               </SreachDiv>
 
-            <LoadingWrapperWithFailure
-               apiStatus={adminStatus}
-               apiError={adminError}
-               onRetryClick={doNetworkCalls}
-               renderSuccessUI={this.renderList}
-            />
+               <LoadingWrapperWithFailure
+                  apiStatus={adminStatus}
+                  apiError={adminError}
+                  onRetryClick={doNetworkCalls}
+                  renderSuccessUI={this.renderList}
+               />
+            </AdminResourcesDiv>
          </AdminResourcesMainDiv>
       )
    }

@@ -6,6 +6,7 @@ import AllUsersModel from '../models/AdminAllUsers'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import { APIStatus, API_INITIAL } from '@ib/api-constants'
 import EachResourceModel from '../models/EachResourceModel'
+import { setAccessToken } from '../../../Common/utils/StorageUtils'
 class AdminStore {
    adminService
    limit
@@ -15,6 +16,8 @@ class AdminStore {
    @observable adminAllUsers
    @observable getEachResourceAPIStatus!: APIStatus
    @observable getEachResorceAPIError!: Error | null
+   @observable getUpadateResourceAPIStatus!: APIStatus
+   @observable getUdateResourceAPIError!: Error | null
    @observable eachResourceRespose
    constructor(adminService) {
       this.adminService = adminService
@@ -43,6 +46,8 @@ class AdminStore {
    init() {
       this.getEachResorceAPIError = null
       this.getEachResourceAPIStatus = API_INITIAL
+      this.getUdateResourceAPIError = null
+      this.getUpadateResourceAPIStatus = API_INITIAL
    }
 
    @action.bound
@@ -60,8 +65,20 @@ class AdminStore {
       this.eachResourceRespose = new EachResourceModel(
          response.resource_details
       )
-      console.log(this.eachResourceRespose, 'response')
    }
+
+   @action.bound
+   setGetUpdateResourceAPIStatus(status) {
+      this.getUpadateResourceAPIStatus = status
+   }
+
+   @action.bound
+   setGetUpadateResourceAPIError(error) {
+      this.getUdateResourceAPIError = error
+   }
+
+   @action.bound
+   setGetUpadateResourceResponse(response) {}
 
    @action.bound
    getAllResources() {
@@ -86,6 +103,18 @@ class AdminStore {
          .catch(this.setGetEachResourceAPIError)
    }
 
+   getUpdateResource(id, requestObjext) {
+      const usersPromise = this.adminService.getUpdateResourceAPI(
+         id,
+         requestObjext
+      )
+      return bindPromiseWithOnSuccess(usersPromise)
+         .to(
+            this.setGetUpdateResourceAPIStatus,
+            this.setGetUpadateResourceResponse
+         )
+         .catch(this.setGetUpadateResourceAPIError)
+   }
    @action.bound
    clearStore() {
       this.init()

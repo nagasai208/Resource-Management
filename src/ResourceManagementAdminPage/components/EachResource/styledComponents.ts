@@ -38,6 +38,22 @@ const DeleteButtonStyles = css`
    height: 40px;
    background-color: #ff0b37;
 `
+
+const TotalTableDiv = styled.div`
+   ${tw` ml-64 mr-64 mt-16 `}
+`
+
+const EachResourceMainDiv = styled.div`
+   ${tw`bg-gray-100 border min-h-screen `}
+`
+
+const ItemsHeading = styled.p`
+   ${tw`text-2xl`}
+`
+
+const HeadingDiv = styled.div`
+   ${tw`flex`}
+`
 export {
    ResourceLogo,
    ResourceMainDiv,
@@ -46,5 +62,9 @@ export {
    Decription,
    ButtonStyles,
    ButtonDiv,
-   DeleteButtonStyles
+   DeleteButtonStyles,
+   TotalTableDiv,
+   EachResourceMainDiv,
+   ItemsHeading,
+   HeadingDiv
 }

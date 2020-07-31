@@ -2,14 +2,18 @@ import styled from '@emotion/styled'
 import tw from 'tailwind.macro'
 
 const AdminResourcesMainDiv = styled.div`
-   ${tw` min-h-screen `}
+   ${tw` min-h-screen  `}
 `
 const SreachDiv = styled.div`
-   ${tw`mt-24 ml-32 m`}
+   ${tw`mt-24 ml-32 `}
 `
 
 const EachResourcesDiv = styled.div`
-   ${tw` w-1/4  border border-black-800 m-5 p-10`}
+   ${tw` w-1/4 bg-gray-100 m-5 p-10 cursor-pointer`}
+   :hover {
+      transform: scale(1.1);
+      height: auto;
+   }
 `
 const AllResourcesDiv = styled.div`
    ${tw`flex flex-wrap justify-between  `}
@@ -42,7 +46,11 @@ const PaginationDiv = styled.div`
    ${tw`mt-5 flex justify-end `}
 `
 const ResourcesTotalDiv = styled.div`
-   ${tw` ml-32 mr-32`}
+   ${tw` ml-32 mr-32 `}
+`
+
+const AdminResourcesDiv = styled.div`
+   ${tw`bg-gray-200 border min-h-screen`}
 `
 export {
    AdminResourcesMainDiv,
@@ -57,5 +65,6 @@ export {
    Description,
    EachDivData,
    PaginationDiv,
-   ResourcesTotalDiv
+   ResourcesTotalDiv,
+   AdminResourcesDiv
 }

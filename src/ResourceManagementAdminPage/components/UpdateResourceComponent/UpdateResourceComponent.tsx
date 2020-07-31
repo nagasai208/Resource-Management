@@ -3,34 +3,67 @@ import Header from '../../../Common/components/Header/Header'
 import AddResourcesAndItems from '../../../Common/components/AddResourcesAndItems/AddResourcesAndItems'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
-import { APIStatus } from '@ib/api-constants'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface UpdateResourceComponentProps {
    goBackComponent: (event: React.MouseEvent<HTMLParagraphElement>) => void
-   eachResponseAPI: APIStatus
-   eachResposeAPIError: Error | null
-   eachResourceResponse: any
-   doNetworkCalls: () => void
+   updateResourceResponse: any
+   getUpdateResource: Function
+   updateStatus: any
 }
 @observer
 class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
-   @observable name
-   @observable link
+   @observable name: string
+   @observable link: string
    @observable descriptionValue
    @observable imgUrl
-
-   onChangeName = () => {}
-   onChangeLink = () => {}
-   onChangeDescription = () => {}
-   updateResourceButton = () => {}
-   onUploadImage = event => {}
+   requestObject!: Object
+   constructor(props) {
+      super(props)
+      const { updateResourceResponse } = this.props
+      this.name = updateResourceResponse.resourceName
+      this.link = updateResourceResponse.resourceLink
+      this.descriptionValue = updateResourceResponse.description
+      this.imgUrl = updateResourceResponse.resourceLogo
+   }
+   onChangeName = event => {
+      this.name = event.target.value
+   }
+   onChangeLink = event => {
+      this.link = event.target.value
+   }
+   onChangeDescription = event => {
+      this.descriptionValue = event.target.value
+   }
+   onUploadImage = event => {
+      let upload = event.target.files[0]
+      let img = new FileReader()
+      img.readAsDataURL(upload)
+      img.onload = () => {
+         this.imgUrl = img.result
+      }
+   }
+   notify = () => {
+      toast.success('Sucessfully Updated !')
+   }
+   updateResourceButton = () => {
+      const { getUpdateResource } = this.props
+      this.requestObject = {
+         resource_name: this.name,
+         resource_link: this.link,
+         description: this.descriptionValue,
+         resource_logo: this.imgUrl
+      }
+      getUpdateResource(this.requestObject)
+   }
    render() {
-      const { eachResponseAPI, eachResposeAPIError,doNetworkCalls } = this.props
+      const { goBackComponent, updateStatus } = this.props
       return (
          <div>
             <AddResourcesAndItems
                goBackName='resources'
-               goBack={this.onChangeName}
+               goBack={goBackComponent}
                title='Upadate Resource Name'
                resourceName={false}
                uploadImage={true}
@@ -41,9 +74,17 @@ class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
                name={this.name}
                link={this.link}
                descriptionValue={this.descriptionValue}
-               onChangeUpload={this.onUploadImage}
+               onChangeUploadImage={this.onUploadImage}
                imgUrl={this.imgUrl}
+               buttonName='UPDATE'
             />
+
+            {updateStatus.getUpadateResourceAPIStatus === 200 && (
+               <div>
+                  {this.notify()}
+                  <ToastContainer position='top-center' />
+               </div>
+            )}
          </div>
       )
    }

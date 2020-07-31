@@ -7,13 +7,13 @@ import { observer } from 'mobx-react'
 import FilterIcon from '../FilterIcon/FilterIcon'
 interface FilterBarProps {
    data: any
-   icon:any
+   icon: any
 }
 
 @observer
 class FilterBar extends Component<FilterBarProps> {
    render() {
-      const { data ,icon} = this.props
+      const { data, icon } = this.props
       return (
          <Dropdown text='' icon={icon} floating labeled button>
             <Dropdown.Menu>

@@ -4,7 +4,8 @@ import UpdateResourceComponent from '../../components/UpdateResourceComponent/Up
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import AdminStore from '../../store/AdminStore'
 import { action } from 'mobx'
-import { gotoResources } from '../../utils/NavigationUtils'
+import { gotoResources, gotoEachResource } from '../../utils/NavigationUtils'
+import LoadingWrapperWithFailure from '../../../Common/components/common/LoadingWrapperWithFailure'
 interface UpdateResourceRouteProps extends RouteComponentProps {}
 interface InjectedProps extends UpdateResourceRouteProps {
    adminStore: AdminStore
@@ -18,7 +19,6 @@ class UpdateResourceRoute extends Component<UpdateResourceRouteProps> {
    doNetworkCalls = () => {
       let id = this.props.match.params['id']
       this.getAdminStore().getEachResource(id)
-      console.log(this.getAdminStore().eachResourceRespose, 'hjh')
    }
    @action.bound
    getAdminStore() {
@@ -28,14 +28,29 @@ class UpdateResourceRoute extends Component<UpdateResourceRouteProps> {
    goBackComponent = () => {
       gotoResources(this.getInjectedProps().history)
    }
-   render() {
+   getUpdate = async data => {
+      await this.getAdminStore().getUpdateResource(
+         data,
+         this.props.match.params['id']
+      )
+   }
+   renderList = () => {
       return (
          <UpdateResourceComponent
             goBackComponent={this.goBackComponent}
-            eachResponseAPI={this.getAdminStore().getEachResourceAPIStatus}
-            eachResposeAPIError={this.getAdminStore().getEachResorceAPIError}
-            eachResourceResponse={this.getAdminStore().eachResourceRespose}
-            doNetworkCalls={this.doNetworkCalls}
+            updateResourceResponse={this.getAdminStore().eachResourceRespose}
+            getUpdateResource={this.getUpdate}
+            updateStatus={this.getAdminStore()}
+         />
+      )
+   }
+   render() {
+      return (
+         <LoadingWrapperWithFailure
+            apiStatus={this.getAdminStore().getEachResourceAPIStatus}
+            apiError={this.getAdminStore().getEachResorceAPIError}
+            onRetryClick={this.doNetworkCalls}
+            renderSuccessUI={this.renderList}
          />
       )
    }

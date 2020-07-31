@@ -13,7 +13,8 @@ import {
    UploadImageDiv,
    UploadImageIcon,
    UploadImageTag,
-   FormSideDiv
+   FormSideDiv,
+   AddResourceMainDiv
 } from './styledComponents'
 import { addImage } from '../../Images/AddItemAndResourceImage'
 import Input from '../Input'
@@ -37,20 +38,12 @@ interface AddResourcesAndItemsProps {
    descriptionValue: string
    onChangeResourceName?: Function
    resourceNameValue?: string
-   onChangeUpload?: (event: React.ChangeEvent<HTMLInputElement>) => void
+   onChangeUploadImage?: (event: React.ChangeEvent<HTMLInputElement>) => void
    imgUrl?: string
+   buttonName: string
 }
 @observer
 class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
-   @observable imgUrl
-   onChangeUploadImage = event => {
-      let upload = event.target.files[0]
-      let img = new FileReader()
-      img.readAsDataURL(upload)
-      img.onload = () => {
-         this.imgUrl = img.result
-      }
-   }
    render() {
       const {
          goBackName,
@@ -67,10 +60,12 @@ class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
          descriptionValue,
          onChangeResourceName,
          resourceNameValue,
-         onChangeUpload
+         onChangeUploadImage,
+         imgUrl,
+         buttonName
       } = this.props
       return (
-         <div>
+         <AddResourceMainDiv>
             <Header />
             <AddFormMainDiv>
                <FormDiv>
@@ -122,16 +117,13 @@ class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
                      </FormSideDiv>
                      {uploadImage && (
                         <UploadImageDiv>
-                           <UploadImageTag src={this.imgUrl} />
+                           <UploadImageTag src={imgUrl} />
                            <UploadImageIcon src={uploadImageUrl} />
-                           <input
-                              type='file'
-                              onChange={this.onChangeUploadImage}
-                           />
+                           <input type='file' onChange={onChangeUploadImage} />
                         </UploadImageDiv>
                      )}
                      <Button
-                        name='CREATE'
+                        name={buttonName}
                         onClick={onClickCreate}
                         type={Button.buttonType.filled}
                         buttonStyles={ButtonStyle}
@@ -142,7 +134,7 @@ class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
                   <Image src={addImage} />
                </ImageDiv>
             </AddFormMainDiv>
-         </div>
+         </AddResourceMainDiv>
       )
    }
 }

@@ -16,8 +16,11 @@ class AdminService implements AdminServiceImplements {
    getAllUsersAPI(requestobject) {
       return resolveWithTimeout(allUsers)
    }
-   getEacResourcesAPI(requestobject) {
+   getEacResourcesAPI(id) {
       return resolveWithTimeout(resourceDetails)
+   }
+   getUpdateResourceAPI(requestobject, id) {
+      return resolveWithTimeout({})
    }
 }
 
