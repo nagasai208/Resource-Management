@@ -16,12 +16,20 @@ import {
    TotalTableDiv,
    EachResourceMainDiv,
    ItemsHeading,
-   HeadingDiv
+   FilterAndSearchDiv,
+   HeadingDiv,
+   SortDiv,
+   Table,
+   TableHeader,
+   ItemsTable,
+   EachRow,
+   PaginationDiv
 } from './styledComponents'
 import Button from '../../../Common/components/Button/Button'
 import SearchBar from '../../../Common/components/SearchBar/SearchBar'
 import FilterBar from '../../../Common/components/FilterBar/FilterBar'
 import SortIcon from '../../../Common/SortIcon/SortIcon'
+import PaginationComponent from '../../../Common/components/Pagination/Pagination'
 
 interface EachResourceComponentProps {
    goBackComponent: (event: React.MouseEvent<HTMLParagraphElement>) => void
@@ -31,6 +39,7 @@ interface EachResourceComponentProps {
    doNetworkCalls: () => void
    onClickUpdate: Function
    onClickDelete: Function
+   itemsResponse: any
 }
 @observer
 class EachResourceComponent extends Component<EachResourceComponentProps> {
@@ -38,9 +47,16 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
       alert(1)
    }
 
-   onChnageSort = event => {
-      alert(event.target.id)
+   desendingOrder = event => {
+      alert('dec')
    }
+   assendingOrder = event => {
+      alert('asc')
+   }
+   resentlyAdded = event => {
+      alert('rec')
+   }
+   onChangePage = event => {}
    renderList = observer(() => {
       const { eachResourceResponse, onClickUpdate, onClickDelete } = this.props
       return (
@@ -73,6 +89,31 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
          </ResourceMainDiv>
       )
    })
+
+   rederTableUi = observer(() => {
+      const { itemsResponse } = this.props
+      console.log(itemsResponse.get(1))
+      return (
+         <ItemsTable>
+            <TableHeader>
+               <p></p>
+               <p>TITLE</p>
+               <p>DESCRIPTION</p>
+               <p>LINK</p>
+            </TableHeader>
+            {itemsResponse.get(1).map(eachItem => {
+               return (
+                  <EachRow id={eachItem.itemId}>
+                     <input type='checkbox' />
+                     <p>{eachItem.itemName}</p>
+                     <p>{eachItem.link}</p>
+                     <p>{eachItem.description}</p>
+                  </EachRow>
+               )
+            })}
+         </ItemsTable>
+      )
+   })
    render() {
       const {
          goBackComponent,
@@ -80,7 +121,7 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
          eachResposeAPIError,
          doNetworkCalls
       } = this.props
-      const { onChnageSort } = this
+      const { resentlyAdded, assendingOrder, desendingOrder } = this
       return (
          <div>
             <Header />
@@ -98,29 +139,45 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
                <TotalTableDiv>
                   <HeadingDiv>
                      <ItemsHeading>Items</ItemsHeading>
-                     <SearchBar searchData={this.onChangeSearchData} />
-                     <FilterBar
-                        data={[
-                           {
-                              name: 'Recently Added',
-                              onclickFunction: onChnageSort,
-                              id: 'recently_added'
-                           },
-                           {
-                              name: 'Ascending',
-                              onclickFunction: onChnageSort,
-                              id: 'ascending'
-                           },
-                           {
-                              name: 'Descending',
-                              onclickFunction: onChnageSort,
-                              Descending: 'descending'
-                           }
-                        ]}
-                        icon={SortIcon}
-                     />
-                     <p>SORT</p>
+                     <FilterAndSearchDiv>
+                        <SearchBar searchData={this.onChangeSearchData} />
+                        <SortDiv>
+                           <FilterBar
+                              data={[
+                                 {
+                                    name: 'Recently Added',
+                                    onclickFunction: resentlyAdded,
+                                    id: 'recently_added'
+                                 },
+                                 {
+                                    name: 'Ascending',
+                                    onclickFunction: assendingOrder,
+                                    id: 'ascending'
+                                 },
+                                 {
+                                    name: 'Descending',
+                                    onclickFunction: desendingOrder,
+                                    Descending: 'descending',
+                                    value: 'descending'
+                                 }
+                              ]}
+                              icon={SortIcon}
+                           />
+                           <p>SORT</p>
+                        </SortDiv>
+                     </FilterAndSearchDiv>
                   </HeadingDiv>
+                  <Table>
+                     <LoadingWrapperWithFailure
+                        apiStatus={eachResponseAPI}
+                        apiError={eachResposeAPIError}
+                        onRetryClick={doNetworkCalls}
+                        renderSuccessUI={this.rederTableUi}
+                     />
+                  </Table>
+                  <PaginationDiv>
+                     <PaginationComponent onChangePage={this.onChangePage} />
+                  </PaginationDiv>
                </TotalTableDiv>
             </EachResourceMainDiv>
          </div>

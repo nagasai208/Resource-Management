@@ -10,7 +10,7 @@ class PaginationStore {
    @observable startPage!: number
    @observable totalItems!: number
    @observable totalPages!: number
-   responseType!: string
+   responseType!: Array<string>
    offSet!: number
    limit!: number
    adminModel
@@ -65,8 +65,8 @@ class PaginationStore {
    @action.bound
    setAdminResponse(response) {
       this.totalItems = response.total_resources
-      this.totalPages = Math.ceil(response.total_resources / this.limit)
-      let data = response[this.responseType].map(eachProduct => {
+      this.totalPages = Math.ceil(response[this.responseType[1]] / this.limit)
+      let data = response[this.responseType[0]].map(eachProduct => {
          let adminModel = new this.adminModel(eachProduct)
          return adminModel
       })
@@ -83,6 +83,13 @@ class PaginationStore {
    @action.bound
    getResponse() {
       const usersPromise = this.apiService(this.limit, this.offSet)
+      return bindPromiseWithOnSuccess(usersPromise)
+         .to(this.setGetAdminAPIStatus, this.setAdminResponse)
+         .catch(this.setGetAdminAPIError)
+   }
+   @action.bound
+   getResponsesWithIds(id) {
+      const usersPromise = this.apiService(this.limit, this.offSet, id)
       return bindPromiseWithOnSuccess(usersPromise)
          .to(this.setGetAdminAPIStatus, this.setAdminResponse)
          .catch(this.setGetAdminAPIError)

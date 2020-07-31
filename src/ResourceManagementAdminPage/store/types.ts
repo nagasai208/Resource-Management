@@ -87,3 +87,18 @@ export interface UpdateResourceRequestObject {
 export interface UpdateResourceRequestObjectId {
    resource_id: number
 }
+
+export interface ResouceItems {
+   items: Array<EachResourceItem>
+   total_items: number
+}
+export interface EachResourceItem {
+   item_name: string
+   item_link: string
+   description: string
+   item_id: number
+}
+
+export interface EachResourceItemId {
+   id: number
+}

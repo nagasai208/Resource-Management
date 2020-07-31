@@ -26,6 +26,9 @@ class AdminService implements AdminServiceImplements {
    getUpdateResourceAPI(requestobject, id) {
       return networkCallWithApisauce(this.api, '', {}, apiMethods.post)
    }
+   resourceItemsAPI() {
+      return networkCallWithApisauce(this.api, '', {}, apiMethods.post)
+   }
 }
 
 export default AdminService

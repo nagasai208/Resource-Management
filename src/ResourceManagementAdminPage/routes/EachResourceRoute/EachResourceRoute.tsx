@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
+import { getLoadingStatus } from '@ib/api-utils'
 import EachResourceComponent from '../../components/EachResource/EachResourceComponent'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import AdminStore from '../../store/AdminStore'
+
 import {
    gotoResources,
    gotoAddResources,
@@ -22,6 +24,7 @@ class EachResourceRoute extends Component<EachResourceRouteProps> {
    doNetworkCalls = () => {
       let id = this.props.match.params['id']
       this.getAdminStore().getEachResource(id)
+      this.getAdminStore().getResourceItems(id)
    }
    @action.bound
    getAdminStore() {
@@ -37,16 +40,23 @@ class EachResourceRoute extends Component<EachResourceRouteProps> {
    onClickDelete = () => {
       alert(2)
    }
+   loadingStatus = () => {
+      return getLoadingStatus(
+         this.getAdminStore().getEachResourceAPIStatus,
+         this.getAdminStore().resourceItems.paginationAPIStatus
+      )
+   }
    render() {
       return (
          <EachResourceComponent
             goBackComponent={this.goBackComponent}
-            eachResponseAPI={this.getAdminStore().getEachResourceAPIStatus}
+            eachResponseAPI={this.loadingStatus()}
             eachResposeAPIError={this.getAdminStore().getEachResorceAPIError}
             eachResourceResponse={this.getAdminStore().eachResourceRespose}
             doNetworkCalls={this.doNetworkCalls}
             onClickUpdate={this.onClickUpdate}
             onClickDelete={this.onClickDelete}
+            itemsResponse={this.getAdminStore().resourceItems.results}
          />
       )
    }

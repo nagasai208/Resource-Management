@@ -7,6 +7,7 @@ import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import { APIStatus, API_INITIAL } from '@ib/api-constants'
 import EachResourceModel from '../models/EachResourceModel'
 import { setAccessToken } from '../../../Common/utils/StorageUtils'
+import ResourceItemsModel from '../models/ResourceItemsModel'
 class AdminStore {
    adminService
    limit
@@ -14,6 +15,7 @@ class AdminStore {
    @observable adminAllResources
    @observable adminAllRequests
    @observable adminAllUsers
+   @observable resourceItems
    @observable getEachResourceAPIStatus!: APIStatus
    @observable getEachResorceAPIError!: Error | null
    @observable getUpadateResourceAPIStatus!: APIStatus
@@ -26,19 +28,24 @@ class AdminStore {
          apiService: this.adminService.getAllResourcesAPI,
          limit: 4,
          adminModel: AdminAllResourcesModel,
-         responseType: 'resources_details'
+         responseType: ['resources_details', 'total_resources']
       })
       this.adminAllRequests = new PaginationStore({
          apiService: this.adminService.getAllRequestsAPI,
          limit: 4,
          adminModel: AdminAllRequestsModel,
-         responseType: 'requests_details'
+         responseType: ['requests_details', 'total_requests']
       })
       this.adminAllUsers = new PaginationStore({
          apiService: this.adminService.getAllUsersAPI,
          limit: 4,
          adminModel: AllUsersModel,
-         responseType: 'users_details'
+         responseType: ['users_details', 'total_users']
+      })
+      this.resourceItems = new PaginationStore({
+         apiService: this.adminService.resourceItemsAPI,
+         adminModel: ResourceItemsModel,
+         responseType: ['items', 'total_items']
       })
       this.init()
    }
@@ -93,6 +100,10 @@ class AdminStore {
    @action.bound
    getAllUsers() {
       this.adminAllUsers.getResponse()
+   }
+   @action.bound
+   getResourceItems(id) {
+      this.resourceItems.getResponsesWithIds(id)
    }
 
    @action.bound
