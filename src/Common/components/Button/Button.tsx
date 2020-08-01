@@ -10,6 +10,7 @@ interface ButtonProps {
    apiStatus?: any
    buttonStyles?: object
    id?:string
+   disabled?:boolean
 }
 class Button extends Component<ButtonProps> {
    static buttonType = buttonType

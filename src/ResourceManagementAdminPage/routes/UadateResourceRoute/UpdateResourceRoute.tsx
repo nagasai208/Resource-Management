@@ -4,7 +4,7 @@ import UpdateResourceComponent from '../../components/UpdateResourceComponent/Up
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import AdminStore from '../../store/AdminStore'
 import { action } from 'mobx'
-import { gotoResources, gotoEachResource } from '../../utils/NavigationUtils'
+import { gotoGoBack } from '../../utils/NavigationUtils'
 import LoadingWrapperWithFailure from '../../../Common/components/common/LoadingWrapperWithFailure'
 interface UpdateResourceRouteProps extends RouteComponentProps {}
 interface InjectedProps extends UpdateResourceRouteProps {
@@ -26,7 +26,7 @@ class UpdateResourceRoute extends Component<UpdateResourceRouteProps> {
    }
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
    goBackComponent = () => {
-      gotoResources(this.getInjectedProps().history)
+      gotoGoBack(this.getInjectedProps().history)
    }
    getUpdate = async data => {
       await this.getAdminStore().getUpdateResource(

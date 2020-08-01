@@ -23,13 +23,23 @@ import {
    TableHeader,
    ItemsTable,
    EachRow,
-   PaginationDiv
+   PaginationDiv,
+   Checkbox,
+   TableTitle,
+   Description,
+   Link,
+   FooterDiv,
+   AddButtonStyle,
+   DeleteButtonDisabled,
+   AddButtonStyleDisabled
 } from './styledComponents'
 import Button from '../../../Common/components/Button/Button'
 import SearchBar from '../../../Common/components/SearchBar/SearchBar'
 import FilterBar from '../../../Common/components/FilterBar/FilterBar'
 import SortIcon from '../../../Common/SortIcon/SortIcon'
 import PaginationComponent from '../../../Common/components/Pagination/Pagination'
+import { observable } from 'mobx'
+import { withEmotionCache } from '@emotion/core'
 
 interface EachResourceComponentProps {
    goBackComponent: (event: React.MouseEvent<HTMLParagraphElement>) => void
@@ -38,11 +48,15 @@ interface EachResourceComponentProps {
    eachResourceResponse: any
    doNetworkCalls: () => void
    onClickUpdate: Function
-   onClickDelete: Function
+   deleteResource: Function
    itemsResponse: any
+   addItem: Function
+   deleteItem: Function
 }
 @observer
 class EachResourceComponent extends Component<EachResourceComponentProps> {
+   @observable isChecked: boolean = false
+   @observable items: Array<number> = []
    onChangeSearchData = event => {
       alert(1)
    }
@@ -57,8 +71,19 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
       alert('rec')
    }
    onChangePage = event => {}
+   onChangeCheckbox = event => {
+      this.isChecked = event.target.checked
+      if (this.isChecked) {
+         let id = event.target.id
+         this.items.push(id)
+      } else {
+         let id = event.target.id
+         let index = this.items.indexOf(id)
+         this.items.splice(index, 1)
+      }
+   }
    renderList = observer(() => {
-      const { eachResourceResponse, onClickUpdate, onClickDelete } = this.props
+      const { eachResourceResponse, onClickUpdate, deleteResource } = this.props
       return (
          <ResourceMainDiv>
             <ResourceDetailsDiv>
@@ -81,7 +106,7 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
                />
                <Button
                   name='DELETE'
-                  onClick={onClickDelete}
+                  onClick={deleteResource}
                   type={Button.buttonType.filled}
                   buttonStyles={DeleteButtonStyles}
                />
@@ -92,22 +117,25 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
 
    rederTableUi = observer(() => {
       const { itemsResponse } = this.props
-      console.log(itemsResponse.get(1))
       return (
          <ItemsTable>
             <TableHeader>
-               <p></p>
-               <p>TITLE</p>
-               <p>DESCRIPTION</p>
-               <p>LINK</p>
+               <Checkbox></Checkbox>
+               <TableTitle>TITLE</TableTitle>
+               <Description>DESCRIPTION</Description>
+               <Link>LINK</Link>
             </TableHeader>
             {itemsResponse.get(1).map(eachItem => {
                return (
                   <EachRow id={eachItem.itemId}>
-                     <input type='checkbox' />
-                     <p>{eachItem.itemName}</p>
-                     <p>{eachItem.link}</p>
-                     <p>{eachItem.description}</p>
+                     <Checkbox
+                        id={eachItem.itemId}
+                        type='checkbox'
+                        onChange={this.onChangeCheckbox}
+                     />
+                     <TableTitle>{eachItem.itemName}</TableTitle>
+                     <Description>{eachItem.description}</Description>
+                     <Link href={eachItem.lin}>{eachItem.link}</Link>
                   </EachRow>
                )
             })}
@@ -119,7 +147,9 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
          goBackComponent,
          eachResponseAPI,
          eachResposeAPIError,
-         doNetworkCalls
+         doNetworkCalls,
+         addItem,
+         deleteItem
       } = this.props
       const { resentlyAdded, assendingOrder, desendingOrder } = this
       return (
@@ -175,9 +205,35 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
                         renderSuccessUI={this.rederTableUi}
                      />
                   </Table>
-                  <PaginationDiv>
-                     <PaginationComponent onChangePage={this.onChangePage} />
-                  </PaginationDiv>
+                  <FooterDiv>
+                     <ButtonDiv>
+                        <Button
+                           name='ADD ITEM'
+                           onClick={addItem}
+                           type={Button.buttonType.filled}
+                           buttonStyles={
+                              this.items.length !== 0
+                                 ? AddButtonStyleDisabled
+                                 : AddButtonStyle
+                           }
+                           disabled={this.items.length !== 0 ? true : false}
+                        />
+                        <Button
+                           name='DELETE'
+                           onClick={deleteItem}
+                           type={Button.buttonType.filled}
+                           buttonStyles={
+                              this.items.length !== 0
+                                 ? DeleteButtonStyles
+                                 : DeleteButtonDisabled
+                           }
+                           disabled={this.items.length !== 0 ? false : true}
+                        />
+                     </ButtonDiv>
+                     <PaginationDiv>
+                        <PaginationComponent onChangePage={this.onChangePage} />
+                     </PaginationDiv>
+                  </FooterDiv>
                </TotalTableDiv>
             </EachResourceMainDiv>
          </div>

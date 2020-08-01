@@ -10,6 +10,7 @@ interface BaseButtonProps {
    apiStatus?: any
    buttonStyles?: object
    id?: string
+   disabled?: boolean
 }
 class BaseButton extends Component<BaseButtonProps> {
    render() {
@@ -18,6 +19,7 @@ class BaseButton extends Component<BaseButtonProps> {
          apiStatus,
          buttonStyles,
          id,
+         disabled,
          typo: TextTypo,
          ...otherProps
       } = this.props
@@ -25,6 +27,7 @@ class BaseButton extends Component<BaseButtonProps> {
          <React.Fragment>
             {apiStatus === 100 ? (
                <BaseBtn
+                  disabled={disabled}
                   id={id}
                   color={id}
                   buttonStyles={buttonStyles}
@@ -36,6 +39,7 @@ class BaseButton extends Component<BaseButtonProps> {
             ) : (
                <BaseBtn
                   id={id}
+                  disabled={disabled}
                   color={id}
                   buttonStyles={buttonStyles}
                   apiStatus={apiStatus}

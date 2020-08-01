@@ -16,10 +16,6 @@ export const gotoGoBack = history => {
    history.goBack()
 }
 
-export const gotoAddItemRoute = history => {
-   history.push(RESOURCE_MANAGEMENT_ADD_ITEM)
-}
-
 export const gotoAddRequests = history => {
    history.push(RESOURCE_MANAGEMENT_REQUEST)
 }
@@ -38,4 +34,7 @@ export const gotoEachResource = (history, id) => {
 
 export const gotoUpdateResource = history => {
    history.push(RESOURSE_MANAGEMENT_UPDATE_RESOURCE)
+}
+export const gotoAddItemRoute = (history, id) => {
+   history.push(`${RESOURCE_MANAGEMENT_ADD_ITEM}/${id}`)
 }

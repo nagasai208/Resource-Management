@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import GobackComponent from '../GobackComponent/GobackComponent'
-import Header from '../Header/Header'
 import {
    AddFormMainDiv,
    FormDiv,
@@ -14,7 +13,8 @@ import {
    UploadImageIcon,
    UploadImageTag,
    FormSideDiv,
-   AddResourceMainDiv
+   AddResourceMainDiv,
+   InputHeading
 } from './styledComponents'
 import { addImage } from '../../Images/AddItemAndResourceImage'
 import Input from '../Input'
@@ -36,7 +36,6 @@ interface AddResourcesAndItemsProps {
    name: string
    link: string
    descriptionValue: string
-   onChangeResourceName?: Function
    resourceNameValue?: string
    onChangeUploadImage?: (event: React.ChangeEvent<HTMLInputElement>) => void
    imgUrl?: string
@@ -58,7 +57,6 @@ class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
          name,
          link,
          descriptionValue,
-         onChangeResourceName,
          resourceNameValue,
          onChangeUploadImage,
          imgUrl,
@@ -66,14 +64,15 @@ class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
       } = this.props
       return (
          <AddResourceMainDiv>
-            <Header />
             <AddFormMainDiv>
                <FormDiv>
                   <GobackComponent onClickGoback={goBack} name={goBackName} />
                   <FieldsDiv>
                      <Heading>{title}</Heading>
                      <FormSideDiv>
-                        <p>{resourceName ? 'ITEM' : ''} NAME</p>
+                        <InputHeading>
+                           {resourceName ? 'ITEM' : ''} NAME
+                        </InputHeading>
                         <Input
                            type='text'
                            placeHolder='name'
@@ -84,7 +83,7 @@ class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
                         />
                      </FormSideDiv>
                      <FormSideDiv>
-                        <p>LINK</p>
+                        <InputHeading>LINK</InputHeading>
                         <Input
                            type='text'
                            placeHolder='link'
@@ -96,11 +95,10 @@ class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
                      </FormSideDiv>
                      {resourceName && (
                         <FormSideDiv>
-                           <p>RESOURCE NAME</p>
+                           <InputHeading>RESOURCE NAME</InputHeading>
                            <Input
                               type='text'
                               placeHolder='resource name'
-                              onChange={onChangeResourceName}
                               value={resourceNameValue}
                               width='100'
                               errorMessage=''
@@ -108,7 +106,7 @@ class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
                         </FormSideDiv>
                      )}
                      <FormSideDiv>
-                        <p>DESCRIPTION</p>
+                        <InputHeading>DESCRIPTION</InputHeading>
                         <TextArea
                            onChange={description}
                            value={descriptionValue}

@@ -19,11 +19,11 @@ const ResourceDetails = styled.div`
 `
 
 const Decription = styled.p`
-   ${tw`mt-5`}
+   ${tw`mt-2`}
 `
 
 const ButtonDiv = styled.div`
-   ${tw` mt-12 flex`}
+   ${tw` mt-5 flex `}
 `
 const ButtonStyles = css`
    ${tw`ml-5 mr-5`}
@@ -71,11 +71,46 @@ const ItemsTable = styled.div`
    ${tw`border`}
 `
 const EachRow = styled.div`
-   ${tw`flex justify-between`}
+   ${tw`flex justify-between p-5 border border-gray-400`}
 `
 
 const PaginationDiv = styled.div`
-   ${tw`flex justify-end mt-5`}
+   ${tw`flex justify-end mt-5 h-6`}
+`
+
+const Checkbox = styled.input`
+   ${tw`w-12 h-6 `}
+`
+
+const TableTitle = styled.p`
+   ${tw`w-1/4`}
+`
+const Description = styled.p`
+   ${tw`w-1/4`}
+`
+const Link = styled.a`
+   ${tw`w-1/4`}
+`
+const FooterDiv = styled.div`
+   ${tw`flex justify-between mb-10 `}
+`
+const AddButtonStyle = css`
+   ${tw`ml-5 mr-5`}
+   width: 100px;
+   height: 40px;
+   background-color: #2dca73;
+`
+const AddButtonStyleDisabled = css`
+   ${tw`ml-5 mr-5`}
+   width: 100px;
+   height: 40px;
+   background-color: #d7dfe9;
+`
+const DeleteButtonDisabled = css`
+   ${tw` cursor-not-allowed`}
+   width: 100px;
+   height: 40px;
+   background-color: #d7dfe9;
 `
 export {
    ResourceLogo,
@@ -96,5 +131,13 @@ export {
    TableHeader,
    ItemsTable,
    EachRow,
-   PaginationDiv
+   PaginationDiv,
+   Checkbox,
+   TableTitle,
+   Description,
+   Link,
+   FooterDiv,
+   AddButtonStyle,
+   DeleteButtonDisabled,
+   AddButtonStyleDisabled
 }

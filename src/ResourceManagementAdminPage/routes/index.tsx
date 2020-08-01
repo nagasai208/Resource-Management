@@ -13,7 +13,7 @@ import AdminResourcesRoute from './AdminResourcesRoute/AdminResourcesRoute'
 import AdminRequestsRoute from './AdminRequestsRoute/AdminRequestsRoute'
 import AdminUsersRoute from './AdminUsersRoute/AdminUsersRoute'
 import AddResourcesRoute from './AddResourcesRoute/AddResourcesRoute'
-import AddItemRoute from './AddItemRoute/AddItemRoute'
+import AddResourceItemRoute from './AddResourceItemRoute/AddResourceItemRoute'
 import EachResourceRoute from './EachResourceRoute/EachResourceRoute'
 import UpdateResourceRoute from './UadateResourceRoute/UpdateResourceRoute'
 const resourceManagementRoutes = [
@@ -35,8 +35,8 @@ const resourceManagementRoutes = [
       component={AddResourcesRoute}
    />,
    <ProtectedRoute
-      path={RESOURCE_MANAGEMENT_ADD_ITEM}
-      component={AddItemRoute}
+      path={`${RESOURCE_MANAGEMENT_ADD_ITEM}/:id`}
+      component={AddResourceItemRoute}
    />,
    <ProtectedRoute
       path={`${RESOURCE_MANAGEMENT_SINGLE_RESOURCE}/:id`}

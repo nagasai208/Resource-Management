@@ -11,7 +11,7 @@ const ErrorMessage = styled.p`
 `
 
 const InputTag = styled.input`
-   ${tw` h-10 text-lg`}
+   ${tw` h-10 text-lg w-full `}
    border-radius:2px;
    background-color: ${(props: errorProps) =>
       props.error === '' ? '' : '#fed7d7'};
@@ -20,7 +20,7 @@ const InputTag = styled.input`
 const InputTagDiv = styled.div`
    ${tw`flex`};
    border: ${(props: errorProps) =>
-      props.error === '' ? '1px solid #718096' : '1px solid red'};
+      props.error === '' ? '1px solid #cbd5e0' : '1px solid red'};
    width: 100%;
    background-color: ${(props: errorProps) =>
       props.error === '' ? '' : '#fed7d7'};

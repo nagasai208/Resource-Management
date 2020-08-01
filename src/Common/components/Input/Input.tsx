@@ -9,7 +9,7 @@ import {
 } from './styledComponents'
 import { errorImg } from '../../Images/errorImage'
 interface InputProps {
-   onChange: any
+   onChange?: any
    errorMessage: string
    type: string
    placeHolder: string
@@ -31,7 +31,7 @@ class Input extends Component<InputProps> {
       } = this.props
       return (
          <InputMainDiv>
-            <InputTagDiv error={errorMessage}   >
+            <InputTagDiv error={errorMessage}>
                <InputTag
                   onChange={onChange}
                   type={type}

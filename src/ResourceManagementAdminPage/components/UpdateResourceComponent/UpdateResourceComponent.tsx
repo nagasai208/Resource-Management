@@ -61,6 +61,7 @@ class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
       const { goBackComponent, updateStatus } = this.props
       return (
          <div>
+            <Header />
             <AddResourcesAndItems
                goBackName='resources'
                goBack={goBackComponent}

@@ -8,7 +8,9 @@ import AdminStore from '../../store/AdminStore'
 import {
    gotoResources,
    gotoAddResources,
-   gotoUpdateResource
+   gotoUpdateResource,
+   gotoAddItemRoute,
+   gotoGoBack
 } from '../../utils/NavigationUtils'
 import { action } from 'mobx'
 interface EachResourceRouteProps extends RouteComponentProps {}
@@ -36,9 +38,17 @@ class EachResourceRoute extends Component<EachResourceRouteProps> {
    }
    onClickUpdate = () => {
       gotoUpdateResource(this.getInjectedProps().history)
+     
    }
-   onClickDelete = () => {
+   deleteResource = () => {
       alert(2)
+   }
+   addItem = () => {
+      let id = this.props.match.params['id']
+      gotoAddItemRoute(this.getInjectedProps().history,id)
+   }
+   deleteItem = () => {
+      alert('deleteItem')
    }
    loadingStatus = () => {
       return getLoadingStatus(
@@ -55,8 +65,10 @@ class EachResourceRoute extends Component<EachResourceRouteProps> {
             eachResourceResponse={this.getAdminStore().eachResourceRespose}
             doNetworkCalls={this.doNetworkCalls}
             onClickUpdate={this.onClickUpdate}
-            onClickDelete={this.onClickDelete}
+            deleteResource={this.deleteResource}
             itemsResponse={this.getAdminStore().resourceItems.results}
+            addItem={this.addItem}
+            deleteItem={this.deleteItem}
          />
       )
    }
