@@ -16,12 +16,17 @@ interface AddItemProps {
 }
 @observer
 class AddResourceItem extends Component<AddItemProps> {
-   @observable name!: string
-   @observable link!: string
-   @observable descriptionValue!: string
-   @observable uploadImage!: string
-   @observable resourceNameValue!: string
-   constrctor() {
+   @observable name: string
+   @observable link: string
+   @observable descriptionValue: string
+   @observable uploadImage: string
+   @observable resourceNameValue: string
+   @observable errorMessageName!: string
+   @observable errorMessagelink!: string
+   @observable errorMessageDescription!: string
+
+   constructor(props) {
+      super(props)
       this.name = ''
       this.link = ''
       this.descriptionValue = ''
@@ -39,11 +44,13 @@ class AddResourceItem extends Component<AddItemProps> {
    }
    onClickCreate = () => {
       if (this.name === '') {
-         alert('2')
+         this.errorMessageName = UserNameValidate(this.name)
       }
       if (this.link === '') {
+         alert(4)
       }
       if (this.descriptionValue === '') {
+         alert(7)
       } else {
          alert(1)
       }

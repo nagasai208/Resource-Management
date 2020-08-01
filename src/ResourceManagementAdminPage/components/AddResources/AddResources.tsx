@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import AddResourcesAndItems from '../../../Common/components/AddResourcesAndItems/AddResourcesAndItems'
 import { observable } from 'mobx'
+import Header from '../../../Common/components/Header/Header'
 
 interface AddResourcesProps {
    goBack: (event: React.MouseEvent<HTMLParagraphElement>) => void
@@ -39,6 +40,7 @@ class AddResources extends Component<AddResourcesProps> {
       const { goBack } = this.props
       return (
          <div>
+            <Header />
             <AddResourcesAndItems
                goBackName='resources'
                goBack={goBack}
