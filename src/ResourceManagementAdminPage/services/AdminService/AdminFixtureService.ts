@@ -26,6 +26,12 @@ class AdminService implements AdminServiceImplements {
    resourceItemsAPI(id) {
       return resolveWithTimeout(eachResourcesItems)
    }
+   addItemResourceAPI(id, requestobject) {
+      return resolveWithTimeout({})
+   }
+   addResourceAPI(requestobject) {
+      return resolveWithTimeout({})
+   }
 }
 
 export default AdminService

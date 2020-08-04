@@ -13,6 +13,7 @@ interface AddItemProps {
    itemAPIError: Error | null
    itemResourceResponse: any
    doNetworkCalls: Function
+   addItem: Function
 }
 @observer
 class AddResourceItem extends Component<AddItemProps> {
@@ -32,30 +33,41 @@ class AddResourceItem extends Component<AddItemProps> {
       this.descriptionValue = ''
       this.uploadImage = ''
       this.resourceNameValue = ''
+      this.errorMessageName = ''
+      this.errorMessagelink = ''
+      this.errorMessageDescription = ''
    }
    onChangeName = event => {
       this.name = event.target.value
+      this.errorMessageName = UserNameValidate(this.name)
    }
    onChangeLink = event => {
       this.link = event.target.value
+      this.errorMessagelink = UserNameValidate(this.link)
    }
    description = event => {
       this.descriptionValue = event.target.value
+      this.errorMessageDescription = UserNameValidate(this.descriptionValue)
    }
    onClickCreate = () => {
+      const { addItem } = this.props
       if (this.name === '') {
-         this.errorMessageName = UserNameValidate(this.name)
+         this.errorMessageName = UserNameValidate(this.link)
       }
       if (this.link === '') {
-         alert(4)
+         this.errorMessagelink = UserNameValidate(this.name)
       }
       if (this.descriptionValue === '') {
-         alert(7)
+         this.errorMessageDescription = UserNameValidate(this.descriptionValue)
       } else {
-         alert(1)
+         addItem({
+            item_name: this.name,
+            item_link: this.link,
+            description: this.descriptionValue
+         })
       }
    }
-   renderList = () => {
+   renderList = observer(() => {
       this.resourceNameValue = this.props.itemResourceResponse.resourceName
       const { goBack } = this.props
       return (
@@ -74,9 +86,12 @@ class AddResourceItem extends Component<AddItemProps> {
             descriptionValue={this.descriptionValue}
             resourceNameValue={this.resourceNameValue}
             buttonName='CREATE'
+            errorMessageName={this.errorMessageName}
+            errorMessagelink={this.errorMessagelink}
+            errorMessageDescription={this.errorMessageDescription}
          />
       )
-   }
+   })
    render() {
       const { itemAPIStatus, itemAPIError, doNetworkCalls } = this.props
       return (

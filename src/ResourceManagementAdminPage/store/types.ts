@@ -102,3 +102,15 @@ export interface EachResourceItem {
 export interface EachResourceItemId {
    id: number
 }
+
+export interface AddResourceItemRequestObject {
+   item_name: string
+   item_link: string
+   description: string
+}
+export interface AddResourceRequestObect {
+   resource_name: string
+   resource_link: string
+   description: string
+   resource_logo: any
+}

@@ -3,6 +3,7 @@ import Config from '../../../Common/constants/EnvironmentConstants'
 import AdminServiceImplements from '..'
 import { networkCallWithApisauce } from '../../../Common/utils/APIUtils'
 import { apiMethods } from '../../../Common/constants/APIConstants'
+import { request } from 'http'
 
 class AdminService implements AdminServiceImplements {
    api
@@ -26,8 +27,24 @@ class AdminService implements AdminServiceImplements {
    getUpdateResourceAPI(requestobject, id) {
       return networkCallWithApisauce(this.api, '', {}, apiMethods.post)
    }
-   resourceItemsAPI() {
+   resourceItemsAPI(id) {
       return networkCallWithApisauce(this.api, '', {}, apiMethods.post)
+   }
+   addItemResourceAPI(id, requestobject) {
+      return networkCallWithApisauce(
+         this.api,
+         '',
+         requestobject,
+         apiMethods.post
+      )
+   }
+   addResourceAPI(requestobject) {
+      return networkCallWithApisauce(
+         this.api,
+         '',
+         requestobject,
+         apiMethods.post
+      )
    }
 }
 

@@ -20,6 +20,11 @@ class AdminStore {
    @observable getEachResorceAPIError!: Error | null
    @observable getUpadateResourceAPIStatus!: APIStatus
    @observable getUdateResourceAPIError!: Error | null
+   @observable getResourceAddItemAPIStatus!: APIStatus
+   @observable getResourceAddItemAPIError!: Error | null
+   @observable getAddResourceAPIStatus!: APIStatus
+   @observable getAddResourceAPIError!: Error | null
+
    @observable eachResourceRespose
    constructor(adminService) {
       this.adminService = adminService
@@ -55,6 +60,10 @@ class AdminStore {
       this.getEachResourceAPIStatus = API_INITIAL
       this.getUdateResourceAPIError = null
       this.getUpadateResourceAPIStatus = API_INITIAL
+      this.getResourceAddItemAPIStatus = API_INITIAL
+      this.getResourceAddItemAPIError = null
+      this.getAddResourceAPIStatus = API_INITIAL
+      this.getAddResourceAPIError = null
    }
 
    @action.bound
@@ -96,6 +105,29 @@ class AdminStore {
    getAllRequests() {
       this.adminAllRequests.getResponse()
    }
+   @action.bound
+   setGetResourceAddItemAPIStatus(status) {
+      this.getResourceAddItemAPIStatus = status
+   }
+   @action.bound
+   setGetResourceAddItemAPIError(error) {
+      this.getResourceAddItemAPIError = error
+   }
+   @action.bound
+   setGetResourceAddItemAPIResponse(response) {}
+
+   @action.bound
+   setGetAddResourceAPIStatus(status) {
+      this.getAddResourceAPIStatus = status
+   }
+
+   @action.bound
+   setGetAddResourceAPIError(error) {
+      this.getAddResourceAPIError = error
+   }
+
+   @action.bound
+   setGetAddResourceAPIResponse(response) {}
 
    @action.bound
    getAllUsers() {
@@ -113,7 +145,7 @@ class AdminStore {
          .to(this.setGetEachResourceAPIStatus, this.setEachResourceResponse)
          .catch(this.setGetEachResourceAPIError)
    }
-
+   @action.bound
    getUpdateResource(id, requestObjext) {
       const usersPromise = this.adminService.getUpdateResourceAPI(
          id,
@@ -125,6 +157,24 @@ class AdminStore {
             this.setGetUpadateResourceResponse
          )
          .catch(this.setGetUpadateResourceAPIError)
+   }
+   @action.bound
+   getAddResourceItem(id, requestObjext) {
+      const promises = this.adminService.addItemResourceAPI(id, requestObjext)
+      return bindPromiseWithOnSuccess(promises)
+         .to(
+            this.setGetResourceAddItemAPIStatus,
+            this.setGetResourceAddItemAPIResponse
+         )
+         .catch(this.setGetResourceAddItemAPIError)
+   }
+
+   @action.bound
+   getAddResource(requestObject) {
+      const promises = this.adminService.addResourceAPI(requestObject)
+      return bindPromiseWithOnSuccess(promises)
+         .to(this.setGetAddResourceAPIStatus, this.setGetAddResourceAPIResponse)
+         .catch(this.setGetAddResourceAPIError)
    }
    @action.bound
    clearStore() {

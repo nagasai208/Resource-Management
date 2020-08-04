@@ -5,6 +5,7 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { UserNameValidate } from '../../../Authentication/utils/ValidationUtils'
 
 interface UpdateResourceComponentProps {
    goBackComponent: (event: React.MouseEvent<HTMLParagraphElement>) => void
@@ -18,6 +19,9 @@ class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
    @observable link: string
    @observable descriptionValue
    @observable imgUrl
+   @observable errorMessageName!: string
+   @observable errorMessagelink!: string
+   @observable errorMessageDescription!: string
    requestObject!: Object
    constructor(props) {
       super(props)
@@ -26,6 +30,9 @@ class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
       this.link = updateResourceResponse.resourceLink
       this.descriptionValue = updateResourceResponse.description
       this.imgUrl = updateResourceResponse.resourceLogo
+      this.errorMessageName = ''
+      this.errorMessagelink = ''
+      this.errorMessageDescription = ''
    }
    onChangeName = event => {
       this.name = event.target.value
@@ -49,13 +56,23 @@ class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
    }
    updateResourceButton = () => {
       const { getUpdateResource } = this.props
-      this.requestObject = {
-         resource_name: this.name,
-         resource_link: this.link,
-         description: this.descriptionValue,
-         resource_logo: this.imgUrl
+      if (this.name === '') {
+         this.errorMessageName = UserNameValidate(this.name)
       }
-      getUpdateResource(this.requestObject)
+      if (this.link === '') {
+         this.errorMessagelink = UserNameValidate(this.link)
+      }
+      if (this.descriptionValue === '') {
+         this.errorMessageDescription = UserNameValidate(this.descriptionValue)
+      } else {
+         this.requestObject = {
+            resource_name: this.name,
+            resource_link: this.link,
+            description: this.descriptionValue,
+            resource_logo: this.imgUrl
+         }
+         getUpdateResource(this.requestObject)
+      }
    }
    render() {
       const { goBackComponent, updateStatus } = this.props
@@ -78,6 +95,9 @@ class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
                onChangeUploadImage={this.onUploadImage}
                imgUrl={this.imgUrl}
                buttonName='UPDATE'
+               errorMessageName={this.errorMessageName}
+               errorMessagelink={this.errorMessagelink}
+               errorMessageDescription={this.errorMessageDescription}
             />
 
             {updateStatus.getUpadateResourceAPIStatus === 200 && (

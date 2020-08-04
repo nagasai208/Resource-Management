@@ -40,6 +40,9 @@ interface AddResourcesAndItemsProps {
    onChangeUploadImage?: (event: React.ChangeEvent<HTMLInputElement>) => void
    imgUrl?: string
    buttonName: string
+   errorMessageName: string
+   errorMessagelink: string
+   errorMessageDescription: string
 }
 @observer
 class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
@@ -60,7 +63,10 @@ class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
          resourceNameValue,
          onChangeUploadImage,
          imgUrl,
-         buttonName
+         buttonName,
+         errorMessageName,
+         errorMessagelink,
+         errorMessageDescription
       } = this.props
       return (
          <AddResourceMainDiv>
@@ -79,7 +85,7 @@ class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
                            onChange={onChangeName}
                            value={name}
                            width='100%'
-                           errorMessage=''
+                           errorMessage={errorMessageName}
                         />
                      </FormSideDiv>
                      <FormSideDiv>
@@ -90,7 +96,7 @@ class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
                            onChange={onchangeLink}
                            value={link}
                            width='100'
-                           errorMessage=''
+                           errorMessage={errorMessagelink}
                         />
                      </FormSideDiv>
                      {resourceName && (
@@ -111,6 +117,7 @@ class AddResourcesAndItems extends Component<AddResourcesAndItemsProps> {
                            onChange={description}
                            value={descriptionValue}
                            placeholder='description'
+                           error={errorMessageDescription}
                         />
                      </FormSideDiv>
                      {uploadImage && (

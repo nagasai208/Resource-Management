@@ -10,7 +10,9 @@ import {
    UpdateResourceRequestObject,
    UpdateResourceRequestObjectId,
    EachResourceItemId,
-   ResouceItems
+   ResouceItems,
+   AddResourceItemRequestObject,
+   AddResourceRequestObect
 } from '../store/types'
 
 interface AdminServiceImplements {
@@ -33,6 +35,12 @@ interface AdminServiceImplements {
       id: UpdateResourceRequestObjectId
    ) => Promise<{}>
    resourceItemsAPI: (id: EachResourceItemId) => Promise<ResouceItems>
+   addItemResourceAPI: (
+      id: number,
+      requestObject: AddResourceItemRequestObject
+   ) => Promise<{}>
+
+   addResourceAPI: (requestObject: AddResourceRequestObect) => Promise<{}>
 }
 
 export default AdminServiceImplements

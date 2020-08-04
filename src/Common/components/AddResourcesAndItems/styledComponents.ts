@@ -1,8 +1,10 @@
 import styled from '@emotion/styled'
 import tw from 'tailwind.macro'
 import { css } from '@emotion/core'
-import ArrayType from '@storybook/addon-knobs/dist/components/types/Array'
 
+type errorProps = {
+   error: string
+}
 const AddFormMainDiv = styled.div`
    ${tw` flex w-full min-h-screen bg-gray-200`}
 `
@@ -37,8 +39,10 @@ const ButtonStyle = css`
 
 const TextArea = styled.textarea`
    ${tw`border border-gray-300 h-24 mb-5 w-full`}
+   background-color: ${(props: errorProps) =>
+      props.error === '' ? '' : '#fed7d7'};
+   outline: none;
 `
-
 const UploadImageDiv = styled.div`
    ${tw`flex `};
    width: 340px;
@@ -61,7 +65,8 @@ const AddResourceMainDiv = styled.div`
 `
 
 const InputHeading = styled.div`
-${tw`text-gray-600 mb-2`}`
+   ${tw`text-gray-600 mb-2`}
+`
 
 export {
    AddFormMainDiv,

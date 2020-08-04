@@ -21,6 +21,11 @@ class AddResourceItemRoute extends Component<AddResourceItemRouteProps> {
       this.getAdminStore().getEachResource(id)
    }
    @action.bound
+   addItem(requestObject) {
+      let id = this.props.match.params['id']
+      this.getAdminStore().getAddResourceItem(id, requestObject)
+   }
+   @action.bound
    getAdminStore() {
       return this.getInjectedProps().adminStore
    }
@@ -36,6 +41,7 @@ class AddResourceItemRoute extends Component<AddResourceItemRouteProps> {
             itemAPIError={this.getAdminStore().getEachResorceAPIError}
             itemResourceResponse={this.getAdminStore().eachResourceRespose}
             doNetworkCalls={this.doNetworkCalls}
+            addItem={this.addItem}
          />
       )
    }
