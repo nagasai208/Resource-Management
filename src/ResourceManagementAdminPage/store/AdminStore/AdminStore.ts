@@ -29,7 +29,7 @@ class AdminStore {
    @observable getAddResourceAPIError!: Error | null
    @observable getUserDetailsAPIStatus!: APIStatus
    @observable getUserDetailsAPIError!: Error | null
-   
+
    constructor(adminService) {
       this.adminService = adminService
       this.allResources = new Map()
@@ -52,7 +52,7 @@ class AdminStore {
          responseType: ['users_details', 'total_users']
       })
       this.resourceItems = new PaginationStore({
-         apiService: this.adminService.resourceItemsAPI,
+         apiService: this.adminService.getResourceItemsAPI,
          adminModel: ResourceItemsModel,
          responseType: ['items', 'total_items']
       })
@@ -179,7 +179,10 @@ class AdminStore {
    }
    @action.bound
    getAddResourceItem(id, requestObjext) {
-      const promises = this.adminService.addItemResourceAPI(id, requestObjext)
+      const promises = this.adminService.getAddItemResourceAPI(
+         id,
+         requestObjext
+      )
       return bindPromiseWithOnSuccess(promises)
          .to(
             this.setGetResourceAddItemAPIStatus,
@@ -190,7 +193,7 @@ class AdminStore {
 
    @action.bound
    getAddResource(requestObject) {
-      const promises = this.adminService.addResourceAPI(requestObject)
+      const promises = this.adminService.getAddResourceAPI(requestObject)
       return bindPromiseWithOnSuccess(promises)
          .to(this.setGetAddResourceAPIStatus, this.setGetAddResourceAPIResponse)
          .catch(this.setGetAddResourceAPIError)
