@@ -48,6 +48,11 @@ class AdminRequests extends Component<AdminRequestProps> {
    @observable typeOfModel
    @observable buttonType
    @observable onChangeRejectedValue
+   @observable items
+   constructor(props) {
+      super(props)
+      this.items = []
+   }
    searchData = event => {}
    dueDataTime = () => {
       alert('due')
@@ -89,6 +94,17 @@ class AdminRequests extends Component<AdminRequestProps> {
    onChangeRejectedData = event => {
       this.onChangeRejectedValue = event.target.value
    }
+   onChangeCheckBox = event => {
+      this.isChecked = event.target.checked
+      if (this.isChecked) {
+         let id = event.target.id
+         this.items.push(id)
+      } else {
+         let id = event.target.id
+         let index = this.items.indexOf(id)
+         this.items.splice(index, 1)
+      }
+   }
    renderList = observer(() => {
       const { allRequests } = this.props
       return (
@@ -104,7 +120,10 @@ class AdminRequests extends Component<AdminRequestProps> {
             {allRequests.get(1).map(eachRequest => {
                return (
                   <TableRow id={eachRequest.requestId}>
-                     <CheckBox type='checkbox' />
+                     <CheckBox
+                        type='checkbox'
+                        onChange={this.onChangeCheckBox}
+                     />
                      <UserNameAndImage>
                         <UserImage src={eachRequest.userImage} />
                         <p>{eachRequest.userName}</p>
@@ -143,7 +162,7 @@ class AdminRequests extends Component<AdminRequestProps> {
                <Heading>Pending Requests</Heading>
                <FilterAndSearchBarDiv>
                   <SearchBar searchData={this.searchData} />
-                  {this.isChecked === false && (
+                  {this.items.length === 0 && (
                      <FilterAndSortDiv>
                         <SortingDivs>
                            <FilterBar
@@ -201,7 +220,7 @@ class AdminRequests extends Component<AdminRequestProps> {
                      typeOfModel={this.typeOfModel}
                      rejectionData={this.onChangeRejectedData}
                   />
-                  {this.isChecked === true && (
+                  {this.items.length !== 0 && (
                      <ButtonDiv>
                         <Button
                            name='ACCEPT'

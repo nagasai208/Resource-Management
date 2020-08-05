@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import AddResources from '../../components/AddResources/AddResources'
+import AddResources from '../../components/AddResource/AddResource'
 import { observer, inject } from 'mobx-react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
-import { gotoAddResources, gotoGoBack } from '../../utils/NavigationUtils'
+import { gotoGoBack } from '../../utils/NavigationUtils'
 import AdminStore from '../../store/AdminStore'
 interface AddResourcesProps extends RouteComponentProps {}
 interface InjectedProps extends AddResourcesProps {
@@ -20,7 +20,7 @@ class AddResourcesRoute extends Component<AddResourcesProps> {
    }
    render() {
       return (
-         <AddResources goBack={this.goBack} addResource={this.addResource} />
+         <AddResources goBack={this.goBack} addResource={this.addResource} addResourceStatus={this.getInjectedProps().adminStore.getAddResourceAPIStatus} />
       )
    }
 }

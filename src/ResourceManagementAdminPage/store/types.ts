@@ -114,3 +114,22 @@ export interface AddResourceRequestObect {
    description: string
    resource_logo: any
 }
+export interface EachUserDetailsResponse {
+   name: string
+   department: string
+   job_role: string
+   profile_url: string
+}
+
+export interface EachUserItemsResponse {
+   items: Array<Items>
+   total_items: number
+}
+export interface Items {
+   resource_name: string
+   item_name: string
+   access_level: Array<string>
+   description: string
+   item_link: string
+   item_id: number
+}

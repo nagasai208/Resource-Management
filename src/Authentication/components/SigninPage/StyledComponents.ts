@@ -7,7 +7,7 @@ const Maindiv = styled.div`
    background-color: #f1f7ff;
 `
 const SignupMainDiv = styled.div`
-   ${tw`  flex flex-col items-center  w-1/4 `};
+   ${tw`  flex flex-col items-center  w-1/4 p-10 `};
    border-radius: 8px;
    background-color: #ffffff;
 `

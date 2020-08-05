@@ -12,7 +12,9 @@ import {
    EachResourceItemId,
    ResouceItems,
    AddResourceItemRequestObject,
-   AddResourceRequestObect
+   AddResourceRequestObect,
+   EachUserDetailsResponse,
+   EachUserItemsResponse
 } from '../store/types'
 
 interface AdminServiceImplements {
@@ -34,13 +36,16 @@ interface AdminServiceImplements {
       requesObject: UpdateResourceRequestObject,
       id: UpdateResourceRequestObjectId
    ) => Promise<{}>
-   resourceItemsAPI: (id: EachResourceItemId) => Promise<ResouceItems>
-   addItemResourceAPI: (
+   getResourceItemsAPI: (id: EachResourceItemId) => Promise<ResouceItems>
+   getAddItemResourceAPI: (
       id: number,
       requestObject: AddResourceItemRequestObject
    ) => Promise<{}>
 
-   addResourceAPI: (requestObject: AddResourceRequestObect) => Promise<{}>
+   getAddResourceAPI: (requestObject: AddResourceRequestObect) => Promise<{}>
+
+   getEachUserDetailsAPI: (id: number) => Promise<EachUserDetailsResponse>
+   getEachUserItemsAPI: (id: number) => Promise<EachUserItemsResponse>
 }
 
 export default AdminServiceImplements

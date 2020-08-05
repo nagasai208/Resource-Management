@@ -7,15 +7,17 @@ import {
    RESOURCE_MANAGEMENT_ADDRESOURCES,
    RESOURCE_MANAGEMENT_ADD_ITEM,
    RESOURCE_MANAGEMENT_SINGLE_RESOURCE,
-   RESOURSE_MANAGEMENT_UPDATE_RESOURCE
+   RESOURSE_MANAGEMENT_UPDATE_RESOURCE,
+   RESOURCE_MANAGEMENT_EACH_USER
 } from '../constants/NavigationConstants'
 import AdminResourcesRoute from './AdminResourcesRoute/AdminResourcesRoute'
 import AdminRequestsRoute from './AdminRequestsRoute/AdminRequestsRoute'
 import AdminUsersRoute from './AdminUsersRoute/AdminUsersRoute'
-import AddResourcesRoute from './AddResourcesRoute/AddResourcesRoute'
+import AddResourcesRoute from './AddResourceRoute/AddResourceRoute'
 import AddResourceItemRoute from './AddResourceItemRoute/AddResourceItemRoute'
 import EachResourceRoute from './EachResourceRoute/EachResourceRoute'
 import UpdateResourceRoute from './UadateResourceRoute/UpdateResourceRoute'
+import EachUserRoute from "./EachUserRoute/EachUserRoute"
 const resourceManagementRoutes = [
    <ProtectedRoute
       exact
@@ -45,6 +47,10 @@ const resourceManagementRoutes = [
    <ProtectedRoute
       path={RESOURSE_MANAGEMENT_UPDATE_RESOURCE}
       component={UpdateResourceRoute}
+   />,
+   <ProtectedRoute
+      path={RESOURCE_MANAGEMENT_EACH_USER}
+      component={EachUserRoute}
    />
 ]
 

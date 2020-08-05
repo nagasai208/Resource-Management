@@ -4,7 +4,7 @@ import AdminAllResourcesModel from '../models/AdminAllResourcesModel'
 import AdminAllRequestsModel from '../models/AdminAllRequests'
 import AllUsersModel from '../models/AdminAllUsers'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
-import { APIStatus, API_INITIAL } from '@ib/api-constants'
+import { APIStatus, API_INITIAL, API_SUCCESS } from '@ib/api-constants'
 import EachResourceModel from '../models/EachResourceModel'
 import { setAccessToken } from '../../../Common/utils/StorageUtils'
 import ResourceItemsModel from '../models/ResourceItemsModel'
@@ -16,6 +16,9 @@ class AdminStore {
    @observable adminAllRequests
    @observable adminAllUsers
    @observable resourceItems
+   @observable eachResourceRespose
+   @observable eachUserDetails
+   @observable eachUserItems
    @observable getEachResourceAPIStatus!: APIStatus
    @observable getEachResorceAPIError!: Error | null
    @observable getUpadateResourceAPIStatus!: APIStatus
@@ -24,8 +27,9 @@ class AdminStore {
    @observable getResourceAddItemAPIError!: Error | null
    @observable getAddResourceAPIStatus!: APIStatus
    @observable getAddResourceAPIError!: Error | null
-
-   @observable eachResourceRespose
+   @observable getUserDetailsAPIStatus!: APIStatus
+   @observable getUserDetailsAPIError!: Error | null
+   
    constructor(adminService) {
       this.adminService = adminService
       this.allResources = new Map()
@@ -63,6 +67,8 @@ class AdminStore {
       this.getResourceAddItemAPIStatus = API_INITIAL
       this.getResourceAddItemAPIError = null
       this.getAddResourceAPIStatus = API_INITIAL
+      this.getAddResourceAPIError = null
+      this.getUserDetailsAPIStatus = API_INITIAL
       this.getAddResourceAPIError = null
    }
 
@@ -130,12 +136,25 @@ class AdminStore {
    setGetAddResourceAPIResponse(response) {}
 
    @action.bound
+   setGetUserDetailsAPIStatus(status) {
+      this.getUserDetailsAPIStatus = status
+   }
+   @action.bound
+   setGetUserDetailsAPIError(error) {
+      this.getUserDetailsAPIError = error
+   }
+   @action.bound
    getAllUsers() {
       this.adminAllUsers.getResponse()
    }
    @action.bound
    getResourceItems(id) {
       this.resourceItems.getResponsesWithIds(id)
+   }
+
+   @action.bound
+   setGetUserDetailsAPIResponse(response) {
+      this.eachUserDetails = response
    }
 
    @action.bound
@@ -175,6 +194,13 @@ class AdminStore {
       return bindPromiseWithOnSuccess(promises)
          .to(this.setGetAddResourceAPIStatus, this.setGetAddResourceAPIResponse)
          .catch(this.setGetAddResourceAPIError)
+   }
+   @action.bound
+   getUserDeatails(id) {
+      const promises = this.adminService.geteachUserDetailsAPI(id)
+      return bindPromiseWithOnSuccess(promises)
+         .to(this.setGetUserDetailsAPIStatus, this.setGetUserDetailsAPIResponse)
+         .catch(this.setGetUserDetailsAPIError)
    }
    @action.bound
    clearStore() {

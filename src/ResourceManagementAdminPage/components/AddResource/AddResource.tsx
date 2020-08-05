@@ -4,10 +4,13 @@ import AddResourcesAndItems from '../../../Common/components/AddResourcesAndItem
 import { observable } from 'mobx'
 import Header from '../../../Common/components/Header/Header'
 import { UserNameValidate } from '../../../Authentication/utils/ValidationUtils'
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { APIStatus } from '@ib/api-constants'
 interface AddResourcesProps {
    goBack: (event: React.MouseEvent<HTMLParagraphElement>) => void
    addResource: Function
+   addResourceStatus: APIStatus
 }
 @observer
 class AddResources extends Component<AddResourcesProps> {
@@ -18,6 +21,7 @@ class AddResources extends Component<AddResourcesProps> {
    @observable errorMessageLink!: string
    @observable errorMessageDescription!: string
    @observable imgUrl
+
    constructor(props) {
       super(props)
       this.name = ''
@@ -27,6 +31,9 @@ class AddResources extends Component<AddResourcesProps> {
       this.errorMessageName = ''
       this.errorMessageLink = ''
       this.errorMessageDescription = ''
+   }
+   notify = () => {
+      toast.success('Sucessfully created !')
    }
    onChangeName = event => {
       this.name = event.target.value
@@ -69,7 +76,7 @@ class AddResources extends Component<AddResourcesProps> {
       }
    }
    render() {
-      const { goBack } = this.props
+      const { goBack, addResourceStatus } = this.props
       return (
          <div>
             <Header />
@@ -93,6 +100,12 @@ class AddResources extends Component<AddResourcesProps> {
                errorMessagelink={this.errorMessageLink}
                errorMessageDescription={this.errorMessageDescription}
             />
+            {addResourceStatus === 200 && (
+               <div>
+                  {this.notify()}
+                  <ToastContainer position='top-center' />
+               </div>
+            )}
          </div>
       )
    }

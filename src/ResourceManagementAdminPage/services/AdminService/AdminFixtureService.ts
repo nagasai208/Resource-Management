@@ -5,7 +5,8 @@ import allRequests from '../../fixtures/AllRequests.json'
 import allUsers from '../../fixtures/AllUsers.json'
 import resourceDetails from '../../fixtures/ResourceDetails.json'
 import eachResourcesItems from '../../fixtures/EachresourceItems.json'
-
+import userDetails from '../../fixtures/UserDetails.json'
+import eachUserItems from '../../fixtures/EachUserItems.json'
 class AdminService implements AdminServiceImplements {
    getAllResourcesAPI(requestobject) {
       return resolveWithTimeout(allResources)
@@ -23,14 +24,20 @@ class AdminService implements AdminServiceImplements {
    getUpdateResourceAPI(requestobject, id) {
       return resolveWithTimeout({})
    }
-   resourceItemsAPI(id) {
+   getResourceItemsAPI(id) {
       return resolveWithTimeout(eachResourcesItems)
    }
-   addItemResourceAPI(id, requestobject) {
+   getAddItemResourceAPI(id, requestobject) {
       return resolveWithTimeout({})
    }
-   addResourceAPI(requestobject) {
+   getAddResourceAPI(requestobject) {
       return resolveWithTimeout({})
+   }
+   getEachUserDetailsAPI(id) {
+      return resolveWithTimeout(userDetails)
+   }
+   getEachUserItemsAPI(id) {
+      return resolveWithTimeout(eachUserItems)
    }
 }
 

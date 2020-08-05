@@ -6,7 +6,8 @@ import Header from '../../../Common/components/Header/Header'
 import { APIStatus } from '@ib/api-constants'
 import LoadingWrapperWithFailure from '../../../Common/components/common/LoadingWrapperWithFailure'
 import { UserNameValidate } from '../../../Authentication/utils/ValidationUtils'
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 interface AddItemProps {
    goBack: (event: React.MouseEvent<HTMLParagraphElement>) => void
    itemAPIStatus: APIStatus
@@ -14,6 +15,7 @@ interface AddItemProps {
    itemResourceResponse: any
    doNetworkCalls: Function
    addItem: Function
+   itemStatus: APIStatus
 }
 @observer
 class AddResourceItem extends Component<AddItemProps> {
@@ -48,6 +50,9 @@ class AddResourceItem extends Component<AddItemProps> {
    description = event => {
       this.descriptionValue = event.target.value
       this.errorMessageDescription = UserNameValidate(this.descriptionValue)
+   }
+   notify = () => {
+      toast.success('Sucessfully Updated !')
    }
    onClickCreate = () => {
       const { addItem } = this.props
@@ -93,7 +98,12 @@ class AddResourceItem extends Component<AddItemProps> {
       )
    })
    render() {
-      const { itemAPIStatus, itemAPIError, doNetworkCalls } = this.props
+      const {
+         itemAPIStatus,
+         itemAPIError,
+         doNetworkCalls,
+         itemStatus
+      } = this.props
       return (
          <div>
             <Header />
@@ -103,6 +113,12 @@ class AddResourceItem extends Component<AddItemProps> {
                onRetryClick={doNetworkCalls}
                renderSuccessUI={this.renderList}
             />
+            {itemStatus === 200 && (
+               <div>
+                  {this.notify()}
+                  <ToastContainer position='top-center' />
+               </div>
+            )}
          </div>
       )
    }

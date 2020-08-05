@@ -27,10 +27,10 @@ class AdminService implements AdminServiceImplements {
    getUpdateResourceAPI(requestobject, id) {
       return networkCallWithApisauce(this.api, '', {}, apiMethods.post)
    }
-   resourceItemsAPI(id) {
+   getResourceItemsAPI(id) {
       return networkCallWithApisauce(this.api, '', {}, apiMethods.post)
    }
-   addItemResourceAPI(id, requestobject) {
+   getAddItemResourceAPI(id, requestobject) {
       return networkCallWithApisauce(
          this.api,
          '',
@@ -38,13 +38,19 @@ class AdminService implements AdminServiceImplements {
          apiMethods.post
       )
    }
-   addResourceAPI(requestobject) {
+   getAddResourceAPI(requestobject) {
       return networkCallWithApisauce(
          this.api,
          '',
          requestobject,
          apiMethods.post
       )
+   }
+   getEachUserDetailsAPI(id) {
+      return networkCallWithApisauce(this.api, '', {}, apiMethods.get)
+   }
+   getEachUserItemsAPI(id) {
+      return networkCallWithApisauce(this.api, '', {}, apiMethods.get)
    }
 }
 
