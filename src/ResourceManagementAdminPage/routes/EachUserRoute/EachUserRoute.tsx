@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { inject, observer } from "mobx-react"
-import { withRouter,RouteComponentProps } from "react-router-dom"
-import AdminStore from "../../store/AdminStore"
-import { action } from "mobx"
+import { inject, observer } from 'mobx-react'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
+import AdminStore from '../../store/AdminStore'
+import { action } from 'mobx'
 interface EachUserRouteProps extends RouteComponentProps {}
 
 interface InjectedProps extends EachUserRouteProps {
@@ -10,11 +10,11 @@ interface InjectedProps extends EachUserRouteProps {
 }
 @inject('adminStore')
 @observer
-class EachUserRoute extends Component <EachUserRouteProps> {
+class EachUserRoute extends Component<EachUserRouteProps> {
    componentDidMount() {
       this.doNetworkCalls()
    }
-   @action .bound
+   @action.bound
    getAdminStore() {
       return this.getInjectedProps().adminStore
    }
@@ -24,6 +24,7 @@ class EachUserRoute extends Component <EachUserRouteProps> {
    }
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
    render() {
+      alert(1)
       return (
          <div>
             <p>Hello</p>

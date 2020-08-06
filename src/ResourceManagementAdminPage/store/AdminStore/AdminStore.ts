@@ -69,7 +69,7 @@ class AdminStore {
       this.getAddResourceAPIStatus = API_INITIAL
       this.getAddResourceAPIError = null
       this.getUserDetailsAPIStatus = API_INITIAL
-      this.getAddResourceAPIError = null
+      this.getUserDetailsAPIError = null
    }
 
    @action.bound

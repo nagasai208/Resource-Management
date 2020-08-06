@@ -28,6 +28,7 @@ interface AdminUsersProps {
    adminError: Error | null
    doNetworkCalls: Function
    allUsers: any
+   eachUserId: Function
 }
 @observer
 class AdminUsers extends Component<AdminUsersProps> {
@@ -56,7 +57,9 @@ class AdminUsers extends Component<AdminUsersProps> {
       alert(data.activePage)
    }
    onClickUser = event => {
-      alert(event.currentTarget.id)
+      const { eachUserId } = this.props
+      let id = event.currentTarget.id
+      eachUserId(id)
    }
    renderList = observer(() => {
       const { allUsers } = this.props

@@ -9,7 +9,6 @@ import './App.css'
 import { I18nextProvider } from 'react-i18next'
 import i18n from './Common/i18n'
 import LoadingView from './Common/components/common/LoadingWrapperWithFailure/LoadingView'
-
 const App = () => {
    return (
       <Provider {...stores}>

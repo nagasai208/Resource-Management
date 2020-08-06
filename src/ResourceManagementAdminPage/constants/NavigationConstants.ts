@@ -10,4 +10,4 @@ export const RESOURCE_MANAGEMENT_SINGLE_RESOURCE =
 export const RESOURSE_MANAGEMENT_UPDATE_RESOURCE =
    '/resource-management/resources/update-resource'
 export const RESOURCE_MANAGEMENT_EACH_USER =
-   '/resource-management/users/single-user'
+   '/resource-management/user/single-user'

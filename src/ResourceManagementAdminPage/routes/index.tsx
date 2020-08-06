@@ -17,7 +17,9 @@ import AddResourcesRoute from './AddResourceRoute/AddResourceRoute'
 import AddResourceItemRoute from './AddResourceItemRoute/AddResourceItemRoute'
 import EachResourceRoute from './EachResourceRoute/EachResourceRoute'
 import UpdateResourceRoute from './UadateResourceRoute/UpdateResourceRoute'
-import EachUserRoute from "./EachUserRoute/EachUserRoute"
+import EachUserRoute from './EachUserRoute/EachUserRoute'
+import { Route } from 'react-router-dom'
+
 const resourceManagementRoutes = [
    <ProtectedRoute
       exact
@@ -49,7 +51,9 @@ const resourceManagementRoutes = [
       component={UpdateResourceRoute}
    />,
    <ProtectedRoute
-      path={RESOURCE_MANAGEMENT_EACH_USER}
+      key={`${RESOURCE_MANAGEMENT_EACH_USER}/:id`}
+      exact
+      path={`${RESOURCE_MANAGEMENT_EACH_USER}/:id`}
       component={EachUserRoute}
    />
 ]

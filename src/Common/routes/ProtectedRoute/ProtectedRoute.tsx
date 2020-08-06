@@ -1,8 +1,11 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
 import { Redirect, Route } from 'react-router-dom'
+import { ConfirmPasswordValidate } from '../../../Authentication/utils/ValidationUtils'
+
 const ProtectedRoute = inject('authStore')(
    observer(({ component: Component, path, authStore, ...rest }) => {
+      console.log(path)
       const { accessToken } = authStore
       return (
          <Route
