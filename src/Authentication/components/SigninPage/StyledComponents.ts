@@ -25,7 +25,6 @@ const ButtonStyles = css`
    ${tw`w-1/2 text-xl`}
    background-color: blue;
    height: 40px;
-   
 `
 
 const HaveAnAccount = styled.p`

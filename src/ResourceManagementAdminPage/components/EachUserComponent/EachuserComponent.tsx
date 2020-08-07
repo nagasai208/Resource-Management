@@ -4,6 +4,12 @@ import Header from '../../../Common/components/Header/Header'
 import LoadingWrapperWithFailure from '../../../Common/components/common/LoadingWrapperWithFailure'
 import GobackComponent from '../../../Common/components/GobackComponent/GobackComponent'
 import { APIStatus } from '@ib/api-constants'
+import Button from '../../../Common/components/Button/Button'
+import SearchBar from '../../../Common/components/SearchBar/SearchBar'
+import FilterBar from '../../../Common/components/FilterBar/FilterBar'
+import SortIcon from '../../../Common/SortIcon/SortIcon'
+import PaginationComponent from '../../../Common/components/Pagination/Pagination'
+import { observable } from 'mobx'
 import {
    ResourceLogo,
    ResourceMainDiv,
@@ -33,13 +39,7 @@ import {
    DeleteButtonDisabled,
    AddButtonStyleDisabled
 } from './styledComponents'
-import Button from '../../../Common/components/Button/Button'
-import SearchBar from '../../../Common/components/SearchBar/SearchBar'
-import FilterBar from '../../../Common/components/FilterBar/FilterBar'
-import SortIcon from '../../../Common/SortIcon/SortIcon'
-import PaginationComponent from '../../../Common/components/Pagination/Pagination'
-import { observable } from 'mobx'
-import { withEmotionCache } from '@emotion/core'
+
 
 interface EachUserComponentProps {
    goBackComponent: (event: React.MouseEvent<HTMLParagraphElement>) => void
@@ -47,8 +47,6 @@ interface EachUserComponentProps {
    eachResposeAPIError: Error | null
    eachResourceResponse: any
    doNetworkCalls: () => void
-   onClickUpdate: Function
-   deleteResource: Function
    itemsResponse: any
    addItem: Function
    deleteItem: Function
@@ -83,34 +81,17 @@ class EachUser extends Component<EachUserComponentProps> {
       }
    }
    renderList = observer(() => {
-      const { eachResourceResponse, onClickUpdate, deleteResource } = this.props
+      const { eachResourceResponse } = this.props
       return (
          <ResourceMainDiv>
             <ResourceDetailsDiv>
-               <ResourceLogo src={eachResourceResponse.resourceLogo} />
+               <ResourceLogo src={eachResourceResponse.profileUrl} />
                <ResourceDetails>
-                  <p>{eachResourceResponse.resourceName}</p>
-                  <p>{eachResourceResponse.resourceId}</p>
-                  <a href={eachResourceResponse.resourceLink}>
-                     {eachResourceResponse.resourceLink}
-                  </a>
+                  <p>{eachResourceResponse.name}</p>
+                  <p>{eachResourceResponse.department}</p>
+                  <p>{eachResourceResponse.jobRole}</p>
                </ResourceDetails>
             </ResourceDetailsDiv>
-            <Decription>{eachResourceResponse.description}</Decription>
-            <ButtonDiv>
-               <Button
-                  name='UPDATE'
-                  onClick={onClickUpdate}
-                  type={Button.buttonType.filled}
-                  buttonStyles={ButtonStyles}
-               />
-               <Button
-                  name='DELETE'
-                  onClick={deleteResource}
-                  type={Button.buttonType.filled}
-                  buttonStyles={DeleteButtonStyles}
-               />
-            </ButtonDiv>
          </ResourceMainDiv>
       )
    })
@@ -120,23 +101,14 @@ class EachUser extends Component<EachUserComponentProps> {
       return (
          <ItemsTable>
             <TableHeader>
-               <Checkbox></Checkbox>
-               <TableTitle>TITLE</TableTitle>
-               <Description>DESCRIPTION</Description>
+               <TableTitle>RESOURCENAME</TableTitle>
+               <p>ACCESS</p>
+               <Description>Description</Description>
                <Link>LINK</Link>
             </TableHeader>
             {itemsResponse.get(1).map(eachItem => {
                return (
-                  <EachRow id={eachItem.itemId}>
-                     <Checkbox
-                        id={eachItem.itemId}
-                        type='checkbox'
-                        onChange={this.onChangeCheckbox}
-                     />
-                     <TableTitle>{eachItem.itemName}</TableTitle>
-                     <Description>{eachItem.description}</Description>
-                     <Link href={eachItem.lin}>{eachItem.link}</Link>
-                  </EachRow>
+                  <div>1</div>
                )
             })}
          </ItemsTable>
@@ -156,10 +128,7 @@ class EachUser extends Component<EachUserComponentProps> {
          <div>
             <Header />
             <EachResourceMainDiv>
-               <GobackComponent
-                  onClickGoback={goBackComponent}
-                  name='resources'
-               />
+               <GobackComponent onClickGoback={goBackComponent} name='users' />
                <LoadingWrapperWithFailure
                   apiStatus={eachResponseAPI}
                   apiError={eachResposeAPIError}

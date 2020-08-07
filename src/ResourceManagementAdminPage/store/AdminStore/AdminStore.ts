@@ -8,6 +8,8 @@ import { APIStatus, API_INITIAL, API_SUCCESS } from '@ib/api-constants'
 import EachResourceModel from '../models/EachResourceModel'
 import { setAccessToken } from '../../../Common/utils/StorageUtils'
 import ResourceItemsModel from '../models/ResourceItemsModel'
+import EachUserDetailsModel from '../models/EachUserDetailsModel'
+import EachUserItemsModel from '../models/EachUserItemsModel'
 class AdminStore {
    adminService
    limit
@@ -54,6 +56,11 @@ class AdminStore {
       this.resourceItems = new PaginationStore({
          apiService: this.adminService.getResourceItemsAPI,
          adminModel: ResourceItemsModel,
+         responseType: ['items', 'total_items']
+      })
+      this.eachUserItems = new PaginationStore({
+         apiService: this.adminService.getEachUserItemsAPI,
+         adminModel: EachUserItemsModel,
          responseType: ['items', 'total_items']
       })
       this.init()
@@ -144,17 +151,16 @@ class AdminStore {
       this.getUserDetailsAPIError = error
    }
    @action.bound
+   setGetUserDetailsAPIResponse(response) {
+      this.eachUserDetails = new EachUserDetailsModel(response)
+   }
+   @action.bound
    getAllUsers() {
       this.adminAllUsers.getResponse()
    }
    @action.bound
    getResourceItems(id) {
       this.resourceItems.getResponsesWithIds(id)
-   }
-
-   @action.bound
-   setGetUserDetailsAPIResponse(response) {
-      this.eachUserDetails = response
    }
 
    @action.bound
@@ -200,7 +206,7 @@ class AdminStore {
    }
    @action.bound
    getUserDeatails(id) {
-      const promises = this.adminService.geteachUserDetailsAPI(id)
+      const promises = this.adminService.getEachUserDetailsAPI(id)
       return bindPromiseWithOnSuccess(promises)
          .to(this.setGetUserDetailsAPIStatus, this.setGetUserDetailsAPIResponse)
          .catch(this.setGetUserDetailsAPIError)

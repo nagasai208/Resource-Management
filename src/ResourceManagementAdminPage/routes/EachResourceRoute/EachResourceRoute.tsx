@@ -38,14 +38,13 @@ class EachResourceRoute extends Component<EachResourceRouteProps> {
    }
    onClickUpdate = () => {
       gotoUpdateResource(this.getInjectedProps().history)
-     
    }
    deleteResource = () => {
       alert(2)
    }
    addItem = () => {
       let id = this.props.match.params['id']
-      gotoAddItemRoute(this.getInjectedProps().history,id)
+      gotoAddItemRoute(this.getInjectedProps().history, id)
    }
    deleteItem = () => {
       alert('deleteItem')

@@ -42,7 +42,9 @@ class AddResourceItemRoute extends Component<AddResourceItemRouteProps> {
             itemResourceResponse={this.getAdminStore().eachResourceRespose}
             doNetworkCalls={this.doNetworkCalls}
             addItem={this.addItem}
-            itemStatus = {this.getInjectedProps().adminStore.getResourceAddItemAPIStatus}
+            itemStatus={
+               this.getInjectedProps().adminStore.getResourceAddItemAPIStatus
+            }
          />
       )
    }

@@ -3,6 +3,9 @@ import { inject, observer } from 'mobx-react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import AdminStore from '../../store/AdminStore'
 import { action } from 'mobx'
+import EachUser from '../../components/EachUserComponent/EachuserComponent'
+import { getLoadingStatus } from '@ib/api-utils'
+import { gotoAddUsers,gotoAddItemRoute } from "../../utils/NavigationUtils"
 interface EachUserRouteProps extends RouteComponentProps {}
 
 interface InjectedProps extends EachUserRouteProps {
@@ -19,17 +22,39 @@ class EachUserRoute extends Component<EachUserRouteProps> {
       return this.getInjectedProps().adminStore
    }
    @action.bound
-   doNetworkCalls() {
-      this.getAdminStore().getAllResources()
+   async doNetworkCalls() {
+      let id = this.props.match.params['id']
+      await this.getAdminStore().getUserDeatails(id)
+      this.getAdminStore().eachUserItems.getResponsesWithIds(id)
    }
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
-   render() {
-      alert(1)
-      return (
-         <div>
-            <p>Hello</p>
-         </div>
+   loadingStatus = () => {
+      return getLoadingStatus(
+         this.getAdminStore().getUserDetailsAPIStatus,
+         this.getAdminStore().eachUserItems.paginationAPIStatus
       )
+   }
+   goBackComponent = () => {
+      gotoAddUsers(this.getInjectedProps().history)
+   }
+   addItem = () => {
+      let id = this.props.match.params['id']
+      gotoAddItemRoute (this.getInjectedProps().history, id)
+   }
+   deleteItem = () => {
+      alert('deleteItem')
+   }
+   render() {
+      return <EachUser 
+      goBackComponent={this.goBackComponent}
+      eachResponseAPI={this.loadingStatus()}
+      eachResposeAPIError={this.getAdminStore().getUserDetailsAPIError}
+      eachResourceResponse={this.getAdminStore().eachUserDetails}
+      doNetworkCalls={this.doNetworkCalls}
+      itemsResponse={this.getAdminStore().eachUserItems.results}
+      addItem={this.addItem}
+      deleteItem={this.deleteItem}
+      />
    }
 }
 

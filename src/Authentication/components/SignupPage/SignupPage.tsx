@@ -116,40 +116,42 @@ class SignupPage extends Component<SignupProps> {
                <Heading>{t('strings:HiTherePleseSignup')}</Heading>
                <Image src={imgUrl} />
                <InputDiv>
-               <UserName>{t('strings:userName')}</UserName>
-               <Input
-                  type='text'
-                  onChange={this.onChangeUserName}
-                  errorMessage={this.userNameErrorMessage}
-                  placeHolder={t('strings:userNamePlaceHolder')}
-                  value={this.userName}
-                  width='200'
-                  inputRef={this.userNameRef}
-               />
+                  <UserName>{t('strings:userName')}</UserName>
+                  <Input
+                     type='text'
+                     onChange={this.onChangeUserName}
+                     errorMessage={this.userNameErrorMessage}
+                     placeHolder={t('strings:userNamePlaceHolder')}
+                     value={this.userName}
+                     width='200'
+                     inputRef={this.userNameRef}
+                  />
                </InputDiv>
                <InputDiv>
-               <Password>{t('strings:password')}</Password>
-               <Input
-                  type='password'
-                  onChange={this.onChangePassword}
-                  errorMessage={this.passwordErrorMessage}
-                  placeHolder={t('strings:passwordPlaceHolder')}
-                  value={this.password}
-                  width='200'
-                  inputRef={this.passwordRef}
-               />
+                  <Password>{t('strings:password')}</Password>
+                  <Input
+                     type='password'
+                     onChange={this.onChangePassword}
+                     errorMessage={this.passwordErrorMessage}
+                     placeHolder={t('strings:passwordPlaceHolder')}
+                     value={this.password}
+                     width='200'
+                     inputRef={this.passwordRef}
+                  />
                </InputDiv>
                <InputDiv>
-               <ConfirmPassword>{t('strings:confirmPassword')}</ConfirmPassword>
-               <Input
-                  type='password'
-                  onChange={this.onChangeConfirmPassword}
-                  errorMessage={this.confirmPasswordErrorMessage}
-                  placeHolder={t('strings:confirmPasswordPlaceholdes')}
-                  value={this.confirmPassword}
-                  width='200'
-                  inputRef={this.confirmPasswordRef}
-               />
+                  <ConfirmPassword>
+                     {t('strings:confirmPassword')}
+                  </ConfirmPassword>
+                  <Input
+                     type='password'
+                     onChange={this.onChangeConfirmPassword}
+                     errorMessage={this.confirmPasswordErrorMessage}
+                     placeHolder={t('strings:confirmPasswordPlaceholdes')}
+                     value={this.confirmPassword}
+                     width='200'
+                     inputRef={this.confirmPasswordRef}
+                  />
                </InputDiv>
                <Button
                   name={t('strings:signUp')}

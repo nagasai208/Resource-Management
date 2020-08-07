@@ -1,11 +1,11 @@
 import React from 'react'
 import { Pagination } from 'semantic-ui-react'
 interface PaginationProps {
-      onChangePage: (event: React.MouseEvent<HTMLAnchorElement>,data) => void
+   onChangePage: (event: React.MouseEvent<HTMLAnchorElement>, data) => void
 }
 class PaginationComponent extends React.Component<PaginationProps> {
    render() {
-        const { onChangePage } = this.props
+      const { onChangePage } = this.props
       return (
          <Pagination
             onPageChange={onChangePage}

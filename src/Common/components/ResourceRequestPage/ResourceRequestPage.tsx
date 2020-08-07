@@ -11,7 +11,7 @@ import {
    TextArea,
    InputDiv
 } from './styledComponents'
-import DatePickerComponent from "../DatePicker/DatePicker"
+import DatePickerComponent from '../DatePicker/DatePicker'
 
 @observer
 class ResourceRequestPage extends Component {
@@ -78,11 +78,11 @@ class ResourceRequestPage extends Component {
                      />
                   </InputDiv>
                   <InputDiv>
-                  <p>DATE</p>
-                      <DatePickerComponent />
+                     <p>DATE</p>
+                     <DatePickerComponent />
                   </InputDiv>
                   <InputDiv>
-                  <p>STATUS</p>
+                     <p>STATUS</p>
                      <Input
                         onChange={this.onClickGoback}
                         type='text'

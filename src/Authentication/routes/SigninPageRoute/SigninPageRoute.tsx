@@ -36,7 +36,6 @@ class SigninPageRoute extends Component<SigninPageProps> {
             }
             onSubmit={this.onSubmit}
             signup={this.signup}
-            
          />
       )
    }

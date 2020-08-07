@@ -5,7 +5,6 @@ import { ConfirmPasswordValidate } from '../../../Authentication/utils/Validatio
 
 const ProtectedRoute = inject('authStore')(
    observer(({ component: Component, path, authStore, ...rest }) => {
-      console.log(path)
       const { accessToken } = authStore
       return (
          <Route

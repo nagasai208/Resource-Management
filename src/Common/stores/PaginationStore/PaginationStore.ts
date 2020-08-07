@@ -89,7 +89,7 @@ class PaginationStore {
    }
    @action.bound
    getResponsesWithIds(id) {
-      const usersPromise = this.apiService( id)
+      const usersPromise = this.apiService(id)
       return bindPromiseWithOnSuccess(usersPromise)
          .to(this.setGetAdminAPIStatus, this.setAdminResponse)
          .catch(this.setGetAdminAPIError)

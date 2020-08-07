@@ -5,7 +5,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom'
 import AdminStore from '../../store/AdminStore'
 import { action } from 'mobx'
 import { gotoEachUser } from '../../utils/NavigationUtils'
-import { RESOURCE_MANAGEMENT_EACH_USER } from "../../constants/NavigationConstants"
+import { RESOURCE_MANAGEMENT_EACH_USER } from '../../constants/NavigationConstants'
 interface AdminResourcesRouteProps extends RouteComponentProps {}
 interface InjectedProps extends AdminResourcesRouteProps {
    adminStore: AdminStore
@@ -22,8 +22,7 @@ class AdminUsersRoute extends Component<AdminResourcesRouteProps> {
    }
    @action.bound
    eachUserId(id) {
-      this.props.history.push(`${RESOURCE_MANAGEMENT_EACH_USER}/${id}`)
-      // gotoEachUser(this.getInjectedProps().history, id)
+      gotoEachUser(this.getInjectedProps().history, id)
    }
    @action.bound
    doNetworkCalls() {

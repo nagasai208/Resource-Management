@@ -1,8 +1,13 @@
 import getData from '@ib/api'
 
-import { apiMethods, statusCodes, resStatuses, apiErrorProblems } from '../constants/APIConstants'
+import {
+   apiMethods,
+   statusCodes,
+   resStatuses,
+   apiErrorProblems
+} from '../constants/APIConstants'
 
-import { getAccessToken } from './StorageUtils';
+import { getAccessToken } from './StorageUtils'
 
 export const networkCallWithApisauce = async (
    api,
@@ -30,7 +35,7 @@ export const networkCallWithApisauceWithToken = async (
    if (accessToken) {
       api.setHeader('Authorization', `Bearer ${accessToken}`)
    }
-  api.setHeader('Content-Type', 'application/json; charset=UTF-8')
+   api.setHeader('Content-Type', 'application/json; charset=UTF-8')
    try {
       response = await getData(api, url, requestObject, type)
    } catch (error) {
@@ -39,7 +44,7 @@ export const networkCallWithApisauceWithToken = async (
    return response
 }
 
-export const getUserDisplayableErrorMessage = (error) => {
+export const getUserDisplayableErrorMessage = error => {
    const formattedError = getFormattedError(error)
    return formattedError.description
 }
@@ -52,7 +57,7 @@ export function isNetworkError(error) {
       : false
 }
 
-export const getFormattedError = (apiError) => {
+export const getFormattedError = apiError => {
    //TODO: Need to use strings from i18n
    const errorViewTitle = 'Oops! Something Went Wrong'
    const errorViewDescription =
@@ -91,7 +96,7 @@ export const getFormattedError = (apiError) => {
                   const response = JSON.parse(parsedError.response)
                   const {
                      title: errorTitle,
-                     description: errorDescription,
+                     description: errorDescription
                   } = response
                   if (errorTitle) {
                      title = errorTitle
@@ -135,7 +140,7 @@ export const getFormattedError = (apiError) => {
       errorCode,
       title,
       description,
-      errorConstant,
+      errorConstant
    }
    return apiErrorResponse
 }

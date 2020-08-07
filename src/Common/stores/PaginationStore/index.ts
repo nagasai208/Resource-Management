@@ -1,3 +1,3 @@
-import { PaginationStore } from "./PaginationStore";
+import { PaginationStore } from './PaginationStore'
 
-export default PaginationStore; 
+export default PaginationStore

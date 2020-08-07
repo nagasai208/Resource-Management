@@ -20,7 +20,13 @@ class AddResourcesRoute extends Component<AddResourcesProps> {
    }
    render() {
       return (
-         <AddResources goBack={this.goBack} addResource={this.addResource} addResourceStatus={this.getInjectedProps().adminStore.getAddResourceAPIStatus} />
+         <AddResources
+            goBack={this.goBack}
+            addResource={this.addResource}
+            addResourceStatus={
+               this.getInjectedProps().adminStore.getAddResourceAPIStatus
+            }
+         />
       )
    }
 }

@@ -9,8 +9,7 @@ const SreachDiv = styled.div`
 `
 
 const EachResourcesDiv = styled.div`
-   ${tw` w-1/4 bg-gray-100 m-5 p-10 cursor-pointer`}
-   :hover {
+   ${tw` w-1/4 bg-gray-100 m-5 p-10 cursor-pointer`} :hover {
       transform: scale(1.1);
       height: auto;
    }

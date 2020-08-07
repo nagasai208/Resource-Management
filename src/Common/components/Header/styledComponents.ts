@@ -2,8 +2,7 @@ import styled from '@emotion/styled'
 import tw from 'tailwind.macro'
 import { css } from '@emotion/core'
 const HeaderMainDiv = styled.div`
-   ${tw`flex justify-between p-5  shadow-md h-24 `}
-   /* position:sticky;
+   ${tw`flex justify-between p-5  shadow-md h-24 `} /* position:sticky;
    top: 0;
    width: 100%;
    z-index: 10; */
