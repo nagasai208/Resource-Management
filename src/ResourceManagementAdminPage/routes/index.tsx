@@ -8,7 +8,8 @@ import {
    RESOURCE_MANAGEMENT_ADD_ITEM,
    RESOURCE_MANAGEMENT_SINGLE_RESOURCE,
    RESOURSE_MANAGEMENT_UPDATE_RESOURCE,
-   RESOURCE_MANAGEMENT_EACH_USER
+   RESOURCE_MANAGEMENT_EACH_USER,
+   RESOURCE_MANAGEMENT_EDIT_PROFILE
 } from '../constants/NavigationConstants'
 import AdminResourcesRoute from './AdminResourcesRoute/AdminResourcesRoute'
 import AdminRequestsRoute from './AdminRequestsRoute/AdminRequestsRoute'
@@ -18,7 +19,7 @@ import AddResourceItemRoute from './AddResourceItemRoute/AddResourceItemRoute'
 import EachResourceRoute from './EachResourceRoute/EachResourceRoute'
 import UpdateResourceRoute from './UadateResourceRoute/UpdateResourceRoute'
 import EachUserRoute from './EachUserRoute/EachUserRoute'
-import { Route } from 'react-router-dom'
+import EditProfileRoute from './EditProfileRoute/EditProfileRoute'
 
 const resourceManagementRoutes = [
    <ProtectedRoute
@@ -51,10 +52,14 @@ const resourceManagementRoutes = [
       component={UpdateResourceRoute}
    />,
    <ProtectedRoute
-      key={`${RESOURCE_MANAGEMENT_EACH_USER}/:id`}
       exact
       path={`${RESOURCE_MANAGEMENT_EACH_USER}/:id`}
       component={EachUserRoute}
+   />,
+   <ProtectedRoute
+      exact
+      path={RESOURCE_MANAGEMENT_EDIT_PROFILE}
+      component={EditProfileRoute}
    />
 ]
 

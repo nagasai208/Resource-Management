@@ -15,6 +15,7 @@ interface HearderPops {
    isButton?: boolean
    onClickAdd?: Function
 }
+
 @observer
 class Header extends Component<HearderPops> {
    render() {
@@ -26,7 +27,7 @@ class Header extends Component<HearderPops> {
                {isButton && (
                   <Button
                      name='+ ADD'
-                     onClick={this.props.onClickAdd}
+                     onClick={onClickAdd}
                      type={Button.buttonType.filled}
                      buttonStyles={ButtonStyles}
                   />

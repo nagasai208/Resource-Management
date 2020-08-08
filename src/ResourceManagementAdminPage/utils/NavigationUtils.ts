@@ -6,7 +6,8 @@ import {
    RESOURCE_MANAGEMENT_RESOURCES,
    RESOURCE_MANAGEMENT_SINGLE_RESOURCE,
    RESOURSE_MANAGEMENT_UPDATE_RESOURCE,
-   RESOURCE_MANAGEMENT_EACH_USER
+   RESOURCE_MANAGEMENT_EACH_USER,
+   RESOURCE_MANAGEMENT_EDIT_PROFILE
 } from '../constants/NavigationConstants'
 
 export const gotoAddResources = history => {
@@ -42,4 +43,7 @@ export const gotoAddItemRoute = (history, id) => {
 
 export const gotoEachUser = (history, id) => {
    history.push(`${RESOURCE_MANAGEMENT_EACH_USER}/${id}`)
+}
+export const gotoEditProfile = history =>{
+   history.push(RESOURCE_MANAGEMENT_EDIT_PROFILE)
 }

@@ -1,17 +1,24 @@
 import { Dropdown } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import React, { Component } from 'react'
-import { observer } from 'mobx-react'
-interface DropdownMenuProps {}
-
+import { observer, inject } from 'mobx-react'
+import AuthStore from '../../../Authentication/store/AuthenticationStore'
+import { gotoEditProfile } from '../../../ResourceManagementAdminPage/utils/NavigationUtils'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
+interface DropdownMenuProps extends RouteComponentProps {}
+interface InjectedProps extends DropdownMenuProps {
+   authStore: AuthStore
+}
+@inject('authStore')
 @observer
 class DropdownMenu extends Component<DropdownMenuProps> {
    editProfile = () => {
-      alert(1)
+      gotoEditProfile(this.getInjectedProps().history)
    }
    onClickSignout = () => {
-      alert(2)
+      this.getInjectedProps().authStore.getSignout()
    }
+   getInjectedProps = (): InjectedProps => this.props as InjectedProps
 
    render() {
       return (
@@ -37,4 +44,4 @@ class DropdownMenu extends Component<DropdownMenuProps> {
    }
 }
 
-export default DropdownMenu
+export default withRouter(DropdownMenu)

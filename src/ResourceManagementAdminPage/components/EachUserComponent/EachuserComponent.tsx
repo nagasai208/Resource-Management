@@ -37,15 +37,16 @@ import {
    FooterDiv,
    AddButtonStyle,
    DeleteButtonDisabled,
-   AddButtonStyleDisabled
+   AddButtonStyleDisabled,
+   ItemName,
+   Role
 } from './styledComponents'
-
 
 interface EachUserComponentProps {
    goBackComponent: (event: React.MouseEvent<HTMLParagraphElement>) => void
    eachResponseAPI: APIStatus
    eachResposeAPIError: Error | null
-   eachResourceResponse: any
+   eachuserResponse: any
    doNetworkCalls: () => void
    itemsResponse: any
    addItem: Function
@@ -55,6 +56,7 @@ interface EachUserComponentProps {
 class EachUser extends Component<EachUserComponentProps> {
    @observable isChecked: boolean = false
    @observable items: Array<number> = []
+   @observable accessLevelList = ['Read', 'Write', 'Owner', 'Comment Only']
    onChangeSearchData = event => {
       alert(1)
    }
@@ -81,15 +83,15 @@ class EachUser extends Component<EachUserComponentProps> {
       }
    }
    renderList = observer(() => {
-      const { eachResourceResponse } = this.props
+      const { eachuserResponse } = this.props
       return (
          <ResourceMainDiv>
             <ResourceDetailsDiv>
-               <ResourceLogo src={eachResourceResponse.profileUrl} />
+               <ResourceLogo src={eachuserResponse.profileUrl} />
                <ResourceDetails>
-                  <p>{eachResourceResponse.name}</p>
-                  <p>{eachResourceResponse.department}</p>
-                  <p>{eachResourceResponse.jobRole}</p>
+                  <ItemName>{eachuserResponse.name}</ItemName>
+                  <Role>{eachuserResponse.department}</Role>
+                  <Role>{eachuserResponse.jobRole}</Role>
                </ResourceDetails>
             </ResourceDetailsDiv>
          </ResourceMainDiv>
@@ -98,17 +100,35 @@ class EachUser extends Component<EachUserComponentProps> {
 
    rederTableUi = observer(() => {
       const { itemsResponse } = this.props
+      console.log(itemsResponse.get(1), 'hdfghjfg')
       return (
          <ItemsTable>
             <TableHeader>
+               <TableTitle></TableTitle>
                <TableTitle>RESOURCENAME</TableTitle>
-               <p>ACCESS</p>
+               <TableTitle>ITEM</TableTitle>
+               <TableTitle>ACCESS</TableTitle>
                <Description>Description</Description>
                <Link>LINK</Link>
             </TableHeader>
             {itemsResponse.get(1).map(eachItem => {
                return (
-                  <div>1</div>
+                  <EachRow>
+                     <Checkbox
+                        type='checkbox'
+                        onChange={this.onChangeCheckbox}
+                     ></Checkbox>
+                     <p>{eachItem.resourceName}</p>
+                     <p>{eachItem.itemName}</p>
+                     <select>
+                        <option hidden>{eachItem.accessLevel}</option>
+                        {this.accessLevelList.map(level => {
+                           return <option>{level}</option>
+                        })}
+                     </select>
+                     <p>{eachItem.description}</p>
+                     <a href={eachItem.itemLink}>{eachItem.itemLink}</a>
+                  </EachRow>
                )
             })}
          </ItemsTable>

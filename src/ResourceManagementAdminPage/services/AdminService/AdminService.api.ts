@@ -52,6 +52,9 @@ class AdminService implements AdminServiceImplements {
    getEachUserItemsAPI(id) {
       return networkCallWithApisauce(this.api, '', {}, apiMethods.get)
    }
+   getEditProfileAPI() {
+      return networkCallWithApisauce(this.api, '', {}, apiMethods.get)
+   }
 }
 
 export default AdminService

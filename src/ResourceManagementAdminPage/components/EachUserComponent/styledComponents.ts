@@ -65,7 +65,7 @@ const Table = styled.div`
    ${tw` mt-5`}
 `
 const TableHeader = styled.div`
-   ${tw`border flex justify-between p-2 items-center`}
+   ${tw`border flex justify-between p-2 `}
 `
 const ItemsTable = styled.div`
    ${tw`border`}
@@ -89,7 +89,7 @@ const Description = styled.p`
    ${tw`w-1/4`}
 `
 const Link = styled.a`
-   ${tw`w-1/4`}
+   ${tw`w-1/4 flex justify-center`}
 `
 const FooterDiv = styled.div`
    ${tw`flex justify-between mb-10 `}
@@ -112,6 +112,11 @@ const DeleteButtonDisabled = css`
    height: 40px;
    background-color: #d7dfe9;
 `
+const ItemName = styled.p`
+   ${tw`font-bold text-2xl`}
+`
+const Role = styled.p`
+${tw`text-lg`}`
 export {
    ResourceLogo,
    ResourceMainDiv,
@@ -139,5 +144,7 @@ export {
    FooterDiv,
    AddButtonStyle,
    DeleteButtonDisabled,
-   AddButtonStyleDisabled
+   AddButtonStyleDisabled,
+   ItemName,
+   Role
 }

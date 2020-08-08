@@ -22,9 +22,9 @@ class EachUserRoute extends Component<EachUserRouteProps> {
       return this.getInjectedProps().adminStore
    }
    @action.bound
-   async doNetworkCalls() {
+    doNetworkCalls() {
       let id = this.props.match.params['id']
-      await this.getAdminStore().getUserDeatails(id)
+       this.getAdminStore().getUserDeatails(id)
       this.getAdminStore().eachUserItems.getResponsesWithIds(id)
    }
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
@@ -49,7 +49,7 @@ class EachUserRoute extends Component<EachUserRouteProps> {
       goBackComponent={this.goBackComponent}
       eachResponseAPI={this.loadingStatus()}
       eachResposeAPIError={this.getAdminStore().getUserDetailsAPIError}
-      eachResourceResponse={this.getAdminStore().eachUserDetails}
+      eachuserResponse  ={this.getAdminStore().eachUserDetails}
       doNetworkCalls={this.doNetworkCalls}
       itemsResponse={this.getAdminStore().eachUserItems.results}
       addItem={this.addItem}

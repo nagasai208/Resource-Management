@@ -84,7 +84,6 @@ class AuthStore {
    }
    @action.bound
    setGetSigninResponse(response) {
-      console.log(response, 'response')
       setAccessToken(response.access_token)
       this.accessToken = getAccessToken()
    }
@@ -101,6 +100,7 @@ class AuthStore {
    @action.bound
    setGetSignoutResponse(response) {
       clearUserSession()
+      this.accessToken = getAccessToken()
    }
 
    @action.bound

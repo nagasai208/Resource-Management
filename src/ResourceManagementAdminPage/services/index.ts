@@ -14,7 +14,8 @@ import {
    AddResourceItemRequestObject,
    AddResourceRequestObect,
    EachUserDetailsResponse,
-   EachUserItemsResponse
+   EachUserItemsResponse,
+   EditProfileResponse
 } from '../store/types'
 
 interface AdminServiceImplements {
@@ -46,6 +47,7 @@ interface AdminServiceImplements {
 
    getEachUserDetailsAPI: (id: number) => Promise<EachUserDetailsResponse>
    getEachUserItemsAPI: (id: number) => Promise<EachUserItemsResponse>
+   getEditProfileAPI: () => Promise<EditProfileResponse>
 }
 
 export default AdminServiceImplements

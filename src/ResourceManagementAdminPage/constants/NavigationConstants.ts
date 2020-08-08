@@ -11,3 +11,5 @@ export const RESOURSE_MANAGEMENT_UPDATE_RESOURCE =
    '/resource-management/resources/update-resource'
 export const RESOURCE_MANAGEMENT_EACH_USER =
    '/resource-management/user/single-user'
+export const RESOURCE_MANAGEMENT_EDIT_PROFILE =
+   '/resource-management/edit-profile'

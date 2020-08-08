@@ -7,6 +7,7 @@ import resourceDetails from '../../fixtures/ResourceDetails.json'
 import eachResourcesItems from '../../fixtures/EachresourceItems.json'
 import userDetails from '../../fixtures/UserDetails.json'
 import eachUserItems from '../../fixtures/EachUserItems.json'
+import editProfile from '../../fixtures/EditProfile.json'
 class AdminService implements AdminServiceImplements {
    getAllResourcesAPI(requestobject) {
       return resolveWithTimeout(allResources)
@@ -38,6 +39,9 @@ class AdminService implements AdminServiceImplements {
    }
    getEachUserItemsAPI(id) {
       return resolveWithTimeout(eachUserItems)
+   }
+   getEditProfileAPI() {
+      return resolveWithTimeout(editProfile)
    }
 }
 

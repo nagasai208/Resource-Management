@@ -21,6 +21,7 @@ class AdminStore {
    @observable eachResourceRespose
    @observable eachUserDetails
    @observable eachUserItems
+   @observable editProfileRespose
    @observable getEachResourceAPIStatus!: APIStatus
    @observable getEachResorceAPIError!: Error | null
    @observable getUpadateResourceAPIStatus!: APIStatus
@@ -31,6 +32,8 @@ class AdminStore {
    @observable getAddResourceAPIError!: Error | null
    @observable getUserDetailsAPIStatus!: APIStatus
    @observable getUserDetailsAPIError!: Error | null
+   @observable getEditProfileAPIStatus!: APIStatus
+   @observable getEditProfileAPIError!: Error | null
 
    constructor(adminService) {
       this.adminService = adminService
@@ -77,6 +80,8 @@ class AdminStore {
       this.getAddResourceAPIError = null
       this.getUserDetailsAPIStatus = API_INITIAL
       this.getUserDetailsAPIError = null
+      this.getEditProfileAPIStatus = API_INITIAL
+      this.getEditProfileAPIError = null
    }
 
    @action.bound
@@ -154,6 +159,22 @@ class AdminStore {
    setGetUserDetailsAPIResponse(response) {
       this.eachUserDetails = new EachUserDetailsModel(response)
    }
+
+   @action.bound
+   setGetEditProfileAPIStatus(status) {
+      this.getEditProfileAPIStatus = status
+   }
+
+   @action.bound
+   setGetEditProfileAPIError(error) {
+      this.getEditProfileAPIError = error
+   }
+
+   @action.bound
+   setGetEditProfileAPIResponse(response) {
+      this.editProfileRespose = response
+   }
+
    @action.bound
    getAllUsers() {
       this.adminAllUsers.getResponse()
@@ -210,6 +231,12 @@ class AdminStore {
       return bindPromiseWithOnSuccess(promises)
          .to(this.setGetUserDetailsAPIStatus, this.setGetUserDetailsAPIResponse)
          .catch(this.setGetUserDetailsAPIError)
+   }
+   getEditUserProfile() {
+      const promises = this.adminService.getEditProfileAPI()
+      return bindPromiseWithOnSuccess(promises)
+         .to(this.setGetEditProfileAPIStatus, this.setGetEditProfileAPIResponse)
+         .catch(this.setGetEditProfileAPIError)
    }
    @action.bound
    clearStore() {

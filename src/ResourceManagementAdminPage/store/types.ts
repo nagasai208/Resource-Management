@@ -128,8 +128,15 @@ export interface EachUserItemsResponse {
 export interface Items {
    resource_name: string
    item_name: string
-   access_level: Array<string>
+   access_level: string
    description: string
    item_link: string
    item_id: number
+}
+export interface EditProfileResponse {
+   user_name: string
+   user_email: string
+   user_gender: string
+   user_job_role: string
+   user_department: string
 }
