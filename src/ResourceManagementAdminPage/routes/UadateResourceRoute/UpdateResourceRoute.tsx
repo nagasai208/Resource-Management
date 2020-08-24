@@ -38,7 +38,7 @@ class UpdateResourceRoute extends Component<UpdateResourceRouteProps> {
       return (
          <UpdateResourceComponent
             goBackComponent={this.goBackComponent}
-            updateResourceResponse={this.getAdminStore().eachResourceRespose}
+            updateResourceResponse={this.getAdminStore().eachResourceResponse}
             getUpdateResource={this.getUpdate}
             updateStatus={this.getAdminStore()}
          />
@@ -48,7 +48,7 @@ class UpdateResourceRoute extends Component<UpdateResourceRouteProps> {
       return (
          <LoadingWrapperWithFailure
             apiStatus={this.getAdminStore().getEachResourceAPIStatus}
-            apiError={this.getAdminStore().getEachResorceAPIError}
+            apiError={this.getAdminStore().getEachResourceAPIError}
             onRetryClick={this.doNetworkCalls}
             renderSuccessUI={this.renderList}
          />

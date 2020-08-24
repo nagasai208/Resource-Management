@@ -5,7 +5,7 @@ import AdminStore from '../../store/AdminStore'
 import { action } from 'mobx'
 import EachUser from '../../components/EachUserComponent/EachuserComponent'
 import { getLoadingStatus } from '@ib/api-utils'
-import { gotoAddUsers,gotoAddItemRoute } from "../../utils/NavigationUtils"
+import { gotoAddUsers, gotoAddItemRoute } from '../../utils/NavigationUtils'
 interface EachUserRouteProps extends RouteComponentProps {}
 
 interface InjectedProps extends EachUserRouteProps {
@@ -22,9 +22,9 @@ class EachUserRoute extends Component<EachUserRouteProps> {
       return this.getInjectedProps().adminStore
    }
    @action.bound
-    doNetworkCalls() {
+   doNetworkCalls() {
       let id = this.props.match.params['id']
-       this.getAdminStore().getUserDeatails(id)
+      this.getAdminStore().getUserDeatails(id)
       this.getAdminStore().eachUserItems.getResponsesWithIds(id)
    }
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
@@ -39,22 +39,24 @@ class EachUserRoute extends Component<EachUserRouteProps> {
    }
    addItem = () => {
       let id = this.props.match.params['id']
-      gotoAddItemRoute (this.getInjectedProps().history, id)
+      gotoAddItemRoute(this.getInjectedProps().history, id)
    }
    deleteItem = () => {
       alert('deleteItem')
    }
    render() {
-      return <EachUser 
-      goBackComponent={this.goBackComponent}
-      eachResponseAPI={this.loadingStatus()}
-      eachResposeAPIError={this.getAdminStore().getUserDetailsAPIError}
-      eachuserResponse  ={this.getAdminStore().eachUserDetails}
-      doNetworkCalls={this.doNetworkCalls}
-      itemsResponse={this.getAdminStore().eachUserItems.results}
-      addItem={this.addItem}
-      deleteItem={this.deleteItem}
-      />
+      return (
+         <EachUser
+            goBackComponent={this.goBackComponent}
+            eachResponseAPI={this.loadingStatus()}
+            eachResponseAPIError={this.getAdminStore().getUserDetailsAPIError}
+            eachUserResponse={this.getAdminStore().eachUserDetails}
+            doNetworkCalls={this.doNetworkCalls}
+            itemsResponse={this.getAdminStore().eachUserItems.results}
+            addItem={this.addItem}
+            deleteItem={this.deleteItem}
+         />
+      )
    }
 }
 

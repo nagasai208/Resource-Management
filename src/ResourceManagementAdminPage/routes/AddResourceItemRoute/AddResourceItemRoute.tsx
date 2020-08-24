@@ -38,8 +38,8 @@ class AddResourceItemRoute extends Component<AddResourceItemRouteProps> {
          <AddResourceItem
             goBack={this.goBack}
             itemAPIStatus={this.getAdminStore().getEachResourceAPIStatus}
-            itemAPIError={this.getAdminStore().getEachResorceAPIError}
-            itemResourceResponse={this.getAdminStore().eachResourceRespose}
+            itemAPIError={this.getAdminStore().getEachResourceAPIError}
+            itemResourceResponse={this.getAdminStore().eachResourceResponse}
             doNetworkCalls={this.doNetworkCalls}
             addItem={this.addItem}
             itemStatus={

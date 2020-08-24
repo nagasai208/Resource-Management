@@ -24,12 +24,18 @@ class EditProfileRoute extends Component<EditProfileRouteProps> {
       this.getAdminStore().getEditUserProfile()
    }
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
+   @action.bound
+   onClickUpdate(){
+
+   }
    render() {
       return (
          <EditProfile
-            edirAPIStatus={this.getAdminStore().getEditProfileAPIStatus}
-            edirAPIError={this.getAdminStore().getEditProfileAPIError}
-            editProfileResponse = {this.getAdminStore().editProfileRespose}
+            editAPIStatus={this.getAdminStore().getEditProfileAPIStatus}
+            editAPIError={this.getAdminStore().getEditProfileAPIError}
+            editProfileResponse={this.getAdminStore().editProfileResponse}
+            doNetworkCalls={this.doNetworkCalls}
+            onClickUpdate={this.onClickUpdate}
          />
       )
    }

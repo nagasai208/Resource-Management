@@ -60,8 +60,8 @@ class EachResourceRoute extends Component<EachResourceRouteProps> {
          <EachResourceComponent
             goBackComponent={this.goBackComponent}
             eachResponseAPI={this.loadingStatus()}
-            eachResposeAPIError={this.getAdminStore().getEachResorceAPIError}
-            eachResourceResponse={this.getAdminStore().eachResourceRespose}
+            eachResponseAPIError={this.getAdminStore().getEachResourceAPIError}
+            eachResourceResponse={this.getAdminStore().eachResourceResponse}
             doNetworkCalls={this.doNetworkCalls}
             onClickUpdate={this.onClickUpdate}
             deleteResource={this.deleteResource}

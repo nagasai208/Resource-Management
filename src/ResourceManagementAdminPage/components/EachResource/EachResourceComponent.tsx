@@ -44,7 +44,7 @@ import { withEmotionCache } from '@emotion/core'
 interface EachResourceComponentProps {
    goBackComponent: (event: React.MouseEvent<HTMLParagraphElement>) => void
    eachResponseAPI: APIStatus
-   eachResposeAPIError: Error | null
+   eachResponseAPIError: Error | null
    eachResourceResponse: any
    doNetworkCalls: () => void
    onClickUpdate: Function
@@ -61,13 +61,13 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
       alert(1)
    }
 
-   desendingOrder = event => {
+   descendingOrder = event => {
       alert('dec')
    }
-   assendingOrder = event => {
+   ascendingOrder = event => {
       alert('asc')
    }
-   resentlyAdded = event => {
+   recentlyAdded = event => {
       alert('rec')
    }
    onChangePage = event => {}
@@ -115,7 +115,7 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
       )
    })
 
-   rederTableUi = observer(() => {
+   renderTableUi = observer(() => {
       const { itemsResponse } = this.props
       return (
          <ItemsTable>
@@ -146,12 +146,16 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
       const {
          goBackComponent,
          eachResponseAPI,
-         eachResposeAPIError,
+         eachResponseAPIError,
          doNetworkCalls,
          addItem,
          deleteItem
       } = this.props
-      const { resentlyAdded, assendingOrder, desendingOrder } = this
+      const {
+         recentlyAdded: recentlyAdded,
+         ascendingOrder: ascendingOrder,
+         descendingOrder: descendingOrder
+      } = this
       return (
          <div>
             <Header />
@@ -162,7 +166,7 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
                />
                <LoadingWrapperWithFailure
                   apiStatus={eachResponseAPI}
-                  apiError={eachResposeAPIError}
+                  apiError={eachResponseAPIError}
                   onRetryClick={doNetworkCalls}
                   renderSuccessUI={this.renderList}
                />
@@ -176,17 +180,17 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
                               data={[
                                  {
                                     name: 'Recently Added',
-                                    onclickFunction: resentlyAdded,
+                                    onclickFunction: recentlyAdded,
                                     id: 'recently_added'
                                  },
                                  {
                                     name: 'Ascending',
-                                    onclickFunction: assendingOrder,
+                                    onclickFunction: ascendingOrder,
                                     id: 'ascending'
                                  },
                                  {
                                     name: 'Descending',
-                                    onclickFunction: desendingOrder,
+                                    onclickFunction: descendingOrder,
                                     Descending: 'descending',
                                     value: 'descending'
                                  }
@@ -200,9 +204,9 @@ class EachResourceComponent extends Component<EachResourceComponentProps> {
                   <Table>
                      <LoadingWrapperWithFailure
                         apiStatus={eachResponseAPI}
-                        apiError={eachResposeAPIError}
+                        apiError={eachResponseAPIError}
                         onRetryClick={doNetworkCalls}
-                        renderSuccessUI={this.rederTableUi}
+                        renderSuccessUI={this.renderTableUi}
                      />
                   </Table>
                   <FooterDiv>

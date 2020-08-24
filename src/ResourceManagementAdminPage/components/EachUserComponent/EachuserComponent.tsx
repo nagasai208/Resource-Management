@@ -45,8 +45,8 @@ import {
 interface EachUserComponentProps {
    goBackComponent: (event: React.MouseEvent<HTMLParagraphElement>) => void
    eachResponseAPI: APIStatus
-   eachResposeAPIError: Error | null
-   eachuserResponse: any
+   eachResponseAPIError: Error | null
+   eachUserResponse: any
    doNetworkCalls: () => void
    itemsResponse: any
    addItem: Function
@@ -61,13 +61,13 @@ class EachUser extends Component<EachUserComponentProps> {
       alert(1)
    }
 
-   desendingOrder = event => {
+   descendingOrder = event => {
       alert('dec')
    }
-   assendingOrder = event => {
+   ascendingOrder = event => {
       alert('asc')
    }
-   resentlyAdded = event => {
+   recentlyAdded = event => {
       alert('rec')
    }
    onChangePage = event => {}
@@ -83,22 +83,22 @@ class EachUser extends Component<EachUserComponentProps> {
       }
    }
    renderList = observer(() => {
-      const { eachuserResponse } = this.props
+      const { eachUserResponse } = this.props
       return (
          <ResourceMainDiv>
             <ResourceDetailsDiv>
-               <ResourceLogo src={eachuserResponse.profileUrl} />
+               <ResourceLogo src={eachUserResponse.profileUrl} />
                <ResourceDetails>
-                  <ItemName>{eachuserResponse.name}</ItemName>
-                  <Role>{eachuserResponse.department}</Role>
-                  <Role>{eachuserResponse.jobRole}</Role>
+                  <ItemName>{eachUserResponse.name}</ItemName>
+                  <Role>{eachUserResponse.department}</Role>
+                  <Role>{eachUserResponse.jobRole}</Role>
                </ResourceDetails>
             </ResourceDetailsDiv>
          </ResourceMainDiv>
       )
    })
 
-   rederTableUi = observer(() => {
+   renderTableUi = observer(() => {
       const { itemsResponse } = this.props
       console.log(itemsResponse.get(1), 'hdfghjfg')
       return (
@@ -138,12 +138,16 @@ class EachUser extends Component<EachUserComponentProps> {
       const {
          goBackComponent,
          eachResponseAPI,
-         eachResposeAPIError,
+         eachResponseAPIError,
          doNetworkCalls,
          addItem,
          deleteItem
       } = this.props
-      const { resentlyAdded, assendingOrder, desendingOrder } = this
+      const {
+         recentlyAdded: recentlyAdded,
+         ascendingOrder: ascendingOrder,
+         descendingOrder: descendingOrder
+      } = this
       return (
          <div>
             <Header />
@@ -151,7 +155,7 @@ class EachUser extends Component<EachUserComponentProps> {
                <GobackComponent onClickGoback={goBackComponent} name='users' />
                <LoadingWrapperWithFailure
                   apiStatus={eachResponseAPI}
-                  apiError={eachResposeAPIError}
+                  apiError={eachResponseAPIError}
                   onRetryClick={doNetworkCalls}
                   renderSuccessUI={this.renderList}
                />
@@ -165,17 +169,17 @@ class EachUser extends Component<EachUserComponentProps> {
                               data={[
                                  {
                                     name: 'Recently Added',
-                                    onclickFunction: resentlyAdded,
+                                    onclickFunction: recentlyAdded,
                                     id: 'recently_added'
                                  },
                                  {
                                     name: 'Ascending',
-                                    onclickFunction: assendingOrder,
+                                    onclickFunction: ascendingOrder,
                                     id: 'ascending'
                                  },
                                  {
                                     name: 'Descending',
-                                    onclickFunction: desendingOrder,
+                                    onclickFunction: descendingOrder,
                                     Descending: 'descending',
                                     value: 'descending'
                                  }
@@ -189,9 +193,9 @@ class EachUser extends Component<EachUserComponentProps> {
                   <Table>
                      <LoadingWrapperWithFailure
                         apiStatus={eachResponseAPI}
-                        apiError={eachResposeAPIError}
+                        apiError={eachResponseAPIError}
                         onRetryClick={doNetworkCalls}
-                        renderSuccessUI={this.rederTableUi}
+                        renderSuccessUI={this.renderTableUi}
                      />
                   </Table>
                   <FooterDiv>

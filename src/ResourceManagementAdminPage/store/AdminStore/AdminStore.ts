@@ -10,6 +10,7 @@ import { setAccessToken } from '../../../Common/utils/StorageUtils'
 import ResourceItemsModel from '../models/ResourceItemsModel'
 import EachUserDetailsModel from '../models/EachUserDetailsModel'
 import EachUserItemsModel from '../models/EachUserItemsModel'
+import EditProfileModel from '../models/EditProfile'
 class AdminStore {
    adminService
    limit
@@ -18,14 +19,14 @@ class AdminStore {
    @observable adminAllRequests
    @observable adminAllUsers
    @observable resourceItems
-   @observable eachResourceRespose
+   @observable eachResourceResponse
    @observable eachUserDetails
    @observable eachUserItems
-   @observable editProfileRespose
+   @observable editProfileResponse
    @observable getEachResourceAPIStatus!: APIStatus
-   @observable getEachResorceAPIError!: Error | null
-   @observable getUpadateResourceAPIStatus!: APIStatus
-   @observable getUdateResourceAPIError!: Error | null
+   @observable getEachResourceAPIError!: Error | null
+   @observable getUpdateResourceAPIStatus!: APIStatus
+   @observable getUpdateResourceAPIError!: Error | null
    @observable getResourceAddItemAPIStatus!: APIStatus
    @observable getResourceAddItemAPIError!: Error | null
    @observable getAddResourceAPIStatus!: APIStatus
@@ -70,10 +71,10 @@ class AdminStore {
    }
    @action.bound
    init() {
-      this.getEachResorceAPIError = null
+      this.getEachResourceAPIError = null
       this.getEachResourceAPIStatus = API_INITIAL
-      this.getUdateResourceAPIError = null
-      this.getUpadateResourceAPIStatus = API_INITIAL
+      this.getUpdateResourceAPIError = null
+      this.getUpdateResourceAPIStatus = API_INITIAL
       this.getResourceAddItemAPIStatus = API_INITIAL
       this.getResourceAddItemAPIError = null
       this.getAddResourceAPIStatus = API_INITIAL
@@ -91,28 +92,28 @@ class AdminStore {
 
    @action.bound
    setGetEachResourceAPIError(error) {
-      this.getEachResorceAPIError = error
+      this.getEachResourceAPIError = error
    }
 
    @action.bound
    setEachResourceResponse(response) {
-      this.eachResourceRespose = new EachResourceModel(
+      this.eachResourceResponse = new EachResourceModel(
          response.resource_details
       )
    }
 
    @action.bound
    setGetUpdateResourceAPIStatus(status) {
-      this.getUpadateResourceAPIStatus = status
+      this.getUpdateResourceAPIStatus = status
    }
 
    @action.bound
-   setGetUpadateResourceAPIError(error) {
-      this.getUdateResourceAPIError = error
+   setGetUpdateResourceAPIError(error) {
+      this.getUpdateResourceAPIError = error
    }
 
    @action.bound
-   setGetUpadateResourceResponse(response) {}
+   setGetUpdateResourceResponse(response) {}
 
    @action.bound
    getAllResources() {
@@ -172,7 +173,7 @@ class AdminStore {
 
    @action.bound
    setGetEditProfileAPIResponse(response) {
-      this.editProfileRespose = response
+      this.editProfileResponse = new EditProfileModel(response)
    }
 
    @action.bound
@@ -200,15 +201,15 @@ class AdminStore {
       return bindPromiseWithOnSuccess(usersPromise)
          .to(
             this.setGetUpdateResourceAPIStatus,
-            this.setGetUpadateResourceResponse
+            this.setGetUpdateResourceResponse
          )
-         .catch(this.setGetUpadateResourceAPIError)
+         .catch(this.setGetUpdateResourceAPIError)
    }
    @action.bound
-   getAddResourceItem(id, requestObjext) {
+   getAddResourceItem(id, requestObject) {
       const promises = this.adminService.getAddItemResourceAPI(
          id,
-         requestObjext
+         requestObject
       )
       return bindPromiseWithOnSuccess(promises)
          .to(

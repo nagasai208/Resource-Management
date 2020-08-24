@@ -139,4 +139,5 @@ export interface EditProfileResponse {
    user_gender: string
    user_job_role: string
    user_department: string
+   user_logo: string
 }

@@ -20,7 +20,7 @@ class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
    @observable descriptionValue
    @observable imgUrl
    @observable errorMessageName!: string
-   @observable errorMessagelink!: string
+   @observable errorMessageLink!: string
    @observable errorMessageDescription!: string
    requestObject!: Object
    constructor(props) {
@@ -31,7 +31,7 @@ class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
       this.descriptionValue = updateResourceResponse.description
       this.imgUrl = updateResourceResponse.resourceLogo
       this.errorMessageName = ''
-      this.errorMessagelink = ''
+      this.errorMessageLink = ''
       this.errorMessageDescription = ''
    }
    onChangeName = event => {
@@ -52,7 +52,7 @@ class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
       }
    }
    notify = () => {
-      toast.success('Sucessfully Updated !')
+      toast.success('Successfully Updated !')
    }
    updateResourceButton = () => {
       const { getUpdateResource } = this.props
@@ -60,7 +60,7 @@ class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
          this.errorMessageName = UserNameValidate(this.name)
       }
       if (this.link === '') {
-         this.errorMessagelink = UserNameValidate(this.link)
+         this.errorMessageLink = UserNameValidate(this.link)
       }
       if (this.descriptionValue === '') {
          this.errorMessageDescription = UserNameValidate(this.descriptionValue)
@@ -82,7 +82,7 @@ class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
             <AddResourcesAndItems
                goBackName='resources'
                goBack={goBackComponent}
-               title='Upadate Resource Name'
+               title='Update Resource Name'
                resourceName={false}
                uploadImage={true}
                onChangeName={this.onChangeName}
@@ -96,7 +96,7 @@ class UpdateResourceComponent extends Component<UpdateResourceComponentProps> {
                imgUrl={this.imgUrl}
                buttonName='UPDATE'
                errorMessageName={this.errorMessageName}
-               errorMessagelink={this.errorMessagelink}
+               errorMessagelink={this.errorMessageLink}
                errorMessageDescription={this.errorMessageDescription}
             />
 

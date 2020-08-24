@@ -33,7 +33,7 @@ class DropdownMenu extends Component<DropdownMenuProps> {
             <Dropdown.Menu>
                <Dropdown.Divider />
                <Dropdown.Item onClick={this.editProfile}>
-                  Add Profile
+                  Edit Profile
                </Dropdown.Item>
                <Dropdown.Item onClick={this.onClickSignout}>
                   Signout

@@ -70,15 +70,15 @@ class AdminUsers extends Component<AdminUsersProps> {
                <p>DEPARTMENT</p>
                <p>JOB ROLE</p>
             </TableHeading>
-            {allUsers.get(1).map(eachuser => {
+            {allUsers.get(1).map(eachUser => {
                return (
-                  <EachDataDiv id={eachuser.userId} onClick={this.onClickUser}>
+                  <EachDataDiv id={eachUser.userId} onClick={this.onClickUser}>
                      <UserDiv>
-                        <Image src={eachuser.userImage} />
-                        <p>{eachuser.userName}</p>
+                        <Image src={eachUser.userImage} />
+                        <p>{eachUser.userName}</p>
                      </UserDiv>
-                     <p>{eachuser.department}</p>
-                     <p>{eachuser.jobRole}</p>
+                     <p>{eachUser.department}</p>
+                     <p>{eachUser.jobRole}</p>
                   </EachDataDiv>
                )
             })}
